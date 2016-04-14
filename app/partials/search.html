@@ -1,150 +1,3 @@
- <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-</head>
-
- <style type="text/css">
-    body{
-        background: #f4f4f4;
-        margin: 0px;
-        width: 100%;
-    }
-    p{
-        font-family: Helvetica;
-        margin: 10px;
-    }
-    .statusBar{
-       height: 23px;
-        
-    }
-    .headingBar{
-        display: table;
-        height:88px;
-        width: 100%;
-        background-color: rgba(240,240,240,0.9);
-        
-        box-shadow: 0px 2px 1px #888888;
-
-    }
-    #headingTop{
-        display: table-cell;
-        vertical-align: middle;
-    }
-    #headingTop p{
-        font-size: 34px;
-        text-align: center;
-    }
-    .idImg{
-        height: 400px;
-        width: 100%;
-    }
-
-    .subHeading{
-    
-        font-size: 34px;
-        /*box-shadow: 0px 2px 5px #aaaaaa;*/
-        margin-bottom:25px; 
-        margin-top:10px; 
-
-    }
-    .subHeadingLine{
-        display: table;
-        
-        height: 60px;
-        width: 100%;
-        background: #D8D8D8;
-    }
-
-    .subHeadingLine p{
-        display: table-cell;
-        vertical-align: middle;
-        padding-left: 20px;
-    }
-    .subHeading img{
-        width: 100%;
-        border-bottom: 1px solid black;
-
-    }
-    table{
-        width: 100%;
-        text-align: center;
-        font-size: 28px;
-       
-    }
-    td{
-        padding: 10px;
-        
-        
-    }
-    .borderAll{
-        border: 1px solid black;
-        /*box-shadow: 0px 1px 3px #888888;*/
-    }
-    .v-middle{
-        vertical-align: middle;
-    }
-    .t-middle{
-        text-align: center;
-    }
-    .f-left{
-        float: left;
-    }
-    .f-right{
-        
-        float: right;
-        
-    }
-    .resizeImg{
-        width: 20px;
-    }
-    .ui-btn{
-        padding: 5px;
-    }
-    .ui-input-search{
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-       
-    }
-    #searchArea{
-        background: grey;
-        padding-top: 8px;
-        padding-bottom: 8px;
-
-    }
-    .floatBox{
-        margin: 3px;
-        position: relative;
-    }
-    .resizeItemImg{
-        width: 100%;
-    }
-    .resizeHeartImg{
-        width: 30px;
-    }
-    .likedHeart{
-        position:  absolute;
-        top: 5px;
-        left: 5px;
-    }
-    .itemPrice{
-        position: absolute;
-        left: 5px;
-        bottom: 5px;
-    }
-    .itemName{
-        position: absolute;
-        right: 5px;
-        bottom: 5px;
-    }
-
-</style>
-<body>
 <div>
     <div class="statusBar"> <img src="../img/default.png" width="100%"></div>
     <div data-role="header">
@@ -154,17 +7,19 @@
         <div class="ui-btn ui-btn-right "> 
             <img class="resizeImg" src="../img/female.png" >
             <img class="resizeImg" src="../img/male.png" >
-        </div>
-
-
-        
-        
+        </div>              
     </div>
 
 
 
     <div id="searchArea">
-        <input type="search" name="search" id="search" placeholder="Search for content...">
+        <!--<input type="search" name="search" id="search" placeholder="Search for content...">-->
+        <div class="input-group">
+            <input ng-model="keywords" class="form-control" placeholder="Enter keywords here"/>
+            <span class="input-group-btn">
+            <button class="btn btn-primary" ng-click="search(keywords)"><div class="glyphicon glyphicon-search"></div></button>
+            </span>                           
+        </div>  
     </div>
     <!--</form> -->
     <div class="ui-grid-b ">
@@ -202,29 +57,38 @@
             </select>
         </div>
     </div>
+    
+    <p>&nbsp;</p>
+                            
+    <!--<div class="row">
+        <div id="clothesListView" class="list-view" >									                                                                            
+                <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in clothes">
+                <a class="thumbnail cloth-preview" ng-href="#">
+                    <div class="cover">
+                        <img ng-src="{{cloth.ImageURL}}"/>
+                    </div>
+                    <div class="caption">
+                        <h4 class="panel-title">{{cloth.Title}}</h4>				                                 
+                    </div>
+                </a>                                        
+            </div>                                    
+        </div>
+                    
+    </div>-->
     <div class="ui-grid-a">
         <div class="ui-block-a">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
+            <div class="floatBox" ng-repeat="cloth in clothes">
+                <img class="resizeItemImg" ng-src="{{cloth.image.sizes.Original.url}}">
                 <div class="likedHeart">
                     <img class="resizeHeartImg"src="../img/heart.jpg">
                 </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
+                <div class="itemPrice">Price: {{cloth.priceLabel}}</div>
+                <div class="itemName">Name: {{cloth.name}}</div>
 
             </div>
         </div>
-        <div class="ui-block-b">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>
+    </div>
+    <!--<div class="ui-grid-a">
         <div class="ui-block-a">
             <div class="floatBox">
                 <img class="resizeItemImg" src="../img/boot.jpeg">
@@ -269,8 +133,28 @@
 
             </div>
         </div>
+        <div class="ui-block-a">
+            <div class="floatBox">
+                <img class="resizeItemImg" src="../img/boot.jpeg">
+                <div class="likedHeart">
+                    <img class="resizeHeartImg"src="../img/heart.jpg">
+                </div>
+                <div class="itemPrice">Price:  kr</div>
+                <div class="itemName">Name:</div>
+
+            </div>
+        </div>
+        <div class="ui-block-b">
+            <div class="floatBox">
+                <img class="resizeItemImg" src="../img/boot.jpeg">
+                <div class="likedHeart">
+                    <img class="resizeHeartImg"src="../img/heart.jpg">
+                </div>
+                <div class="itemPrice">Price:  kr</div>
+                <div class="itemName">Name:</div>
+
+            </div>
+        </div>-->
 
         
     </div>
-</body>
-</html>

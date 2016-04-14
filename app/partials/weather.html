@@ -1,0 +1,59 @@
+
+<div>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#current" aria-controls="current" role="tab" data-toggle="tab">Current</a></li>
+    <li role="presentation"><a href="#tomorrow" aria-controls="tomorrow" role="tab" data-toggle="tab">Tomorrow</a></li>
+    <li role="presentation"><a href="#weekend" aria-controls="weekend" role="tab" data-toggle="tab">Weekend</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="current">
+        <div class="col-md-8">
+            <span>{{Date}} {{time}}</span>
+            <div class="col-md-4">
+                <div class="cover">
+                    <img ng-src="{{weather.ImageURL}}"></img>
+                </div>
+                <span>Wind:{{weather.wind}}</span>
+                <span>Wind:{{weather.humidity}}</span>
+            </div>
+            <div class="col-md-4">               
+                <h1>{{weather.temperature}}</h1>              
+                <span>UV:{{weather.uv}}</span>
+                <span>Precipitation:{{weather.precipitation}}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img class="cover" src="#/images/picture1.jpg"></img>
+        </div>
+    </div>
+    
+    <div role="tabpanel" class="tab-pane" id="profile">
+        <div class="col-md-8">
+            <span>{{Date}} {{time}}</span>
+            <div class="col-md-4">
+                <div class="cover">
+                    <img ng-src="{{weather.ImageURL}}"></img>
+                </div>
+                <span>Wind:{{weather.wind}}</span>
+                <span>Wind:{{weather.humidity}}</span>
+            </div>
+            <div class="col-md-4">               
+                <h1>{{weather.temperature}}</h1>              
+                <span>UV:{{weather.uv}}</span>
+                <span>Precipitation:{{weather.precipitation}}</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img class="cover" src="#/images/picture1.jpg"></img>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">
+        
+    </div>
+    
+
+    </div>
+</div>
