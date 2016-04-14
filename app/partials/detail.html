@@ -1,55 +1,96 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<!doctype html>
+ <html>
+ <head>
+ <style type="text/css">
+	#main_image{position:relative;
+				left:10%;
+				top:100px}
+				
+	.goodsName{border:1px solid white;
+			position:relative;
+			left:5%;
+			}
+	.goodscontent{border:1px solid white;
+			position:relative;
+			left:5%;
+			font-size:30px;
+			}
+	#like{position:relative;
+					left:4%;}
+	#amazon_buy{position:relative;
+					left:4%;}
+	#discountgolfworld_buy{position:relative;
+					left:4%;}
+	#facebook_share{position:absolute;
+					left:75%;}
+	#instegram_share{position:absolute;
+					left:85%;}
+	#weichat_share{position:absolute;
+					left:95%;}
+	#amazon_save{position:absolute;
+					left:95%;}
+	#Discountgolfworld_save{position:absolute;
+					left:95%;}
+	#words_inline	{
+					position:absolute;
+					left:19%;}
+	#price	{
+					position:absolute;
+					left:74%;}
+ </style>
+ </head>
+ 
+ <body>
+ <div id="main_image"><img src="hat.jpg" width=80%/></div>
+<!-- <div id="describe_of_main">Nike-True Tour Flat Bill Cap</div>-->
+ <br/><br/><br/><br/>
+     <h3 class="goodsName" >Nike Classic Golf Hat</h3> 
+<hr/>
 
-<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
-not support it in free version) and list all the dishes that match the search. -->
-
-<!-- <div class="col-md-9"id="searchArea" ng-init="query=getKeyword();query2=getType();search(query+'+'+query2)">-->
-    <div class="col-md-9"id="searchArea" ng-init="query2='appetizers';search(query2)">
-    <div id="selectDish">
-        <h2>Select Dish</h2>
-        <hr>
-        <div class="row">
-
-            <div class="col-sm-2 paddingRightNone">
-
-                <input id="inputKeyword" ng-model="query"/>
-                
-            </div>
-
-            <div class="col-sm-2">
-                <div ng-click="search(query+'+'+query2)">Find</div>
-                <br>
-                <p>{{status}}</p>
-
-            </div>
-           
-            <div class="col-md-8">
-                    <select ng-model="query2" id="courseType" ng-change="search(query2)" >
-                        <option value="appetizers" selected>Appetizers</option>
-                        <option value="main+dish">Main Dish</option>
-                        <option value="dessert">Dessert</option>
-                    </select>
-            </div>
-            
-        </div>
-      
-    </div>
-    <div id="showList">
-        <div class='floating-box' ng-repeat="dish in dishes">
-            <div>
-                <img  id="{{dish.RecipeID}}" class='borderAll' ng-src="{{dish.ImageURL120}}" >
-            </div>
-            <div class='textMiddle'>{{dish.Title}}
-            </div>
-            <div style='padding: 5px;overflow: auto;'>
-                <a ng-href="#/dish/{{dish.RecipeID}}" ng-click="setPendingDish(dish)">View detail</a>
-            </div>
-
-            <div>
-                <p>Category:{{dish.Category}}</p> 
-                <p>Subcategory: <br> {{dish.Subcategory}}</p>
-            </div>
-        </div>
-    </div>
+<div>
+<img src="like.png" id="like" height="70">
+<span id="words_inline">1127 like</span>
+<img src="facebook.png" id="facebook_share" height="70">
+<img src="instegram.png" id="instegram_share" height="70">
+<img src="weichat.png" id="weichat_share" height="70">
+<hr/>
 </div>
+<div>
+<img src="amazon.png" id="amazon_buy" height="70">
+<span id="words_inline">Amazon</span><span id="price">120.00kr</span>
+<img src="buy.png" id="amazon_save" height="70">
+<hr/>
+</div>
+<div> 
+ <img src="dgw.jpg" id="discountgolfworld_buy" height="70">
+<span id="words_inline">Discountgolfworld</span><span id="price">100.91kr</span>
+<img src="buy.png" id="Discountgolfworld_save" height="70">
+<hr/>
+</div>
+
+<p class="goodscontent">Nike classic 99 offers a comfortable fit and exceptional airflow on 
+the course with stretch fabric and laser-cut perforations on the side and back panels.</p>
+<hr/>
+<div><h3 align="center">Outfits include this item</h3>
+<tr>
+<td><a href="http://store.nike.com/us/en_us/pd/classic-99-fitted-golf-hat/pid-10990887/pgid-11161130"><img src="model.jpg" width="430"/></a></td>
+<td><a href="http://store.nike.com/us/en_us/pd/tech-fleece-aw77-hoodie/pid-10540728/pgid-1535919"><img src="nikemodel.jpg" width="430"/></a></td>
+</tr>
+</div>
+
+
+ 	<script type="text/javascript">
+    (function(doc, win) {
+        var docEl = doc.documentElement;
+        (function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) {
+                return;
+            }
+            docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
+        }());
+    })(document, window);
+</script>
+ </body>
+ 
+ </html>
