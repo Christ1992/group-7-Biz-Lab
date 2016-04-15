@@ -1,55 +1,59 @@
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/dinner-sidebar.html'" ng-controller="DinnerCtrl"></ng-include>
+<!doctype html>
 
-<!-- TODO in Lab 5: Display the input box for search (you can ignore the type dropdown since BigOven does
-not support it in free version) and list all the dishes that match the search. -->
+<html>
+<head>
+	<style type="text/css">
 
-<!-- <div class="col-md-9"id="searchArea" ng-init="query=getKeyword();query2=getType();search(query+'+'+query2)">-->
-    <div class="col-md-9"id="searchArea" ng-init="query2='appetizers';search(query2)">
-    <div id="selectDish">
-        <h2>Select Dish</h2>
-        <hr>
-        <div class="row">
+	</style>
+</head>
 
-            <div class="col-sm-2 paddingRightNone">
+<body>
+<!--Author: Chengqiu-->
 
-                <input id="inputKeyword" ng-model="query"/>
-                
-            </div>
+<br/><br/><br/>
 
-            <div class="col-sm-2">
-                <div ng-click="search(query+'+'+query2)">Find</div>
-                <br>
-                <p>{{status}}</p>
+<!--<table border="1">-->
+<table border="2" cellspacing="3" align="center">
+<tr>
+<td>
+<img src="like.png" height="70"/><br/>
+<a href="newknowledge.html"><img src="item6.jpg" width="470"/></a>
 
-            </div>
-           
-            <div class="col-md-8">
-                    <select ng-model="query2" id="courseType" ng-change="search(query2)" >
-                        <option value="appetizers" selected>Appetizers</option>
-                        <option value="main+dish">Main Dish</option>
-                        <option value="dessert">Dessert</option>
-                    </select>
-            </div>
-            
-        </div>
-      
-    </div>
-    <div id="showList">
-        <div class='floating-box' ng-repeat="dish in dishes">
-            <div>
-                <img  id="{{dish.RecipeID}}" class='borderAll' ng-src="{{dish.ImageURL120}}" >
-            </div>
-            <div class='textMiddle'>{{dish.Title}}
-            </div>
-            <div style='padding: 5px;overflow: auto;'>
-                <a ng-href="#/dish/{{dish.RecipeID}}" ng-click="setPendingDish(dish)">View detail</a>
-            </div>
+</td>
+<td>
+<div style z-index="1"> <img src="like.png" height="70" ></div>
+<a href="newnewpage.html"><img src="item5.jpg" width="470" z-index="-1"/></a></td>
+</tr>
+<tr>
+<td>
+<img src="like.png" height="70"/><br/>
+<img src="item4.jpg" width="470"/></td>
+<td><img src="like.png" height="70"/><br/>
+<img src="item3.jpg" width="470"/></td>
+</tr>
+<tr>
+<td>
+<img src="like.png" height="70"/><br/>
+<a href="soudo.html"><img src="item2.jpg" width="470"/></a></td>
+<td>
+<img src="like.png" height="70"/><br/>
+<a href="soudo.html"><img src="item1.jpg" width="470"/></a></td>
+</tr>
+</table>
 
-            <div>
-                <p>Category:{{dish.Category}}</p> 
-                <p>Subcategory: <br> {{dish.Subcategory}}</p>
-            </div>
-        </div>
-    </div>
-</div>
+<!--03/04/2016-->
+</p>
+<script type="text/javascript">
+    (function(doc, win) {
+        var docEl = doc.documentElement;
+        (function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) {
+                return;
+            }
+            docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+        }());
+    })(document, window);
+	</script>
+</body>
+</html>
