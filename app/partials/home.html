@@ -1,54 +1,91 @@
-
-<!--<!DOCTYPE html>
-<html lang="en" ng-app="weatherXX">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>weatherXX</title>
-
-   
-    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/style.css"/>
-  
-    <script src="../../bower_components/jquery/dist/jquery.js"></script>
-   
-    <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    
-    <script src="../../bower_components/angular/angular.js"></script>
-    <script src="../../bower_components/angular-route/angular-route.js"></script>
-    <script src="../../bower_components/angular-resource/angular-resource.js"></script>
-    <script src="../../bower_components/angular-cookies/angular-cookies.js"></script>
-  </head>
-  <body>-->
-
-<div class="page-header" id="titleBar" class="colororange">
-    <h1 align="center">Our app name</h1>
+<div class="page-header" id="titleBar">
+    <h2 align="center">Our app name</h2>
 </div>
 
 <!--<div class="containter">-->
-    
-
-<table class="table">
-    <tr>
-        <td>{{location}}</td>
-        <td align="right"><a href="#/location" style="text-decoration:none">change?</a></td>
-    </tr>
-</table>
-
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-8">
+                <img class="sign_img" src="http://cdns2.freepik.com/free-photo/pin-for-geolocalization_318-9542.jpg"></img>
+                <span>{{location}}<span>
+            </div>
+            <div class="col-xs-4" align="right">
+                <a href="#/location" style="text-decoration:none">change?</a>
+            </div>
+        </div>
+    </div>
+</div>    
 
 <div>
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
+  <!--<ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#current" aria-controls="current" role="tab" data-toggle="tab">Current</a></li>
     <li role="presentation"><a href="#tomorrow" aria-controls="tomorrow" role="tab" data-toggle="tab">Tomorrow</a></li>
     <li role="presentation"><a href="#weekend" aria-controls="weekend" role="tab" data-toggle="tab">Weekend</a></li>
-  </ul>
+  </ul> -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#current" data-toggle="tab">Current</a></li>
+    <li><a data-toggle="tab" href="#tomorrow">Tomorrow</a></li>
+    <li><a data-toggle="tab" href="#weekend">Weekend</a></li>
+  </ul> 
   
-
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="current">
+    <!--<div role="tabpanel" class="tab-pane fade in active" id="current">-->
+        <div id="current" class="tab-pane fade in active">
+        <div class="col-xs-8">
+            <div class="row">
+                <div>
+                    <p>{{week}}</p>
+                    <p>{{Date}} {{time}}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="cover">
+                        <img class="weather_img" ng-src="{{currentWeather.Img}}"></img>
+                        <p>&nbsp</p>
+                    </div>
+                    <!--<p class="wind">Wind:{{currentWeather.wind.speed}}km/h</p>
+                    <p class="humidity">Humidity:{{currentWeather.main.humidity}}%</p>-->
+                </div>
+                <div class="col-xs-6">  
+                    <p>&nbsp</p>             
+                    <p class="temperature">{{currentWeather.main.temp}}K</p> 
+                    <p class="min_temperature">lo {{currentWeather.main.temp_min}}K</p>             
+                    <!--<p class="uv">UV:{{currentWeather.uv}}</p>
+                    <p class="precipitation">Precipitation:{{currentWeather.rain}}</p>-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <!--<div class="cover">
+                        <img class="weather_img" ng-src="{{currentWeather.Img}}"></img>
+                        <p>&nbsp</p>
+                    </div>-->
+                    <p class="wind">Wind:{{currentWeather.wind.speed}}km/h</p>
+                    <p class="humidity">Humidity:{{currentWeather.main.humidity}}%</p>
+                </div>
+                <div class="col-xs-6">               
+                    <!--<p class="temperature">{{currentWeather.main.temp}}K</p> 
+                    <p class="min_temperature">lo {{currentWeather.main.temp_min}}K</p>             -->
+                    <p class="uv">UV:{{currentWeather.uv}}</p>
+                    <p class="precipitation">Precipitation:{{currentWeather.rain}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div align="center">               
+                <img class="sign_img3" src="https://www.buycutouts.com/wp-content/uploads/2014/01/939-NB-Woman-Symbol.jpg"></img>
+                <img class="sign_img3" src="http://www.vectorportal.com/img_novi/toiletsmen_6729.jpg"></img>
+            </div>
+            <img class="clothe_preview_img" src="http://dress.2liang.net/d/file/dress/dong/2015-12/89913e6059a65b65f037e21f1baaab29.jpg"></img>
+        </div>
+    </div>
+    
+    <!--<div role="tabpanel" class="tab-pane fade" id="tomorrow">-->
+        <div class="tab-pane fade" id="tomorrow">
         <div class="col-xs-8">
             <div class="row">
                 <div>
@@ -58,56 +95,72 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="cover">
-                        <img class="weather_img" ng-src="{{weather.ImageURL}}"></img>
+                        <img class="weather_img" ng-src="{{tmrWeather.ImageURL}}"></img>
                     </div>
-                    <p class="wind">Wind:{{weather.wind}}</p>
-                    <p class="humidity">Humidity:{{weather.humidity}}</p>
+                    <p class="wind">Wind:{{tmrWeather.wind}}</p>
+                    <p class="humidity">Humidity:{{tmrWeather.humidity}}</p>
                 </div>
                 <div class="col-xs-6">               
-                    <p class="temperature">{{weather.temperature}}</p>              
-                    <p class="uv">UV:{{weather.uv}}</p>
-                    <p class="precipitation">Precipitation:{{weather.precipitation}}</p>
+                    <p class="temperature">{{tmrWeather.temperature}}</p>              
+                    <p class="uv">UV:{{tmrWeather.uv}}</p>
+                    <p class="precipitation">Precipitation:{{tmrWeather.precipitation}}</p>
                 </div>
             </div>
         </div>
         <div class="col-xs-4">
-            <img class="clothe_preview_img" src="file:///E:\Users\Rona\Documents\课程资料\Business Lab\group-7-Biz-Lab\Images\picture1.jpg"></img>
+            <div align="center">               
+                <img class="sign_img3" src="https://www.buycutouts.com/wp-content/uploads/2014/01/939-NB-Woman-Symbol.jpg"></img>
+                <img class="sign_img3" src="http://www.vectorportal.com/img_novi/toiletsmen_6729.jpg"></img>
+            </div>
+            
+            
+            <!--<div id="gpic" style="overflow:hidden; width:600px; height:182px;">
+
+                <table border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                    <td id="gpic1" valign="top" align="center"><table width="974" border="0" align='center' cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td height="120" bgcolor="#FF00FF"><img class="clothe_preview_img" src="http://dress.2liang.net/d/file/dress/dong/2015-12/89913e6059a65b65f037e21f1baaab29.jpg"></img></td>
+                            <td valign='top' bgcolor="#00FFFF"> 图片/链接</td>
+                            <td valign='top' bgcolor="#FFFF00"> 图片/链接</td>
+                            <td valign='top' bgcolor="#0000FF"> 图片/链接</td>                      
+                        </tr>
+                        <tr>
+                            <td height="24" align="center">文字信息</td>
+                            <td align="center">文字信息</td>
+                            <td align="center">文字信息</td>
+                            <td align="center">文字信息</td>                       
+                        </tr>
+                    </table></td>
+                    <td id="gpic2" valign="top"></td>
+                    </tr>
+                </table>
+            </div>
+            -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <img class="clothe_preview_img" src="http://dress.2liang.net/d/file/dress/dong/2015-12/89913e6059a65b65f037e21f1baaab29.jpg"></img>
         </div>
     </div>
-    
-    <div role="tabpanel" class="tab-pane" id="tomorrow">
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <span>{{Date}} {{time}}</span>
-                    </div>
-                    <div class="col-xs-4">
-                        <div class="cover">
-                            <img ng-src="{{weather.ImageURL}}"></img>
-                        </div>
-                        <span>Wind:{{weather.wind}}</span>
-                        <span>Wind:{{weather.humidity}}</span>
-                    </div>
-                    <div class="col-xs-4">               
-                        <h1>{{weather.temperature}}</h1>              
-                        <span>UV:{{weather.uv}}</span>
-                        <span>Precipitation:{{weather.precipitation}}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <img class="clothe_preview_img" src="http://img05.tooopen.com/images/20140809/sy_68503783666.jpg"></img>
-            </div>
-        </div>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="weekend">
+    <!--<div role="tabpanel" class="tab-pane fade" id="weekend">-->
+        <div class="tab-pane fade" id="weekend">
         <div class="col-xs-8">
             <div class="row">
                 <div class="col-xs-4">
                     <div><p>Friday {{friday.Date}}</p></div>
                     <div class="cover">
-                        <img class="weather_img" ng-src="{{weather.ImageURL}}"></img>
+                        <img class="weather_img" ng-src="{{friWeather.ImageURL}}"></img>
                     </div>
                     <p class="wind">Wind:{{weather.wind}}</p>
                     <p class="humidity">Humidity:{{weather.humidity}}</p>
@@ -116,7 +169,7 @@
                     <p class="precipitation">Precipitation:{{weather.precipitation}}</p>
                 </div>
                 <div class="col-xs-4">
-                    <div><p>{{Date}} {{time}}</p></div>
+                    <div><p>Saturday {{saturday.Date}}</p></div>
                     <div class="cover">
                         <img class="weather_img" ng-src="{{weather.ImageURL}}"></img>
                     </div>
@@ -127,7 +180,7 @@
                     <p class="precipitation">Precipitation:{{weather.precipitation}}</p>
                 </div>
                 <div class="col-xs-4">
-                    <div><p>{{Date}} {{time}}</p></div>
+                    <div><p>Sunday {{sunday.Date}}</p></div>
                     <div class="cover">
                         <img class="weather_img" ng-src="{{weather.ImageURL}}"></img>
                     </div>
@@ -140,112 +193,116 @@
             </div>
         </div>
         <div class="col-xs-4">
-            <img class="clothe_preview_img" src="file:///E:\Users\Rona\Documents\课程资料\Business Lab\group-7-Biz-Lab\Images\picture1.jpg"></img>
+            <div align="center">               
+                <img class="sign_img3" src="https://www.buycutouts.com/wp-content/uploads/2014/01/939-NB-Woman-Symbol.jpg"></img>
+                <img class="sign_img3" src="http://www.vectorportal.com/img_novi/toiletsmen_6729.jpg"></img>
+            </div>
+            <img class="clothe_preview_img" src="http://dress.2liang.net/d/file/dress/dong/2015-12/89913e6059a65b65f037e21f1baaab29.jpg"></img>
         </div> 
     </div>
+  </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div class="panel panel-default" id="outfit-panel">
+    <div class="panel-heading">
+        <h4>Casual outfit suggestions</h4>
+    </div>
+    <div class="panel-body">                   
+        <div class="col-xs-6">
+            <img class="clothe_preview_img" src="http://dress.2liang.net/d/file/dress/dong/2015-12/89913e6059a65b65f037e21f1baaab29.jpg"></img>
+        </div>
+        <div class="col-xs-6">
+            <br><button class="side_btn" type="submit">Trench</button></br>
+            <br><button class="side_btn" class="side_btn" type="submit">Tee</button></br>
+            <br><button class="side_btn" class="side_btn" type="submit">Jeans</button></br>
+            <br class="share">
+                <img class="sign_img2" src="http://blog.verticalresponse.com/wp-content/uploads/2015/07/like-sign.jpg"></img>
+                <span class="like">
+                    {{like_amt}} likes&nbsp;
+                </span>
+                <img class="sign_img2" src="http://www.aspdotnetstorefront.com/images/Product/medium/com-026-facebook-single-signon.jpg"></img>
+                <img class="sign_img2" src="http://www.androidpolice.com/wp-content/uploads/2013/08/nexusae0_Twitter-Thumb.png"></img>
+            </br>
+        </div>
+    </div>
+</div>
+    
+    
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Outdoor activity outfit suggestions</h4>
+    </div>
+    <div class="panel-body">   
+        <!--<div class="row">
+            <h4>Outdoor activity outfit suggestions</h4>  
+        </div>                                      -->
+        <div class="col-xs-6">
+            <img class="clothe_preview_img" src="http://photocdn.sohu.com/20110123/Img279036261.jpg"></img>
+        </div>
+        <div class="col-xs-6">                    
+            <br><button class="side_btn" type="submit">Convertible Jacket</button></br>
+            <br><button class="side_btn" type="submit">Sweatpants</button></br>
+            <br><button class="side_btn" type="submit">Running shoes</button></br>
+            <br>
+                <img class="sign_img2" src="http://blog.verticalresponse.com/wp-content/uploads/2015/07/like-sign.jpg"></img>
+                <span class="like">
+                    {{like_amt}} likes&nbsp;
+                </span>
+                <img class="sign_img2" src="http://www.aspdotnetstorefront.com/images/Product/medium/com-026-facebook-single-signon.jpg"></img>
+                <img class="sign_img2" src="http://www.androidpolice.com/wp-content/uploads/2013/08/nexusae0_Twitter-Thumb.png"></img>
+            </br>                  
+        </div>           
+    </div>  
+</div>
+        
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Office activity outfit suggestions</h4>
+    </div>
+    <div class="panel-body">                                                   
+        <div class="col-xs-6">
+            <img class="clothe_preview_img" src="http://image.wuji8.com/upload/f/53/f53a87206c55c0eea35bdb3a815af2c7.jpg"></img>
+        </div>
+        <div class="col-xs-6">                    
+            <br><button class="side_btn" type="submit">Knit top</button></br>
+            <br><button class="side_btn" type="submit">Overlap coat</button></br>
+            <br><button class="side_btn" type="submit">Pant</button></br>
+            <br>
+                <img class="sign_img2" src="http://blog.verticalresponse.com/wp-content/uploads/2015/07/like-sign.jpg"></img>
+                <span class="like">
+                    {{like_amt}} likes&nbsp;
+                </span>
+                <img class="sign_img2" src="http://www.aspdotnetstorefront.com/images/Product/medium/com-026-facebook-single-signon.jpg"></img>
+                <img class="sign_img2" src="http://www.androidpolice.com/wp-content/uploads/2013/08/nexusae0_Twitter-Thumb.png"></img>
+            </br>                  
+        </div>             
+    </div>
+</div>
+        
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Fashion outfit suggestions</h4>
+    </div>
+    <div class="panel-body">                                  
+        <div class="col-xs-6">
+            <img class="clothe_preview_img" src="http://dress.2liang.net/d/file/dress/daren/2016-03/07ad3137b147fbf9a8764509fd190ce0.jpg"></img>
+        </div>
+        <div class="col-xs-6">                    
+            <br><button class="side_btn" type="submit">Knit top</button></br>
+            <br><button class="side_btn" type="submit">Overlap coat</button></br>
+            <br><button class="side_btn" type="submit">Pant</button></br>    
+            <br>
+                <img class="sign_img2" src="http://blog.verticalresponse.com/wp-content/uploads/2015/07/like-sign.jpg"></img>
+                <span class="like">
+                    {{like_amt}} likes&nbsp;
+                </span>
+                <img class="sign_img2" src="http://www.aspdotnetstorefront.com/images/Product/medium/com-026-facebook-single-signon.jpg"></img>
+                <img class="sign_img2" src="http://www.androidpolice.com/wp-content/uploads/2013/08/nexusae0_Twitter-Thumb.png"></img>
+            </br>                                
+        </div>
     </div>
 </div>
 
-    
-        <div class="panel">
-            <div class="panel-body">
-                <div class="row">
-                    <h2>Casual outfit suggestions</h2>
-                </div>
-                <div class="col-xs-6">
-                    <img class="clothe_preview_img" src="http://img05.tooopen.com/images/20140809/sy_68503783666.jpg"></img>
-                </div>
-                 <div class="col-xs-6">
-                     <button class="btn btn-default" type="submit">Trench</button>
-                     <button class="btn btn-default" type="submit">Tee</button>
-                     <button class="btn btn-default" type="submit">Jeans</button>
-                 </div>
-            </div>
-        </div>
-    
-    
-        <div class="panel">
-            <div class="panel-body">
-                <div class="row">
-                    <h3>Outdoor activity outfit suggestions</h3>
-                
-                    <div class="col-xs-6">
-                        <img class="clothe_preview_img" src="http://img05.tooopen.com/images/20140809/sy_68503783666.jpg"></img>
-                    </div>
-                    <div class="col-xs-6">                    
-                        <button class="btn btn-default" type="submit">Convertible Jacket</button>
-                        <button class="btn btn-default" type="submit">Sweatpants</button>
-                        <button class="btn btn-default" type="submit">Running shoes</button>                  
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="panel">
-            <div class="panel-body">
-                <div class="row">
-                    <h3>Office activity outfit suggestions</h3>
-                
-                    <div class="col-xs-6">
-                        <img class="clothe_preview_img" src="http://img05.tooopen.com/images/20140809/sy_68503783666.jpg"></img>
-                    </div>
-                    <div class="row" class="col-xs-6">                    
-                        <button class="btn btn-default" type="submit">Knit top</button>
-                        <button class="btn btn-default" type="submit">Overlap coat</button>
-                        <button class="btn btn-default" type="submit">Pant</button>                  
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="panel">
-            <div class="panel-body">
-                <div class="row">
-                    <h3>Fashion activity outfit suggestions</h3>
-                
-                    <div class="col-xs-6">
-                        <img class="clothe_preview_img" src="http://img05.tooopen.com/images/20140809/sy_68503783666.jpg"></img>
-                    </div>
-                    <div class="col-xs-6">                    
-                        <div class="row"><button class="btn btn-default" type="submit">Knit top</button></div>
-                        <div class="row"><button class="btn btn-default" type="submit">Overlap coat</button></div>
-                        <div class="row"><button class="btn btn-default" type="submit">Pant</button></div>    
-                        <div class="row">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="text-decoration:none"></span>
-                            </button>
-                        </div>              
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-
-    <div class="panel">
-        <div class="panel-foot">
-            <div id="flow_wbox">
-                <style>
-                    .center { text-align: center; }
-                    .right { text-align: right; }
-                </style>
-                
-                <div class="row-fluid">
-                    <span>
-                    <div class="span4"><a href="#/home" style="text-decoration:none"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></div>
-                    <div class="span4 center"><a href="#/explore" style="text-decoration:none"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></div>
-                    <div class="span4 right"><a href="#/profile" style="text-decoration:none"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></div>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-<!-- We include the sidebar as it is shared across two screens. -->
-<ng-include src="'partials/bottombar.html'" ng-controller="BottomBarCtrl" ></ng-include>
-<!--</div>
-  </body>
-  </html>-->
+<ng-include src="'partials/bottombar.html'" ng-controller="bottombarCtrl"></ng-include>

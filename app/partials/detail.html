@@ -1,96 +1,28 @@
-<!doctype html>
- <html>
- <head>
- <style type="text/css">
-	#main_image{position:relative;
-				left:10%;
-				top:100px}
-				
-	.goodsName{border:1px solid white;
-			position:relative;
-			left:5%;
-			}
-	.goodscontent{border:1px solid white;
-			position:relative;
-			left:5%;
-			font-size:30px;
-			}
-	#like{position:relative;
-					left:4%;}
-	#amazon_buy{position:relative;
-					left:4%;}
-	#discountgolfworld_buy{position:relative;
-					left:4%;}
-	#facebook_share{position:absolute;
-					left:75%;}
-	#instegram_share{position:absolute;
-					left:85%;}
-	#weichat_share{position:absolute;
-					left:95%;}
-	#amazon_save{position:absolute;
-					left:95%;}
-	#Discountgolfworld_save{position:absolute;
-					left:95%;}
-	#words_inline	{
-					position:absolute;
-					left:19%;}
-	#price	{
-					position:absolute;
-					left:74%;}
- </style>
- </head>
- 
- <body>
- <div id="main_image"><img src="hat.jpg" width=80%/></div>
-<!-- <div id="describe_of_main">Nike-True Tour Flat Bill Cap</div>-->
- <br/><br/><br/><br/>
-     <h3 class="goodsName" >Nike Classic Golf Hat</h3> 
-<hr/>
-
-<div>
-<img src="like.png" id="like" height="70">
-<span id="words_inline">1127 like</span>
-<img src="facebook.png" id="facebook_share" height="70">
-<img src="instegram.png" id="instegram_share" height="70">
-<img src="weichat.png" id="weichat_share" height="70">
-<hr/>
-</div>
-<div>
-<img src="amazon.png" id="amazon_buy" height="70">
-<span id="words_inline">Amazon</span><span id="price">120.00kr</span>
-<img src="buy.png" id="amazon_save" height="70">
-<hr/>
-</div>
-<div> 
- <img src="dgw.jpg" id="discountgolfworld_buy" height="70">
-<span id="words_inline">Discountgolfworld</span><span id="price">100.91kr</span>
-<img src="buy.png" id="Discountgolfworld_save" height="70">
-<hr/>
+<div class="statusBar"> <img src="../img/default.png" width="100%"></div>
+<div data-role="header">
+    
+    <a href="#/search" style="text-decoration:none"><img class="ui-btn-left resizeImg" src="../img/left-arrow.png"></a>
+            
 </div>
 
-<p class="goodscontent">Nike classic 99 offers a comfortable fit and exceptional airflow on 
-the course with stretch fabric and laser-cut perforations on the side and back panels.</p>
-<hr/>
-<div><h3 align="center">Outfits include this item</h3>
-<tr>
-<td><a href="http://store.nike.com/us/en_us/pd/classic-99-fitted-golf-hat/pid-10990887/pgid-11161130"><img src="model.jpg" width="430"/></a></td>
-<td><a href="http://store.nike.com/us/en_us/pd/tech-fleece-aw77-hoodie/pid-10540728/pgid-1535919"><img src="nikemodel.jpg" width="430"/></a></td>
-</tr>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <img class="detailImg" ng-src="{{cloth.image.sizes.Original.url}}"/>
+    </div>
+    <div class="panel-footer">
+        <h4 class="panel-title">{{cloth.name}} &nbsp; &nbsp; &nbsp; {{cloth.priceLabel}}</h4>
+    </div>
 </div>
 
+<div class="panel">
+    <div class="panel-heading">
+        <a style="text-decoration:none" ng-click="setLike_amt()"><img class="sign_img2" src="../img/like.png"></img></a>
+        <span class="like">{{like_amt}} likes&nbsp;</span>
+        <span>
+        <a href="#" style="text-decoration:none"><img class="sign_img2" src="../img/facebook.png"></img></a>
+        <a href="#" style="text-decoration:none"><img class="sign_img2" src="../img/weichat.png"></img></a></span>
+        <span align="right"><button class="btn btn-default">Buy it</button></span>        
+    </div>     
+</div>
 
- 	<script type="text/javascript">
-    (function(doc, win) {
-        var docEl = doc.documentElement;
-        (function() {
-            var clientWidth = docEl.clientWidth;
-            if (!clientWidth) {
-                return;
-            }
-            docEl.style.fontSize = 16 * (clientWidth / 320) + 'px';
-        }());
-    })(document, window);
-</script>
- </body>
- 
- </html>
+{{cloth.description}}

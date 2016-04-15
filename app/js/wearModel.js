@@ -13,12 +13,20 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
         return location;
     }
     
+    this.setLike_amt = function(){
+        like_amt = like_amt + 1;
+    }
+    
     this.getLike_amt = function(){
         return like_amt;
     }
     
-    this.getClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid1600-33362460-67',offset:0,limit:10});
+    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid1600-33362460-67',offset:0,limit:10});
+    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid1600-33362460-67'});
     
+    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid1600-33362460-67'});
+    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid1600-33362460-67'});
+    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid1600-33362460-67'});
     // this.getCurrentWeather = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     
     // this.getWeatherImg = function(condition){

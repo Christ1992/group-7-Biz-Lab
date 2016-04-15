@@ -45,6 +45,10 @@ weatherDressApp.config(['$routeProvider',
         templateUrl: 'partials/search.html',
         controller: 'searchCtrl'
       }).
+      when('/detail/:clothID', {
+        templateUrl: 'partials/detail.html',
+        controller: 'detailCtrl'
+      }).
       otherwise({
         redirectTo: '/search'
       });
