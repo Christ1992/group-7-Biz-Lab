@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
-weatherSportsApp.controller('ExploreCtrl', function ($scope,Dinner) {
+weatherDressApp.controller('ExploreCtrl', function ($scope,Weather) {
 
 	//menu菜ID设定
   $scope.dishID = Dinner.getFullMenu();

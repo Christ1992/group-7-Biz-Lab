@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-weatherSportsApp.controller('BottomBarCtrl', function ($scope,$routeParams,Dinner) {
+weatherDressApp.controller('BottomBarCtrl', function ($scope,$routeParams,Weather) {
   
   //设定人数
   $scope.numberOfGuests = Dinner.getNumberOfGuests();

@@ -1,0 +1,189 @@
+<head><!-- Bootstrap CSS <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <title>Bootstrap Example</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+    
+<style type="text/css">
+    body{
+        background: #f4f4f4;
+        margin: 0px;
+        width: device-width;
+        font-family: 'Helvetica Neue';
+        font-weight: 200;
+        letter-spacing: 1;
+        font-size: 28px;
+        background-image: url("../img/home.jpg");
+        background-size: 100%;
+
+    }
+    .statusBat{
+        height: 40px;
+        background-image: url("../img/default.png");
+        background-size: cover;
+        
+    }
+    .headingBar{
+        display: table;
+        height:88px;
+        width: 100%;
+        background-color: rgb(240,240,240);
+        box-shadow: 0px 2px 1px #888888;
+
+    }
+    #headingTop{
+        display: table-cell;
+        font-size: 34px;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .F-left{
+        float: left;
+        margin-left: 10px;
+    }
+    
+    .F-center{
+        float: center;
+    }
+    .F-right{
+        float: right;
+        margin-right: 10px;
+    }
+    .icon-resize{
+        height: 44px;
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+    .page-start{
+        width: 100%;
+        /*height: window.height;
+        需要用js来赋值,或者设置合适的照片大小*/
+    }
+    .background-resize{
+        width: 100%;
+        opacity: 0.2;
+    }
+    .empty{
+        height: 128px;
+    }
+    .hover-div{
+        position: absolute;
+        left: 0;
+        bottom: 30px;
+        background-color: rgba(0,0,0,0.2);
+        height: 530px;
+        width: 345px;
+    }
+    .hover-left{
+        position: absolute;
+        right: 0;
+        bottom: 30px;
+        
+        height: 180px;
+        width: 150px;
+        font-size: 24px;
+        line-height: 100%;
+        padding-right: 15px;
+    }
+    .hover-left img{
+        height: 22px;
+        margin-left: 15px;
+    }
+    .big-temp{
+        font-size: 220px;
+        font-weight: 100;
+        line-height: 100%;
+    }
+    .Third{
+        display: inline-block;
+        width: 33.3%;
+        text-align: center;
+    }
+    .Third img{
+        width: 80%;
+    }
+    .Sixth{
+        display: inline-block;
+        width: 16.66%;
+    }
+    .Fifth{
+        display: inline-block;
+        width: 20%;   
+    }
+    .T-center{
+        text-align: center;
+        
+    }
+    .T-right{
+        text-align: right;
+    }
+    .brief{
+        margin-top: 42px;
+    }
+    .Forecast{
+        font-size: 18px;
+    }
+    .Location{
+
+    }
+    .Location img{
+        height: 35px;
+    }
+</style>
+
+<body>
+    <nav class="navbar-fixed-top">
+        <div class="statusBat"> </div>
+        <div class="headingBar" >
+            <div id="headingTop">
+                <span class="F-left"><img class="icon-resize" src="../img/list.png"></span>
+                <span class="F-center" >Name</span>
+                <span class="F-right"><img class="icon-resize" src="../img/search.png"></span>
+            </div>
+             
+        </div>
+    </nav>
+    <nav class="navbar-fixed-bottom">
+        <div class="hover-div">
+            <div class="T-center brief">img+PartlyCloudy</div>
+            <div class="T-center"><div class="Sixth">!</div><div class="Sixth">!</div><div class="Sixth">!</div><div class="Sixth">!</div><div class="Sixth">!</div><div class="Sixth">!</div></div>
+            <div class="T-center big-temp">
+                85
+            </div>
+            <div class="Location"><div class="T-center"><img src="../img/location.png">+New York</div></div>
+            <div class="Forecast"><div class="Third">33%</div><div class="Third">33%</div><div class="Third">33%</div></div>
+            <div><div class="Third"><img src="../img/bottomSelected.png"></div><div class="Third"><img src="../img/bottomSelected.png"></div><div class="Third"><img src="../img/bottomSelected.png"></div></div>
+
+        </div>
+    </nav>
+    <nav class="navbar-fixed-bottom T-right">
+        <div class="hover-left">
+            <div>Casual<img src="../img/selected.png"></div>
+            <div ><img class="T-right" src="../img/line.png"></div>
+            <div>Outdoor<img src="../img/ring.png"></div>
+            <div ><img class="T-right" src="../img/line.png"></div>
+            <div>Office<img src="../img/ring.png"></div>
+            <div ><img class="T-right" src="../img/line.png"></div>
+            <div>Fashion<img src="../img/ring.png"></div>
+
+        </div>
+    </nav>
+    <div class="empty"></div>
+    
+    <div class="page-start">
+        <img class="background-resize"src="../img/fashion1.jpg">
+    </div>
+    <div class="page-start">
+        <img class="background-resize"src="../img/fashion1.jpg">
+    </div>
+    <div class="page-start">
+        <img class="background-resize"src="../img/fashion1.jpg">
+    </div>
+    <div class="page-start">
+        <img class="background-resize"src="../img/fashion1.jpg">
+    </div>
+</body>

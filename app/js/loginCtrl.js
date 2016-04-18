@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we have view that needs to 
 // display or modify the dinner menu
-weatherSportsApp.controller('LoginCtrl', function ($scope,Dinner) {
+weatherDressApp.controller('LoginCtrl', function ($scope,Weather) {
 
   
 //人数设定

@@ -37,10 +37,6 @@ var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ng
 weatherDressApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
-    //   when('/home', {
-    //     templateUrl: 'partials/home.html',
-    //     controller: 'homeCtrl'
-    //   }).
       when('/search', {
         templateUrl: 'partials/search.html',
         controller: 'searchCtrl'
@@ -49,7 +45,11 @@ weatherDressApp.config(['$routeProvider',
         templateUrl: 'partials/detail.html',
         controller: 'detailCtrl'
       }).
+      when('/home', {
+        templateUrl: 'partials/home2.html',
+        controller: 'homeCtrl'
+      }).
       otherwise({
-        redirectTo: '/search'
+        redirectTo: '/home'
       });
   }]);
