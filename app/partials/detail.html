@@ -6,23 +6,34 @@
 </div>
 
 <div class="panel panel-default">
-    <div class="panel-body">
-        <img class="detailImg" ng-src="{{cloth.image.sizes.Original.url}}"/>
-    </div>
-    <div class="panel-footer">
-        <h4 class="panel-title">{{cloth.name}} &nbsp; &nbsp; &nbsp; {{cloth.priceLabel}}</h4>
-    </div>
-</div>
-
-<div class="panel">
     <div class="panel-heading">
-        <a style="text-decoration:none" ng-click="setLike_amt()"><img class="sign_img2" src="../img/like.png"></img></a>
-        <span class="like">{{like_amt}} likes&nbsp;</span>
-        <span>
-        <a href="#" style="text-decoration:none"><img class="sign_img2" src="../img/facebook.png"></img></a>
-        <a href="#" style="text-decoration:none"><img class="sign_img2" src="../img/weichat.png"></img></a></span>
-        <span align="right"><button class="btn btn-default">Buy it</button></span>        
-    </div>     
+        <h4 class="panel-title">{{cloth.name}}</h4>
+    </div>
+    <div class="panel-body">
+        <div class="cover-img">
+        <img class="detailImg" ng-src="{{cloth.image.sizes.Original.url}}"/>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <td>
+                <a style="text-decoration:none" ng-click="setLike_amt()"><img class="sign_img2" src="../img/like.png"></img></a>
+                <span class="like">{{like_amt}} likes&nbsp;</span>
+                <span>
+                <a href="#" style="text-decoration:none"><img class="sign_img2" src="../img/facebook.png"></img></a>
+                <a href="#" style="text-decoration:none"><img class="sign_img2" src="../img/Pinterest.jpg"></img></a></span>
+                <!--<a href="https://www.pinterest.com/pin/create/button/">
+                    <img class="sign_img2" src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+                </a>-->
+                <span class="but_it_btn"><button class="btn btn-primary">{{cloth.priceLabel}}</button></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="class_descript" ng-bind-html="cloth_description"></p>
+            </td>
+        </tr>
+    </table>     
+
 </div>
 
-{{cloth.description}}

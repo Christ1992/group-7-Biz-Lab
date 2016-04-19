@@ -31,6 +31,6 @@ weatherDressApp.controller('searchCtrl', function ($scope,Weather) {
          });
      }
     
-    $scope.search("coat");
+    $scope.search("dressing");
  
 });

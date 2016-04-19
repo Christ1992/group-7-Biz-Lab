@@ -17,48 +17,47 @@
         <!--<input type="search" name="search" id="search" placeholder="Search for content...">-->
         
         <div class="input-group">
-            <input ng-model="keywords" class="form-control" placeholder="Enter keywords here"/>
-            <span class="input-group-btn">
-            <button class="btn btn-primary" ng-click="search(keywords)"><div class="glyphicon glyphicon-search"></div></button>
-            </span>                           
+            <input ng-model="keywords" type="text" class="form-control" placeholder="Enter keywords here"/>
+            <div class="input-group-btn">
+                <!--<div class="dropdown" id="dropdown1">-->
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Clothing<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><button type="button" class="btn btn-link" ng-click="getClothing()">Clothing</a></li>
+                        <li><button type="button" class="btn btn-link" ng-click="getAccessories()">Accessories</a></li>
+                        <li><button type="button" class="btn btn-link" ng-click="getShoes()">Shoes</a></li>
+                    </ul>
+                <!--</div>-->
+                <button class="btn btn-primary" ng-click="search(keywords)"><div class="glyphicon glyphicon-search"></div></button>
+            </div>
+            <!--<div class="input-group-btn">
+                <div class="dropdown" id="dropdown3">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Jeans<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><button type="button" class="btn btn-link" ng-click="search(jeans)">Jeans</a></li>
+                        <li><button type="button" class="btn btn-link" ng-click="search(coat)">Coat</a></li>
+                        <li><button type="button" class="btn btn-link" ng-click="search(jacket)">Jacket</a></li>
+                    </ul>
+                </div>
+            </div>                                            -->
         </div>  
-    
-    <span>
-    <div class="dropdown" id="dropdown1">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Clothing<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><button type="button" class="btn btn-link" ng-click="getClothing()">Clothing</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="getAccessories()">Accessories</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="getShoes()">Shoes</a></li>
-        </ul>
-    </div>
-    </span>
-   <span>
+ 
+   <!--<span>
     <div class="dropdown" id="dropdown2">
         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Clothing<span class="caret"></span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><button type="button" class="btn btn-link" ng-click="search(clothing)">Clothing</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="search(accessories)">Accessories</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="search(shoes)">Shoes</a></li>
+            <li><button type="button" class="btn btn-link" ng-click="search(clothing)">Jeans</a></li>
+            <li><button type="button" class="btn btn-link" ng-click="search(accessories)">Coat</a></li>
+            <li><button type="button" class="btn btn-link" ng-click="search(shoes)">Jacket</a></li>
         </ul>
     </div>
-    </span>
-    <span>
-    <div class="dropdown" id="dropdown3">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Clothing<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><button type="button" class="btn btn-link" ng-click="search(clothing)">Clothing</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="search(accessories)">Accessories</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="search(shoes)">Shoes</a></li>
-        </ul>
-    </div>
-    </span>
+    </span>-->
+
     
     <p>&nbsp;</p>
                             
@@ -67,14 +66,14 @@
                 <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in clothes">
                 <a class="thumbnail cloth-preview" ng-href="#/detail/{{cloth.id}}">
                     <div class="cover">
-                        <img class="resizeItemImg" align="middle" ng-src="{{cloth.image.sizes.Original.url}}"/>
+                        <img class="resizeItemImg"  ng-src="{{cloth.image.sizes.Original.url}}"/>
                         <div class="likedHeart">
                             <img class="resizeHeartImg"src="../img/heart.jpg">
                         </div>
                     </div>
                     <div class="caption">
-                        <h4 class="panel-title">Name: {{cloth.name}}</h4>	
-                        <h4 class="panel-title">Price: {{cloth.priceLabel}}</h4>			                                 
+                        <h4 class="panel-title">{{cloth.name}}</h4>	
+                        <h4 class="panel-title">{{cloth.priceLabel}}</h4>			                                 
                     </div>
                 </a>                                        
             </div>                                    
