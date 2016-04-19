@@ -49,6 +49,10 @@ weatherDressApp.config(['$routeProvider',
         templateUrl: 'partials/home2.html',
         controller: 'homeCtrl'
       }).
+       when('/sidebar', {
+        templateUrl: 'partials/sidebar.html',
+        controller: 'sidebarCtrl'
+      }).
       otherwise({
         redirectTo: '/home'
       });
