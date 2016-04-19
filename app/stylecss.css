@@ -96,11 +96,26 @@ body{
         width: 45%;
         
     }
+    .Half img{
+        width: 40%;
+        margin-right:10px;
+
+    }
     .Third{
         display: inline-block;
         width: 32%;
         text-align: center;
     }
+    .Third2 {
+        display: inline-block;
+        width: 31%;
+        text-align: center;
+    }
+    .Third2 img{
+        width: 100%;
+        margin: 0;
+    }    
+    
     .weatherIcon{
         width: 50%;
        /* -webkit-filter: invert(100%);*/
@@ -138,10 +153,14 @@ body{
     }
     .Forecast{
         font-size: 18px;
+        height: 125px;
     }
     .Location{
 
     }
     .Location img{
         height: 35px;
+    }
+    .detailW{
+        font-size: 40px;
     }

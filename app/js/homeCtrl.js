@@ -124,17 +124,36 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
 
 
     $scope.toToday= function () {
-      // body...
+      $('#generW').show();
+      $('#detailW').hide();
+      $('#toTmr').hide();
+      $('#toAft').hide();
+
+      $('#todaySelected').show();
+      $('#tmrSelected').hide();
+      $('#aftSelected').hide();
     }
     $scope.toTmr= function () {
-      // body...
+      $('#generW').hide();
+      $('#detailW').hide();
+      $('#toTmr').show();
+      $('#toAft').hide();
+
+      $('#todaySelected').hide();
+      $('#tmrSelected').show();
+      $('#aftSelected').hide();
     }
-    $scope.toAfter= function () {
-      // body...
+    $scope.toAft= function () {
+      $('#generW').hide();
+      $('#detailW').hide();
+      $('#toTmr').hide();
+      $('#toAft').show();
+
+      $('#todaySelected').hide();
+      $('#tmrSelected').hide();
+      $('#aftSelected').show();
     }
-    $scope.toDetailWeather= function (date) {
-      // 点击出现详情
-    }
+    
 
 
     $scope.toSidebar= function(){

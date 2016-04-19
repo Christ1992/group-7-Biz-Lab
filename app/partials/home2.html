@@ -24,7 +24,60 @@
             </div>
 
             <div class="T-center" id="detailW" ng-click="weatherGener()" style="display:none">
-                hihi<span style="font-size: 100px;vertical-align: super;">°</span>
+                <div style="height: 229px;">
+                    <div class="Half T-left" >
+                        <div style="padding-top: 50px;">
+                        <img src="img/humidity.png">{{humToday}}%
+                        </div>
+                        <div>
+                        <img style="margin-top: 20px" src="img/preProb.png">{{precToday}}%
+                        </div>
+                    </div>
+                    <div class="Half T-left" >
+                        <div style="padding-top: 50px;">
+                        <img src="img/windSpeed.png">{{humToday}}%</div>
+                        <div>
+                        <img style="margin-top: 20px"src="img/visibility.png">{{visToday}}.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="T-center" id="toTmr" style="display:none">
+                <div style="height: 229px;">
+                    <div class="Half T-left" >
+                        <div style="padding-top: 50px;">
+                        <img src="img/humidity.png">{{humTmr}}%
+                        </div>
+                        <div>
+                        <img style="margin-top: 20px" src="img/preProb.png">{{precTmr}}%
+                        </div>
+                    </div>
+                    <div class="Half T-left" >
+                        <div style="padding-top: 50px;">
+                        <img src="img/windSpeed.png">{{humTmr}}%</div>
+                        <div>
+                        <img style="margin-top: 20px"src="img/visibility.png">{{visTmr}}.0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="T-center" id="toAft" style="display:none">
+                <div style="height: 229px;">
+                    <div class="Half T-left" >
+                        <div style="padding-top: 50px;">
+                        <img src="img/humidity.png">{{humAft}}%
+                        </div>
+                        <div>
+                        <img style="margin-top: 20px" src="img/preProb.png">{{precAft}}%
+                        </div>
+                    </div>
+                    <div class="Half T-left" >
+                        <div style="padding-top: 50px;">
+                        <img src="img/windSpeed.png">{{humAft}}%</div>
+                        <div>
+                        <img style="margin-top: 20px"src="img/visibility.png">{{visAft}}.0</div>
+                    </div>
+                </div>
             </div>
 
 
@@ -32,7 +85,7 @@
 
             <div class="Forecast">
                 
-                <div class="Third">
+                <div class="Third" ng-click="toToday()">
                     <div>
                         <div>{{dateToday}}</div>
                         <div><img class="weatherIcon" ng-src="{{iconToday}}"></div>
@@ -40,7 +93,7 @@
                         <div class="Half T-left">{{minTempToday}}°</div>
                     </div>
                 </div>
-                <div class="Third">
+                <div class="Third" ng-click="toTmr()">
                     <div>
                         <div>{{dateTmr}}</div>
                         <div><img class="weatherIcon" ng-src="{{iconTmr}}"></div>
@@ -48,7 +101,7 @@
                         <div class="Half T-left">{{minTempTmr}}°</div>
                     </div>
                 </div>
-                <div class="Third">
+                <div class="Third" ng-click="toAft()">
                     <div>
                         <div>{{dateAft}}</div>
                         <div><img class="weatherIcon" ng-src="{{iconAft}}"></div>
@@ -56,11 +109,13 @@
                         <div class="Half T-left">{{minTempAft}}°</div>
                     </div>
                 </div>
-                
-
             </div>
 
-            <div><div class="Third"><img src="../img/bottomSelected.png"></div><div class="Third"><img src="../img/bottomSelected.png"></div><div class="Third"><img src="../img/bottomSelected.png"></div></div>
+            <div>
+                <div class="Third2"><img id="todaySelected" src="../img/bottomSelected.png"></div>
+                <div class="Third2"><img style="display: none"id="tmrSelected" src="../img/bottomSelected.png"></div>
+                <div class="Third2"><img style="display: none"id="aftSelected" src="../img/bottomSelected.png"></div>
+            </div>
 
         </div>
     </nav>
@@ -78,15 +133,15 @@
     </nav>
     <div class="empty"></div>
     
-    <div class="page-start">
+    <div class="page-start" id="CasualG">
         <img class="background-resize"src="../img/fashion1.jpg">
     </div>
-    <div class="page-start">
-        <img class="background-resize"src="../img/fashion1.jpg">
+    <div class="page-start" id="OutdoorG">
+        <img class="background-resize"src="../img/fashion2.jpg">
     </div>
-    <div class="page-start">
-        <img class="background-resize"src="../img/fashion1.jpg">
+    <div class="page-start" id="OfficeG">
+        <img class="background-resize"src="../img/fashion3.jpg">
     </div>
-    <div class="page-start">
-        <img class="background-resize"src="../img/fashion1.jpg">
+    <div class="page-start" id="FashionG">
+        <img class="background-resize"src="../img/fashion4.jpg">
     </div>
