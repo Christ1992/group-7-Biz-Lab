@@ -18,6 +18,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
         //一句话描述
         $scope.description= data.weather[0].main;
         
+
         //当前温度
         $scope.temperature= Math.round(data.main.temp-273);
 
@@ -48,6 +49,8 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       var iconIDToday = todayWeather.cond.code_d;
       $scope.iconToday = Weather.getForeImg(iconIDToday);
       //$scope.condToday = todayWeather.cond.text_d;
+
+      //$scope.description=todayWeather.cond.text_d;
 
       //日期
       $scope.dateToday = todayWeather.date;
@@ -108,8 +111,14 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
        
 
        });
-
-
+    $scope.weatherDetail=function(){
+        $('#generW').hide();
+        $('#detailW').show();
+    }
+    $scope.weatherGener=function(){
+        $('#generW').show();
+        $('#detailW').hide();
+    }
 
 
 

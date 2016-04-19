@@ -6,8 +6,8 @@ body{
         font-weight: 200;
         letter-spacing: 1;
         font-size: 28px;
-        background-image: url("../img/home.jpg");
-        background-size: 100%;
+        /*background-image: url("../img/home.jpg");
+        background-size: 100%;*/
 
     }
     .statusBat{
@@ -54,7 +54,7 @@ body{
     }
     .background-resize{
         width: 100%;
-        opacity: 0.2;
+        opacity: 1;
     }
     .empty{
         height: 128px;
@@ -114,6 +114,10 @@ body{
     .Sixth{
         display: inline-block;
         width: 16.66%;
+    }
+    .Sixth img{
+        
+        height: 30px;
     }
     .Fifth{
         display: inline-block;

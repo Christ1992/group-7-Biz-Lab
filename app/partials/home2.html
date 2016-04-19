@@ -14,11 +14,19 @@
         <div class="hover-div">
             <div class="T-center brief"><img ng-src="{{iconToday}}">{{description}}</div>
 
-            <div class="T-center"><div class="Sixth">!</div><div class="Sixth">!</div><div class="Sixth">{{maxTempToday}}</div><div class="Sixth">!</div><div class="Sixth">{{minTempToday}}</div><div class="Sixth">!</div></div>
+            <div style="height: 20px;">
 
-            <div class="T-center big-temp">
+                <div class="Sixth"></div><div class="Sixth"><img class="F-right" src="img/highTemp.png"></div><div class="Sixth">{{maxTempToday}}</div><div class="Sixth"><img class="F-right" src="img/lowTemp.png"></div><div class="Sixth">{{minTempToday}}</div><div class="Sixth"></div>
+            </div>
+
+            <div class="T-center big-temp" id="generW" ng-click="weatherDetail()">
                 {{temperature}}<span style="font-size: 100px;vertical-align: super;">°</span>
             </div>
+
+            <div class="T-center" id="detailW" ng-click="weatherGener()" style="display:none">
+                hihi<span style="font-size: 100px;vertical-align: super;">°</span>
+            </div>
+
 
             <div class="Location"><div class="T-center"><img src="../img/location.png">{{location}}</div></div>
 
