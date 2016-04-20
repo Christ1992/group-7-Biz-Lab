@@ -1,4 +1,4 @@
-weatherDressApp.controller('detailCtrl', function ($scope,$routeParams,$sce,Weather) {
+weatherDressApp.controller('cardviewCtrl', function ($scope,$routeParams,$sce,Weather) {
 	var style= $routeParams;
 	
 
@@ -6,4 +6,4 @@ weatherDressApp.controller('detailCtrl', function ($scope,$routeParams,$sce,Weat
 
 
 
- }
+ });
