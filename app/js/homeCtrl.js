@@ -195,7 +195,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
   
   
   
-  $scope.gender_f = true;
+    $scope.gender_f = true;
     $scope.gender_m = false;
     $scope.genre_c=true; 
     $scope.genre_office=false; 
