@@ -57,6 +57,7 @@ weatherDressApp.config(['$routeProvider',
         templateUrl: 'partials/card_view.html',
         controller: 'cardviewCtrl'
       }).*/
+
       otherwise({
         redirectTo: '/home'
       });
