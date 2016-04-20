@@ -18,7 +18,9 @@
     <div class="searchArea">
         <span><input ng-model="keywords" type="text" placeholder="Enter keywords here"/></span>
         
-
+        <button class="searchBtn" ng-click="search(keywords)">
+            SEARCH <span class="glyphicon glyphicon-search"></span>
+        </button>
         <div class="dropdown">
           <button ng-click="myFunction()" class="dropbtn">Type <span class="caret"></span></button>
           <div id="myDropdown" class="dropdown-content">
@@ -28,116 +30,30 @@
           </div>
         </div>
 
-        <button class="searchBtn" ng-click="search(keywords)">
-            SEARCH <span class="glyphicon glyphicon-search"></span>
-        </button>
-    </div>
-                   
-    <div class="row">
-        <div id="clothesListView" class="list-view" >									                                                                            
-                <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in clothes">
-                <a class="thumbnail cloth-preview" ng-href="#/detail/{{cloth.id}}">
-                    <div class="cover">
-                        <img class="resizeItemImg"  ng-src="{{cloth.image.sizes.Original.url}}"/>
-                        <div class="likedHeart">
-                            <img class="resizeHeartImg"src="../img/unlikeHeart.jpg">
-                        </div>
-                    </div>
-                    <div class="caption">
-                        <h4 class="panel-title">{{cloth.name}}</h4>	
-                        <h4 class="panel-title">{{cloth.priceLabel}}</h4>			                                 
-                    </div>
-                </a>                                        
-            </div>                                    
-        </div>                
-    </div>
-    
-    
-    
-    
-    <!--<div class="ui-grid-a">
-        <div class="ui-block-a">
-            <div class="floatBox" ng-repeat="cloth in clothes">
-                <img class="resizeItemImg" ng-src="{{cloth.image.sizes.Original.url}}">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price: {{cloth.priceLabel}}</div>
-                <div class="itemName">Name: {{cloth.name}}</div>
-
-            </div>
-        </div>
-    </div>-->
-    
-    
-    <!--<div class="ui-grid-a">
-        <div class="ui-block-a">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>
-        <div class="ui-block-a">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>
-        <div class="ui-block-a">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>
-        <div class="ui-block-b">
-            <div class="floatBox">
-                <img class="resizeItemImg" src="../img/boot.jpeg">
-                <div class="likedHeart">
-                    <img class="resizeHeartImg"src="../img/heart.jpg">
-                </div>
-                <div class="itemPrice">Price:  kr</div>
-                <div class="itemName">Name:</div>
-
-            </div>
-        </div>-->
-
         
     </div>
+</div>
+
+
+<div id="clothesListView" class="list-view" >
+    <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in clothes">
+        <a class="thumbnail cloth-preview" ng-href="#/detail/{{cloth.id}}">
+            <div class="cover">
+                <div class="table">
+                <div class="table-cell">
+                    <img class="resizeItemImg"  ng-src="{{cloth.image.sizes.Original.url}}"/>
+                    <div class="likedHeart">
+                        <img class="resizeHeartImg"src="../img/unlikeHeart.jpg">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="caption">
+                <span class="panel-title NameHalf">{{cloth.name}}</span>	
+                <span class="panel-title PriceHalf">{{cloth.priceLabel}}</span>                                 
+            </div>
+        </a>                                        
+    </div>                   
+</div>
+ 
     
