@@ -7,23 +7,26 @@
 weatherDressApp.factory('Weather',function ($resource,$cookieStore){
     var location = "Stockholm";
     var country="Sweden"
-    var APIKEY = "uid1600-33362460-67";
     var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378"
+    
+    
+    var like_amt = 0;
    
-    //返回地点
+   this.setLocation = function(loc){
+       location = loc;
+   }
+   
     this.getLocation = function(){
         return location;
     }
-      
-    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
-    //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
-    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{city:location, cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
-
-
-
-
-
-
+    
+    this.setLike_amt = function(){
+        like_amt = like_amt + 1;
+    }
+    
+    this.getLike_amt = function(){
+        return like_amt;
+    }
     
     this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid1600-33362460-67',offset:0,limit:10});
     this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid1600-33362460-67'});
@@ -31,9 +34,27 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
     this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid1600-33362460-67'});
     this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid1600-33362460-67'});
     this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid1600-33362460-67'});
+    // this.getCurrentWeather = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     
-    //天气情况图片，需要更多，做成数组
-     this.getWeatherImg = function(condition){
+    // this.getWeatherImg = function(condition){
+    //     var url;
+    //     if(condition == "clear"){
+    //         url = "http://vector.me/files/images/1/6/166202/symbols_weather_clear_sunny.jpg";
+    //     }
+    //     if(condition == "clouds"){
+    //         url = "https://www.clipartool.com/wp-content/uploads/2016/02/free-cloud-clipart-images.jpg";
+    //     }
+    //     else{
+    //         url = "http://images.clipartpanda.com/cloudy-weather-clipart-04e503de81548c034e906f729f5dd37b-cloudy-weather-clip-art.jpg";
+    //     }
+    //     return url;
+    // }
+    
+    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
+    //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
+    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{city:location, cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
+    
+    this.getWeatherImg = function(condition){
          var url;
          if(condition == "clear"){
              url = "http://vector.me/files/images/1/6/166202/symbols_weather_clear_sunny.jpg";
@@ -111,7 +132,9 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
 {"id":"900","cond":"Hot","url":"http://files.heweather.com/cond_icon/900.png"},
 {"id":"901","cond":"Cold","url":"http://files.heweather.com/cond_icon/901.png"},
 {"id":"999","cond":"Unknown","url":"http://files.heweather.com/cond_icon/999.png"}
-]
+] 
+    
+    
     return this;
 
  });
