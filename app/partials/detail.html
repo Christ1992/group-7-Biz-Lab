@@ -21,6 +21,10 @@
             <div class="table">
                 <div class="table-cell">
                     <img class="detailImg" ng-src="{{cloth.image.sizes.Original.url}}"/>
+                    <div class="likedHeart">
+                        <span class="like F-right">{{like_amt}} likes&nbsp;</span>
+                        <img class="resizeHeartImg" ng-click="setLike_amt()" src="../img/unlikeHeart.png">
+                    </div>
                 </div>
             </div>
         </div>
@@ -31,10 +35,7 @@
     <table class="table">
         <tr>
             <td>
-                <a style="text-decoration:none" ng-click="setLike_amt()"><img class="sign_img2" src="img/unlikeHeart.png"></img></a>
-                <div class="likedHeart">
-                        <span class="like F-right">{{like_amt}} likes&nbsp;</span><img class="resizeHeartImg"src="../img/unlikeHeart.png">
-                    </div>
+                
                 <span>
                 <a href="#" style="text-decoration:none"><img class="sign_img2" src="img/facebook.png"></img></a>
                 <a href="#" style="text-decoration:none"><img class="sign_img2" src="img/Pinterest.jpg"></img></a></span>
