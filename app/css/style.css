@@ -77,7 +77,22 @@
 */
 
 /*style of cloth img*/
+.cover-img{
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+    position: relative;
+    
+}
 
+.detailImg{
+     display: block;
+    width: auto;
+    max-height: 600px;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
 .thumbnail .cover {
     width: 100%;
     height: 350px;
@@ -93,6 +108,7 @@
     vertical-align: middle;
     text-align: center;
 }
+
 .resizeItemImg{
     /*cursor: pointer;*/
     display: block;
@@ -118,7 +134,9 @@
     padding-top: 20px;
     
 }
-
+.panel-heading{
+    background: white;
+}
 .panel-title{
     
     font-size: 24px;
@@ -127,22 +145,10 @@
     
     
 }
-
-.cover-img{
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
+.bigName{
+    font-size: 36px;
 }
 
-.detailImg{
-/*width: 100%;*/
-    display:block;
-    width: auto;
-    max-height: 100%;
-    max-width: 100%;
-    margin: auto;
-    text-align: center;
-}
 .NameHalf{
     width: 70%;
     display: inline-block;
@@ -269,15 +275,7 @@
 }
 
 */
-.detailImg{
-    /*width: 100%;*/
-    display:block;
-    width: auto;
-    max-height: 100%;
-    max-width: 100%;
-    margin: auto;
-    text-align: center;
-}
+
 
 .sidebar{
 		background-color: #282738;
