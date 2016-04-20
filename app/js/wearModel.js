@@ -7,6 +7,7 @@
 weatherDressApp.factory('Weather',function ($resource,$cookieStore){
     var location = "Stockholm";
     var country="Sweden"
+    var gender="female";
     var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378"
     
     
@@ -18,6 +19,10 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
    
     this.getLocation = function(){
         return location;
+    }
+    
+    this.setGender = function(gender){
+        gender = gender;
     }
     
     this.setLike_amt = function(){

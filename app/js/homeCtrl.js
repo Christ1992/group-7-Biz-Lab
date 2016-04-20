@@ -1,6 +1,5 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-
 weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
 
     $scope.location = Weather.getLocation();
@@ -193,5 +192,29 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
   
+  
+  
+  
+  $scope.gender_f = true;
+    $scope.gender_m = false;
+    $scope.genre_c=true; 
+    $scope.genre_office=false; 
+    $scope.genre_outdoor=false; 
+    $scope.genre_f=false;
+    
+    $scope.sidebar=false;
+   
+    
+    $scope.setLocation = function(location){
+        Weather.setLocation(location);
+    }
+    
+    $scope.getLocation = function(){
+        return Weather.getLocation();
+    }
+    
+    $scope.setGender = function(gender){
+        Weather.setGender(gender);
+    }
 
 });
