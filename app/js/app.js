@@ -52,7 +52,11 @@ weatherDressApp.config(['$routeProvider',
        when('/sidebar', {
         templateUrl: 'partials/sidebar.html',
         controller: 'sidebarCtrl'
-      }).
+      })./*
+       when('/cardview/:style', {
+        templateUrl: 'partials/card_view.html',
+        controller: 'cardviewCtrl'
+      }).*/
       otherwise({
         redirectTo: '/home'
       });
