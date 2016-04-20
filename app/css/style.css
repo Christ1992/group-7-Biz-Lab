@@ -1,4 +1,46 @@
 /* for Search*/
+.clothesListView{
+    width: 100%;
+}
+
+.searchPage{
+    font-size: 24px;
+}
+.searchArea{
+    background: #f0eff5;
+    padding: 15px 15px;
+}
+.searchArea input{
+    padding: 10px 10px;
+    height: 40px;
+    width: 70%;
+}
+.btn-default{
+    height: 40px;
+}
+.btn-default{
+    font-size: 24px;
+}
+.input-group-btn{
+    display: inline-block;
+}
+.dropdown-menu li{
+    font-size: 200px;
+}
+.likedHeart{
+        position:  absolute;
+        right: 15px;
+    }
+.resizeHeartImg{
+        width: 60px;
+        margin-right: 5px;
+        margin-top: -3px;
+    }
+
+
+
+
+
 .clothe_preview_img{
     width: 100%;
     overflow: hidden;
@@ -10,9 +52,8 @@
 }
 
 .sign_img2{
-    height: 32px;
-    width: 32px;
-    /*width: 10%;*/
+    
+    width: 10%;
     overflow: hidden;
 }
 
@@ -20,21 +61,14 @@
     width: 30%;
     overflow: hidden;
 }
-
+/*
 .side_btn{
     background-color:#FFFFFF;
     width: 100%;
     Border:0.5;
 }
 
-.home-bottom{
-    width:100%;
-    /*height:50px;*/
-    position:fixed;
-    bottom:0px;
-    /*margin:1px;*/
-    background-color:#F8FBEF;
-}
+
 
 .temperature{
     font-size:200%;
@@ -55,7 +89,7 @@
     position:fixed;
     bottom:0px;
 }
-
+*/
 
 /*style of cloth img*/
 
@@ -101,8 +135,21 @@
 }
 
 
+.cover-img{
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
 
-
+.detailImg{
+/*width: 100%;*/
+    display:block;
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+}
 /*css of search page*/
 
     /*#dropdown1{
@@ -120,36 +167,6 @@
         left:70%;
     }*/
 
-    body{
-        background: #f4f4f4;
-        margin: 0px;
-        width: 100%;
-    }
-    p{
-        font-family: Helvetica;
-        margin: 10px;
-    }
-    .statusBar{
-       height: 23px;
-        
-    }
-    .headingBar{
-        display: table;
-        height:88px;
-        width: 100%;
-        background-color: rgba(240,240,240,0.9);
-        
-        box-shadow: 0px 2px 1px #888888;
-
-    }
-    #headingTop{
-        display: table-cell;
-        vertical-align: middle;
-    }
-    #headingTop p{
-        font-size: 34px;
-        text-align: center;
-    }
     .idImg{
         height: 400px;
         width: 100%;
@@ -158,7 +175,7 @@
     .subHeading{
     
         font-size: 34px;
-        /*box-shadow: 0px 2px 5px #aaaaaa;*/
+        //box-shadow: 0px 2px 5px #aaaaaa;
         margin-bottom:25px; 
         margin-top:10px; 
 
@@ -183,9 +200,9 @@
     }
     table{
         width: 100%;
-        /*text-align: center;
-        font-size: 28px;
-       */
+        //text-align: center;
+        //font-size: 28px;
+       
     }
     td{
         padding: 10px;
@@ -194,7 +211,7 @@
     }
     .borderAll{
         border: 1px solid black;
-        /*box-shadow: 0px 1px 3px #888888;*/
+        //box-shadow: 0px 1px 3px #888888;
     }
     .v-middle{
         vertical-align: middle;
@@ -223,26 +240,14 @@
         margin-bottom: 0px;
        
     }
-    /*#searchArea{
-        background: grey;
-        padding-top: 8px;
-        padding-bottom: 8px;
-
-    }*/
+    
     .floatBox{
         margin: 3px;
         position: relative;
     }
     
-    .resizeHeartImg{
-        width: 30px;
-        margin-left: 2px;
-        margin-top: -3px;
-    }
-    .likedHeart{
-        position:  absolute;
-        left: 15px;
-    }
+    
+    
     .itemPrice{
         position: absolute;
         left: 5px;
@@ -252,7 +257,7 @@
         position: absolute;
         right: 5px;
         bottom: 5px;
-    }
+    }*/
 
 
 /*detail page*/
@@ -261,12 +266,8 @@
     height: 200px;
     overflow: hidden;
 }*/
+/*
 
-.cover-img{
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
 
 .but_it_btn{
     float : right;
@@ -274,6 +275,7 @@
     padding-bottom: 2px;
 }
 
+*/
 .detailImg{
     /*width: 100%;*/
     display:block;

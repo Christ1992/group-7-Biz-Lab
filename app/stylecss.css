@@ -14,7 +14,7 @@ body{
         height: 40px;
         background-image: url("../img/default.png");
         background-size: cover;
-        width: 100%
+
         
     }
     .headingBar{
@@ -58,7 +58,7 @@ body{
         opacity: 1;
     }
     .empty{
-        height: 128px;
+        width: 100px;
     }
     .hover-div{
         position: absolute;
