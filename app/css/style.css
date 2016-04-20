@@ -13,23 +13,13 @@
 .searchArea input{
     padding: 10px 10px;
     height: 40px;
-    width: 70%;
+    width: 65%;
 }
-.btn-default{
-    height: 40px;
-}
-.btn-default{
-    font-size: 24px;
-}
-.input-group-btn{
-    display: inline-block;
-}
-.dropdown-menu li{
-    font-size: 200px;
-}
+
 .likedHeart{
         position:  absolute;
         right: 15px;
+        top: 5px;
     }
 .resizeHeartImg{
         width: 60px;
@@ -150,22 +140,7 @@
     margin: auto;
     text-align: center;
 }
-/*css of search page*/
-
-    /*#dropdown1{
-        position:absolute;
-        left:8%;
-    }
-    
-    #dropdown2{
-        position:absolute;
-        left:40%;
-    }
-    
-    #dropdown3{
-        position:absolute;
-        left:70%;
-    }*/
+/*
 
     .idImg{
         height: 400px;
@@ -355,4 +330,66 @@
 		left:25%;
 		top:40px;
 	}
-				
+
+
+
+/*新增*/
+.searchBtn {
+    display: inline-block;
+    height: 40px;
+    width: 20%;
+    font-size: 20px;
+    
+    background: rgb(53, 126, 189);
+    color:white;
+    border:none;
+    vertical-align: top;
+}   
+/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 15px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    z-index: 4;
+    vertical-align: top;
+    
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}		

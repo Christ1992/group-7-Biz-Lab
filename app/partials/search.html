@@ -1,83 +1,38 @@
 
-    <nav class="navbar-fixed-top">
-            <div class="statusBat"> </div>
-            <div class="headingBar" >
-                <div id="headingTop">
-                    <span class="F-left">
-                    <a ng-href="#/home"><img class="icon-resize" src="../img/left-arrow.png"></a></span>
-                    <span class="F-center" >Name</span>
-                    <!--<span class="F-right"><a ng-href="#/search"><img class="icon-resize" src="../img/search.png" ></a></span>-->
-                </div>
-                 
+<nav class="navbar-fixed-top">
+        <div class="statusBat"> </div>
+        <div class="headingBar" >
+            <div id="headingTop">
+                <span class="F-left">
+                <a ng-href="#/home"><img class="icon-resize" src="../img/left-arrow.png"></a></span>
+                <span class="F-center" >Name</span>
+                <!--<span class="F-right"><a ng-href="#/search"><img class="icon-resize" src="../img/search.png" ></a></span>-->
             </div>
-    </nav>
-    <div class="empty"><img src="img/empty.jpg"></div>
-
-    <!--<div id="searchArea" class="panel-body">-->
-        <!--<input type="search" name="search" id="search" placeholder="Search for content...">-->
-        
-        <div class="searchPage">
-            <div class="searchArea">
-                <input ng-model="keywords" type="text" placeholder="Enter keywords here"/>
-                
-
-
-                <span class="input-group-btn">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Clothing<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><button type="button" class="btn btn-link" ng-click="getClothing()">Clothing</a></li>
-                        <li><button type="button" class="btn btn-link" ng-click="getAccessories()">Accessories</a></li>
-                        <li><button type="button" class="btn btn-link" ng-click="getShoes()">Shoes</a></li>
-                    </ul>
-                <!--</div>-->
-                   <!-- <button class="btn btn-primary" ng-click="search(keywords)">
-                    <div class="glyphicon glyphicon-search"></div>
-                    </button>
-                </span>-->
-
-
-            </div>
-
-
-
-
-
-            
-                <!--<div class="dropdown" id="dropdown1">-->
-                    
-            
-            <!--<div class="input-group-btn">
-                <div class="dropdown" id="dropdown3">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Jeans<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><button type="button" class="btn btn-link" ng-click="search(jeans)">Jeans</a></li>
-                        <li><button type="button" class="btn btn-link" ng-click="search(coat)">Coat</a></li>
-                        <li><button type="button" class="btn btn-link" ng-click="search(jacket)">Jacket</a></li>
-                    </ul>
-                </div>
-            </div>                                            -->
-        </div>  
- 
-   <!--<span>
-    <div class="dropdown" id="dropdown2">
-        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Clothing<span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><button type="button" class="btn btn-link" ng-click="search(clothing)">Jeans</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="search(accessories)">Coat</a></li>
-            <li><button type="button" class="btn btn-link" ng-click="search(shoes)">Jacket</a></li>
-        </ul>
-    </div>
-    </span>-->
-
+             
+        </div>
+</nav>
+<div class="empty"><img src="img/empty.jpg"></div>
     
-    <p>&nbsp;</p>
-                            
+        
+<div class="searchPage">
+    <div class="searchArea">
+        <span><input ng-model="keywords" type="text" placeholder="Enter keywords here"/></span>
+        
+
+        <div class="dropdown">
+          <button ng-click="myFunction()" class="dropbtn">Type <span class="caret"></span></button>
+          <div id="myDropdown" class="dropdown-content">
+            <a ng-click="getClothing()">Clothing</a>
+            <a ng-click="getAccessories()">Accessories</a>
+            <a ng-click="getShoes()">Shoes</a>
+          </div>
+        </div>
+
+        <button class="searchBtn" ng-click="search(keywords)">
+            SEARCH <span class="glyphicon glyphicon-search"></span>
+        </button>
+    </div>
+                   
     <div class="row">
         <div id="clothesListView" class="list-view" >									                                                                            
                 <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in clothes">
