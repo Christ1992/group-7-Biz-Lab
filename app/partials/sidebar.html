@@ -9,7 +9,7 @@
              
         </div>
 </nav>-->
- 
+<div class="backdrop">
 <div class="col-xs-9">
 	<div class="sidebar">
 	<div id="main_image">
@@ -46,7 +46,7 @@
 
 <!--<div id="location" align="center">-->
 	<h1 align="center"><font color="white">Location</font></h1>
-	<div class="location"><button class="location_btn">Stockholm</button></div>
+	<div class="location"><input class="location_btn" ng-model="location" ng-change="setLocation(location)" value="getLocation()" placeholder="Stockholm"/></div>
 <!--</div>-->
 	<!--<form id="location" name="location" method="post" action="index.html">
 	<input type="submit" name="location" id="location" value="Stockholm" />
@@ -83,28 +83,28 @@
 	</form>-->
 	
 	<div class="col-xs-6">
-		<div align="center"><button class="gender_btn">Female</button></div>
+		<div align="center"><a ng-click="gender_f=true; gender_m=false" style="text-decoration:none"><img ng-hide="gender_m" ng-show="gender_f" class="gender_btn" src="../img/femaleAc.png"/><img ng-show="gender_m" ng-hide="gender_f" class="gender_btn" src="../img/femaleUn.png"/></a></div>
 	</div>
 	<div class="col-xs-6">
-		<div align="center"><button class="gender_btn">Male</button></div>
+		<div align="center"><a ng-click="gender_m=true; gender_f=false" style="text-decoration:none"><img ng-hide="gender_m" ng-show="gender_f" class="gender_btn" src="../img/maleUn.png"/><img ng-show="gender_m" ng-hide="gender_f" class="gender_btn" src="../img/maleAc.png"/></a></div>
 	</div>
 
 </div>
-<br/> <br/>
+<br/> <br/><br/>
 
 
 
 <div class="genre">
 	<h1 align="center"><font color="white">Cloth Genre</font></h1>
 	<div class="col-xs-6">
-		<div align="center"><button class="gender_btn">Casual</button></div>
+		<div align="center"><a ng-click="genre_c=true; genre_office=false; genre_outdoor=false; genre_f=false" style="text-decoration:none"><img ng-hide="genre_c == false" ng-show="genre_c" class="gender_btn" src="../img/casualAc.png"/><img ng-hide="genre_c" ng-show="!genre_c" class="gender_btn" src="../img/casualUn.png"/></a></div>
 		<br/>
-		<div align="center"><button class="gender_btn">Office</button></div>
+		<div align="center"><a ng-click="genre_c=false; genre_office=true; genre_outdoor=false; genre_f=false" style="text-decoration:none"><img ng-hide="genre_office == false" ng-show="genre_office" class="gender_btn" src="../img/officeAc.png"/><img ng-hide="genre_office" ng-show="!genre_office" class="gender_btn" src="../img/officeUn.png"/></a></div>
 	</div>
 	<div class="col-xs-6">
-		<div align="center"><button class="gender_btn">Outdoor</button></div>
+		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=true; genre_f=false" style="text-decoration:none"><img ng-hide="genre_outdoor == false" ng-show="genre_outdoor" class="gender_btn" src="../img/outdoorAc.png"/><img ng-hide="genre_outdoor" ng-show="!genre_outdoor" class="gender_btn" src="../img/outdoorUn.png"/></a></div>
 		<br/>
-		<div align="center"><button class="gender_btn">Fashion</button></div>
+		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=false; genre_f=true" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="gender_btn" src="../img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="gender_btn" src="../img/fashionUn.png"/></a></div>
 	</div>
 </div>
 
@@ -133,7 +133,7 @@
 
 
 </div>-->
-<br/> <br/> <br/> 
+<br/><br/> <br/> 
 <br/> <br/> <br/> 
 
 <div class="set_bottom"> 
@@ -153,3 +153,4 @@
 	 </a>
  </div>
  
+</div> 
