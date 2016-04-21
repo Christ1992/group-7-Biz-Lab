@@ -337,7 +337,7 @@ body{
     
     width:100%;
     z-index: 4000;
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;   
     background: rgba(23,25,24,0.3);
@@ -396,8 +396,8 @@ body{
         margin-bottom: 10px;
     }
     .set{
-        position: absolute;
-        left: 6%;
+        position: fixed;
+        left: 3%;
         
         bottom:10px;
     }
@@ -405,8 +405,8 @@ body{
         height:40px;
     }
     .finder{
-        position:absolute;
-        right: 3%;
+        position:fixed;
+        right: 36%;
         
         bottom:10px;
 
@@ -498,9 +498,12 @@ body{
     }
     .blank{
         
-        height: 450px;                   
+        height: 500px;                   
     }
-    
+    .hover-siderbar{
+        position: absolute;
+        top: 0;
+    }
 /*card-view*/
 
     .card_view1{
