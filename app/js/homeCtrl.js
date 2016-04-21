@@ -127,7 +127,6 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       $('#detailW').hide();
       $('#toTmr').hide();
       $('#toAft').hide();
-
       $('#todaySelected').show();
       $('#tmrSelected').hide();
       $('#aftSelected').hide();
@@ -137,7 +136,6 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       $('#detailW').hide();
       $('#toTmr').show();
       $('#toAft').hide();
-
       $('#todaySelected').hide();
       $('#tmrSelected').show();
       $('#aftSelected').hide();
@@ -147,7 +145,6 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       $('#detailW').hide();
       $('#toTmr').hide();
       $('#toAft').show();
-
       $('#todaySelected').hide();
       $('#tmrSelected').hide();
       $('#aftSelected').show();

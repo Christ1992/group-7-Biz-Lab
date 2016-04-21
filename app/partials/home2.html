@@ -4,93 +4,92 @@
         <div class="sidebar">
             <img class="backgroundSize" src="img/siderBar.png">
             <div class="hover-siderbar">
-
-                <div id="main_image">
-                <img class="profile_img" src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg"/>
-                </div>
-                <br/><br/>
-                <div><h1 align="center"><font color="white">Kate Jones</font></h1></div>
-
-                <div class="liked">
-                    <div class="col-xs-6 borderRight">
-                        <p align="center"><font size="14" color="white">19</font></p>
-                        <p align="center"><font size="5" color="white">liked outfits</font></p>
+                <div class="T-center">
+                    <div id="main_image">
+                        <img class="profile_img" src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg"/>
                     </div>
-                    <div class="col-xs-6">
-                        <p align="center"><font size="14" color="white">23</font></p>
-                        <p align="center"><font size="5" color="white">liked items</font></p>
+                    <div class="T-center profileName">Kate Jones</div>
+                    <div class="liked">
+                        <div class="Half borderRight">
+                            <div class="T-center likedNum">19</div>
+                            <div class="T-center likedTitle">Liked Items</div>
+                        </div>
+                        <div class="Half">
+                            <div class="T-center likedNum">23</div>
+                            <div class="T-center likedTitle">Liked Outfits</div>
+                        </div>
                     </div>
-                </div>
-            
-	<!--<div>
-	<font color="white"><span id="liked_outfits_num">19</span><span id="liked_items_num" color="white">28</span></font>
-	<br/>
-	</div>-->
+                    
 
-<!--<div>
-<span id="liked_outfits">Liked Outfits</span><span id="liked_items">Liked Items</span>
-</div>-->
-                <br/><br/><br/><br/>
+                    <div class="location_edge">
+                        <div class="T-center optionHeading">Location</div>
 
-<!--<hr width=100%>
+                        <div class="location"><div class="eighth"><img class="locationResize"src="img/location2.png"></div><input class="location_btn" ng-model="location" ng-change="setLocation(location)" value="getLocation()" placeholder="Stockholm"/></div>
+                         
+                    </div>
+                    
+              
 
-	<h1 align="center"><font color="white">Location</font></h1>
-	<div class="location"><input class="location_btn" ng-model="location" ng-change="setLocation(location)" value="getLocation()" placeholder="Stockholm"/></div>
-	<br/>
-	<hr width=100%>-->
-                <div class="location_edge">
-                    <h1 align="center"><font color="white">Location</font></h1>
-                    <div class="location"><input class="location_btn" ng-model="location" ng-change="setLocation(location)" value="getLocation()" placeholder="Stockholm"/></div>
-                     <br/>
-                </div>
+
+                    <div>
+    	                <div class="T-center optionHeading">Gender</div>	
+    	                <div class="optionBody row">
+                            <div class="col-xs-6">
+                                <div align="center">
+                                    <a ng-click="gender_f=true; gender_m=false; setGender(gender)" style="text-decoration:none">
+                                    <img ng-hide="gender_m" ng-show="gender_f" class="gender_btn F-right" src="img/femaleAc.png"/>
+                                    <img ng-show="gender_m" ng-hide="gender_f" class="gender_btn F-right" src="img/femaleUn.png"/></a>
+                                </div>
+                            </div>  
+                            <div class="col-xs-6">
+                                <div align="center"><a ng-click="gender_m=true; gender_f=false; setGender(male)" style="text-decoration:none">
+                                    <img ng-hide="gender_m" ng-show="gender_f" class="gender_btn F-left" src="img/maleUn.png"/>
+                                    <img ng-show="gender_m" ng-hide="gender_f" class="gender_btn F-left" src="img/maleAc.png"/></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="genre">
+    	                <div class="T-center optionHeading">Cloth Genre</div>
+    	                <div class="optionBody row">
+                            <div class="col-xs-6">
+        		                <div align="center">
+                                    <a ng-click="genre_c=true; genre_office=false; genre_outdoor=false; genre_f=false" style="text-decoration:none">
+                                    <img ng-hide="genre_c == false" ng-show="genre_c" class="genre_btn F-right" src="img/casualAc.png"/>
+                                    <img ng-hide="genre_c" ng-show="!genre_c" class="genre_btn F-right" src="img/casualUn.png"/></a>
+                                </div>
+                        		<br/>
+                        		<div align="center">
+                                    <a ng-click="genre_c=false; genre_office=true; genre_outdoor=false; genre_f=false" style="text-decoration:none">
+                                    <img ng-hide="genre_office == false" ng-show="genre_office" class="genre_btn F-right" src="img/officeAc.png"/>
+                                    <img ng-hide="genre_office" ng-show="!genre_office" class="genre_btn F-right" src="img/officeUn.png"/></a>
+                                </div>
+            	            </div>
+        	                <div class="col-xs-6">
+        		                <div align="center">
+                                    <a ng-click="genre_c=false; genre_office=false; genre_outdoor=true; genre_f=false" style="text-decoration:none">
+                                    <img ng-hide="genre_outdoor == false" ng-show="genre_outdoor" class="genre_btn F-left" src="img/outdoorAc.png"/>
+                                    <img ng-hide="genre_outdoor" ng-show="!genre_outdoor" class="genre_btn F-left" src="img/outdoorUn.png"/></a>
+                                </div>
+                        		<br/>
+                        		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=false; genre_f=true" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="genre_btn F-left" src="img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="genre_btn F-left" src="img/fashionUn.png"/></a></div>
+        	               </div>
+                        </div>
+                    </div>
     
-                <br/>
-          
-                <div>
-	                <p align="center"><font color="white" size="6">Gender</font></p>		
-	                <div class="col-xs-6">
-		                <div align="center"><a ng-click="gender_f=true; gender_m=false; setGender(gender)" style="text-decoration:none"><img ng-hide="gender_m" ng-show="gender_f" class="gender_btn" src="img/femaleAc.png"/><img ng-show="gender_m" ng-hide="gender_f" class="gender_btn" src="img/femaleUn.png"/></a>
-                        </div>
-	                </div>  
-        	        <div class="col-xs-6">
-        		        <div align="center"><a ng-click="gender_m=true; gender_f=false; setGender(male)" style="text-decoration:none"><img ng-hide="gender_m" ng-show="gender_f" class="gender_btn" src="img/maleUn.png"/><img ng-show="gender_m" ng-hide="gender_f" class="gender_btn" src="img/maleAc.png"/></a></div>
-        	        </div>
-
                 </div>
-<br/> <br/><br/><br/>
-
-
-                <div class="genre">
-	                <p align="center"><font color="white" size="6">Cloth Genre</font></p>
-	                <div class="col-xs-6">
-		                <div align="center"><a ng-click="genre_c=true; genre_office=false; genre_outdoor=false; genre_f=false" style="text-decoration:none"><img ng-hide="genre_c == false" ng-show="genre_c" class="genre_btn" src="img/casualAc.png"/><img ng-hide="genre_c" ng-show="!genre_c" class="genre_btn" src="img/casualUn.png"/></a>
-                        </div>
-                		<br/>
-                		<div align="center"><a ng-click="genre_c=false; genre_office=true; genre_outdoor=false; genre_f=false" style="text-decoration:none"><img ng-hide="genre_office == false" ng-show="genre_office" class="genre_btn" src="img/officeAc.png"/><img ng-hide="genre_office" ng-show="!genre_office" class="genre_btn" src="img/officeUn.png"/></a>
-                        </div>
-    	            </div>
-	                <div class="col-xs-6">
-		                <div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=true; genre_f=false" style="text-decoration:none"><img ng-hide="genre_outdoor == false" ng-show="genre_outdoor" class="genre_btn" src="img/outdoorAc.png"/><img ng-hide="genre_outdoor" ng-show="!genre_outdoor" class="genre_btn" src="img/outdoorUn.png"/></a>
-                        </div>
-                		<br/>
-                		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=false; genre_f=true" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="genre_btn" src="img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="genre_btn" src="img/fashionUn.png"/></a></div>
-	               </div>
-                </div>
-
-<br/><br/> <br/> 
-<br/> <br/> <br/> 
-
-                <div class="set_bottom"> 
-	                <div class="row">
-		                <div class="set"><img src="img/setting.png" id="setting" height="70"></div>
-                        <div class="finder"><img class="finder_btn" src="img/logout.png"></div>
-                    </div>
-                </div>
+                
             </div>
-	
+	           <div class="set_bottom"> 
+                            <div class="set"><img class="Bottonsize"src="img/setting.png"></div>
+                            <div class="finder"><img class="Bottonsize"src="img/logout.png"></div>
+                </div>
         </div>
     </div>
-    <div class="col-xs-4">
+    <div class="col-xs-4 ">
     	 <a ng-click="sidebar=false" style="text-decoration:none">
     	 <div class="blank">
     		
@@ -189,7 +188,7 @@
             </div>
 
             <div class="T-center" id="toTmr" style="display:none">
-                <div style="height: 229px;">
+                <div class="forcastBtn">
                     <div class="Half T-left" >
                         <div class="humPadding">
                         <img src="img/humidity.png">{{humTmr}}%
@@ -208,7 +207,7 @@
             </div>
 
             <div class="T-center" id="toAft" style="display:none">
-                <div style="height: 229px;">
+                <div class="forcastBtn">
                     <div class="Half T-left" >
                         <div class="humPadding">
                         <img src="img/humidity.png">{{humAft}}%
@@ -237,6 +236,10 @@
                         <div><img class="weatherIcon" ng-src="{{iconToday}}"></div>
                         <div class="Half T-right"><p>{{maxTempToday}}°</p></div>
                         <div class="Half T-left"><p>{{minTempToday}}°</p></div>
+
+                        
+
+
                     </div>
                 </div>
                 <div class="Third" ng-click="toTmr()">
@@ -245,7 +248,11 @@
                         <div><img class="weatherIcon" ng-src="{{iconTmr}}"></div>
                         <div class="Half T-right">{{maxTempTmr}}°</div>
                         <div class="Half T-left">{{minTempTmr}}°</div>
+
+                        
+
                     </div>
+
                 </div>
                 <div class="Third" ng-click="toAft()">
                     <div>
@@ -257,7 +264,7 @@
                 </div>
             </div>
 
-            <div>
+            <div class="selectedDate">
                 <div class="Third2"><img id="todaySelected" src="img/bottomSelected.png"></div>
                 <div class="Third2"><img style="display: none"id="tmrSelected" src="img/bottomSelected.png"></div>
                 <div class="Third2"><img style="display: none"id="aftSelected" src="img/bottomSelected.png"></div>
