@@ -5,27 +5,27 @@
 }
 
 .searchPage{
-    font-size: 24px;
+    font-size: 12px;
 }
 .searchArea{
     background: #f0eff5;
-    padding: 15px 15px;
+    padding: 7px 7px;
 }
 .searchArea input{
-    padding: 10px 10px;
-    height: 40px;
-    width: 65%;
+    padding: 5px 5px;
+    height: 20px;
+    width: 60%;
 }
 
 .likedHeart{
         position:  absolute;
-        right: 15px;
-        top: 5px;
+        right: 7px;
+        top: 10px;
     }
 .resizeHeartImg{
-        width: 60px;
-        margin-right: 5px;
-        margin-top: -3px;
+        width: 30px;
+        margin-right: 3px;
+        margin-top: -2px;
     }
 
 
@@ -34,7 +34,7 @@
 /*style of cloth img*/
 .cover-img{
     width: 100%;
-    height: 700px;
+    height: 350px;
     overflow: hidden;
     position: relative;
     
@@ -44,14 +44,17 @@
      
      display: block;
     width: auto;
-    max-height: 600px;
+    max-height: 300px;
     max-width: 100%;
     margin: auto;
     text-align: center;
 }
+.thumbnail{
+    margin-bottom: 10px;
+}
 .thumbnail .cover {
     width: 100%;
-    height: 350px;
+    height: 175px;
     overflow: hidden;
     
 }
@@ -69,13 +72,16 @@
     /*cursor: pointer;*/
     display: block;
     width: auto;
-    max-height: 350px;
+    max-height: 175px;
     max-width: 100%;
     margin: auto;
     text-align: center;
+    position: relative;
     
 }
-
+.thumbnail{
+    margin-bottom: 0;
+}
 .thumbnail .cover img {
     /*min-width: 100%;
     min-height: 100%;*/
@@ -85,9 +91,9 @@
 }
 
 .thumbnail .caption{
-    height: 60px;
+    height: 30px;
     padding: 0px;
-    padding-top: 20px;
+    padding-top: 10px;
     
 }
 .panel-heading{
@@ -95,14 +101,14 @@
 }
 .panel-title{
     
-    font-size: 24px;
+    font-size: 12px;
     display: inline-block;
     margin:0px;
     
     
 }
 .bigName{
-    font-size: 36px;
+    font-size: 18px;
 }
 
 .NameHalf{
@@ -120,33 +126,38 @@
     vertical-align: top;
     text-align: right;
 }
-
+.empty img{
+    width: 100%;
+}
 
 
 
 /*新增*/
 .searchBtn {
     display: inline-block;
-    height: 40px;
+    height: 20px;
     width: 20%;
-    font-size: 20px;
+    font-size: 10px;
     
     background: rgb(53, 126, 189);
     color:white;
     border:none;
     vertical-align: top;
-    float: right;
-    margin-left: 10px;
+    text-align: right;
+    
+    
 }   
 /* Dropdown Button */
 .dropbtn {
     background-color: #4CAF50;
     color: white;
-    padding: 5px 15px;
-    font-size: 20px;
+    padding: 3px 7px;
+    font-size: 10px;
     border: none;
     cursor: pointer;
-    height: 40px;
+    height: 20px;
+    text-align: right;
+    
     
 }
 
@@ -161,7 +172,8 @@
     display: inline-block;
     z-index: 4;
     vertical-align: top;
-    float: right;
+    width: 15%;
+    /*float: right;*/
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -169,14 +181,14 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    min-width: 80px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 /* Links inside the dropdown */
 .dropdown-content a {
     color: black;
-    padding: 12px 16px;
+    padding: 6px 8px;
     text-decoration: none;
     display: block;
 }

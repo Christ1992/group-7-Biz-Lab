@@ -11,16 +11,13 @@
              
         </div>
 </nav>
-<div class="empty"><img src="img/empty.jpg"></div>
+<div class="empty"><img src="img/empty.png"></div>
     
         
 <div class="searchPage">
     <div class="searchArea">
         <span><input ng-model="keywords" type="text" placeholder="Enter keywords here"/></span>
         
-        <button class="searchBtn" ng-click="search(keywords)">
-            SEARCH <span class="glyphicon glyphicon-search"></span>
-        </button>
         <div class="dropdown">
           <button ng-click="myFunction()" class="dropbtn">Type <span class="caret"></span></button>
           <div id="myDropdown" class="dropdown-content">
@@ -29,6 +26,10 @@
             <a ng-click="getShoes()">Shoes</a>
           </div>
         </div>
+        <button class="searchBtn" ng-click="search(keywords)">
+            SEARCH <span class="glyphicon glyphicon-search"></span>
+        </button>
+        
 
         
     </div>

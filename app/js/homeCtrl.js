@@ -52,7 +52,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //$scope.description=todayWeather.cond.text_d;
 
       //日期
-      $scope.dateToday = todayWeather.date;
+      $scope.dateToday = todayWeather.date.slice(5);
       //湿度
       $scope.humToday = todayWeather.hum;
       //风力
@@ -76,7 +76,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //$scope.condToday = todayWeather.cond.text_d;
 
       //日期
-      $scope.dateTmr = tmrWeather.date;
+      $scope.dateTmr = tmrWeather.date.slice(5);
       //湿度
       $scope.humTmr = tmrWeather.hum;
       //风力
@@ -98,7 +98,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //$scope.condToday = todayWeather.cond.text_d;
 
       //日期
-      $scope.dateAft = aftWeather.date;
+      $scope.dateAft = aftWeather.date.slice(5);
       //湿度
       $scope.humAft = aftWeather.hum;
       //风力
