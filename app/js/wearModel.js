@@ -8,7 +8,9 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
     var location = "Stockholm";
     var country="Sweden"
     var gender="female";
-    var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378"
+    var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378,c3b7bba4b5ac511ec04d73ac4065ea83"
+    var shopstyleAPU="uid1600-33362460-67";
+    var hefengAPI="939ca234771f43f29168f5e5d68257a5";
     
     
     var like_amt = 0;
@@ -33,12 +35,12 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
         return like_amt;
     }
     
-    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid1600-33362460-67',offset:0,limit:10});
-    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid1600-33362460-67'});
+    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
+    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
     
-    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid1600-33362460-67'});
-    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid1600-33362460-67'});
-    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid1600-33362460-67'});
+    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
+    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid2964-33820658-6'});
+    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid2964-33820658-6'});
     // this.getCurrentWeather = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     
     // this.getWeatherImg = function(condition){
