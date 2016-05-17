@@ -4,24 +4,25 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 
-weatherDressApp.factory('Weather',function ($resource,$cookieStore){
+weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll){
     var location = "Stockholm";
     var country="Sweden"
     var gender="female";
     var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378,c3b7bba4b5ac511ec04d73ac4065ea83"
     var shopstyleAPU="uid1600-33362460-67";
     var hefengAPI="939ca234771f43f29168f5e5d68257a5";
-    
+    var arrayFWeather=[];
+    var arrayCWeather=[];
     
     var like_amt = 0;
-   
+
+$anchorScroll.yOffset = 44;
+
    this.setLocation = function(loc){
        location = loc;
-       console.log("setLocation");
    }
    
     this.getLocation = function(){
-        console.log("getLocation"+location);
         return location;
     }
     
@@ -63,6 +64,24 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
     //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
     this.getForecast = $resource('https://api.heweather.com/x3/weather?',{cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
     
+    // this.setWeatherData=function(loc){
+    //     this.getForecast.get({city:loc},function(data){
+    //         arrayFWeather = data['HeWeather data service 3.0']
+    //     });
+    //     this.getCurrent.get({q:loc},function(data){
+    //         arrayCWeather = data;
+    //     });
+    // }
+    // this.getFWeather=function(){
+    //     return arrayFWeather;
+    // }
+    // this.getCWeather=function(){
+    //     return arrayCWeather;
+    // }
+
+
+
+
     this.getWeatherImg = function(condition){
          var url;
          if(condition == "clear"){

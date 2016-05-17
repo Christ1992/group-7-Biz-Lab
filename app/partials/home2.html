@@ -63,25 +63,25 @@
     	                <div class="optionBody row">
                             <div class="col-xs-6">
         		                <div align="center">
-                                    <a ng-click="genre_c=true; genre_office=false; genre_outdoor=false; genre_f=false" style="text-decoration:none">
+                                    <a ng-click="genre_c=true; genre_office=false; genre_outdoor=false; genre_f=false;goto('Casual')" style="text-decoration:none">
                                     <img ng-hide="genre_c == false" ng-show="genre_c" class="genre_btn F-right" src="img/casualAc.png"/>
                                     <img ng-hide="genre_c" ng-show="!genre_c" class="genre_btn F-right" src="img/casualUn.png"/></a>
                                 </div>
                         		<br/>
                         		<div align="center">
-                                    <a ng-click="genre_c=false; genre_office=true; genre_outdoor=false; genre_f=false" style="text-decoration:none">
+                                    <a ng-click="genre_c=false; genre_office=true; genre_outdoor=false; genre_f=false;goto('Office')" style="text-decoration:none">
                                     <img ng-hide="genre_office == false" ng-show="genre_office" class="genre_btn F-right" src="img/officeAc.png"/>
                                     <img ng-hide="genre_office" ng-show="!genre_office" class="genre_btn F-right" src="img/officeUn.png"/></a>
                                 </div>
             	            </div>
         	                <div class="col-xs-6">
         		                <div align="center">
-                                    <a ng-click="genre_c=false; genre_office=false; genre_outdoor=true; genre_f=false" style="text-decoration:none">
+                                    <a ng-click="genre_c=false; genre_office=false; genre_outdoor=true; genre_f=false;goto('Outdoor');" style="text-decoration:none">
                                     <img ng-hide="genre_outdoor == false" ng-show="genre_outdoor" class="genre_btn F-left" src="img/outdoorAc.png"/>
                                     <img ng-hide="genre_outdoor" ng-show="!genre_outdoor" class="genre_btn F-left" src="img/outdoorUn.png"/></a>
                                 </div>
                         		<br/>
-                        		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=false; genre_f=true" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="genre_btn F-left" src="img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="genre_btn F-left" src="img/fashionUn.png"/></a></div>
+                        		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=false; genre_f=true;goto('Fashion');" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="genre_btn F-left" src="img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="genre_btn F-left" src="img/fashionUn.png"/></a></div>
         	               </div>
                         </div>
                     </div>
@@ -109,48 +109,6 @@
 
 
 
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <nav class="navbar-fixed-top">
         
         <div class="headingBar" >
@@ -162,6 +120,7 @@
              
         </div>
     </nav>
+
     <nav class="navbar-fixed-bottom">
         <div class="hover-div">
             <div class="T-center brief"><img ng-src="{{iconToday}}">{{description}}</div>
@@ -293,15 +252,15 @@
     </nav>
     <div class="empty"><img src="img/empty.png"></div>
     
-    <div class="page-start" id="CasualF">
+    <div class="page-start" id="Casual">
         <a ng-href="#/card_view/casualf"><img class="background-resize" ng-src="img/fashion1.jpg"></a>
     </div>
-    <div class="page-start" id="OutdoorF">
+    <div class="page-start" id="Outdoor">
         <a ng-href="#/card_view/ourdoorf"><img class="background-resize" ng-src="img/fashion2.jpg"></a>
     </div>
-    <div class="page-start" id="OfficeF">
+    <div class="page-start" id="Office">
         <a ng-href="#/card_view/officef"><img class="background-resize" ng-src="img/fashion3.jpg"></a>
     </div>
-    <div class="page-start" id="FashionF">
+    <div class="page-start" id="Fashion">
         <a ng-href="#/card_view/fashionf"><img class="background-resize" ng-src="img/fashion4.jpg"></a>
     </div>
