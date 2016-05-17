@@ -17,9 +17,11 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
    
    this.setLocation = function(loc){
        location = loc;
+       console.log("setLocation");
    }
    
     this.getLocation = function(){
+        console.log("getLocation"+location);
         return location;
     }
     
@@ -57,9 +59,9 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore){
     //     return url;
     // }
     
-    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
+    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
-    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{city:location, cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
+    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
     
     this.getWeatherImg = function(condition){
          var url;

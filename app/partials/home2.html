@@ -1,10 +1,13 @@
 <!--<ng-include src="'partials/sidebar.html'" ng-controller="sidebarCtrl"></ng-include>-->
+
+<!-- sidebar -->
 <div class="backdrop" ng-show="sidebar">
     <div class="col-xs-8">
         <div class="sidebar">
             <img class="backgroundSize" src="img/siderBar.png">
             <div class="hover-siderbar">
                 <div class="T-center">
+    <!-- profolio -->
                     <div id="main_image">
                         <img class="profile_img" src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg"/>
                     </div>
@@ -19,17 +22,20 @@
                             <div class="T-center likedTitle">Liked Outfits</div>
                         </div>
                     </div>
-                    
+    <!-- Location -->
 
                     <div class="location_edge">
                         <div class="T-center optionHeading">Location</div>
 
-                        <div class="location"><div class="eighth"><img class="locationResize"src="img/location2.png"></div><input class="location_btn" ng-model="location" ng-change="setLocation(location)" value="getLocation()" placeholder="Stockholm"/></div>
+                        <div class="location"><div class="eighth"><img class="locationResize"src="img/location2.png"></div>
+
+                       <form ng-submit="setLocation(location)">
+                       <input type="text" class="location_btn" ng-model="location"/></form>
+                       </div>
                          
                     </div>
                     
-              
-
+    <!-- Gender -->
 
                     <div>
     	                <div class="T-center optionHeading">Gender</div>	
@@ -51,7 +57,7 @@
 
                     </div>
 
-
+    <!-- Genre -->
                     <div class="genre">
     	                <div class="T-center optionHeading">Cloth Genre</div>
     	                <div class="optionBody row">
@@ -83,6 +89,7 @@
                 </div>
                 
             </div>
+    <!-- Setting & logout -->
 	           <div class="set_bottom"> 
                             <div class="set"><img class="Bottonsize"src="img/setting.png"></div>
                             <div class="finder"><img class="Bottonsize"src="img/logout.png"></div>
@@ -180,7 +187,7 @@
                     </div>
                     <div class="Half T-left" >
                         <div class="humPadding">
-                        <img src="img/windSpeed.png">{{humToday}}%</div>
+                        <img src="img/windSpeed.png"> {{windToday}}</div>
                         <div>
                         <img class="precMargin" src="img/visibility.png">{{visToday}}.0</div>
                     </div>
@@ -199,7 +206,7 @@
                     </div>
                     <div class="Half T-left" >
                         <div class="humPadding">
-                        <img src="img/windSpeed.png">{{humTmr}}%</div>
+                        <img src="img/windSpeed.png"> {{windTmr}}</div>
                         <div>
                         <img class="precMargin" src="img/visibility.png">{{visTmr}}.0</div>
                     </div>
@@ -218,7 +225,7 @@
                     </div>
                     <div class="Half T-left" >
                         <div class="humPadding">
-                        <img src="img/windSpeed.png">{{humAft}}%</div>
+                        <img src="img/windSpeed.png"> {{windAft}}</div>
                         <div>
                         <img class="precMargin" src="img/visibility.png">{{visAft}}.0</div>
                     </div>
@@ -230,7 +237,7 @@
 
             <div class="Forecast">
                 
-                <div class="Third" ng-click="toToday()">
+                <div class="Third dottedLine" ng-click="toToday()">
                     <div>
                         <div>{{dateToday}}</div>
                         <div><img class="weatherIcon" ng-src="{{iconToday}}"></div>
@@ -242,7 +249,7 @@
 
                     </div>
                 </div>
-                <div class="Third" ng-click="toTmr()">
+                <div class="Third dottedLine" ng-click="toTmr()">
                     <div>
                         <div>{{dateTmr}}</div>
                         <div><img class="weatherIcon" ng-src="{{iconTmr}}"></div>
@@ -286,15 +293,15 @@
     </nav>
     <div class="empty"><img src="img/empty.png"></div>
     
-    <div class="page-start" id="CasualG">
-        <a ng-href="#/card_view"><img class="background-resize"src="img/fashion1.jpg"></a>
+    <div class="page-start" id="CasualF">
+        <a ng-href="#/card_view/casualf"><img class="background-resize" ng-src="img/fashion1.jpg"></a>
     </div>
-    <div class="page-start" id="OutdoorG">
-        <a ng-href="#/card_view"><img class="background-resize"src="img/fashion2.jpg"></a>
+    <div class="page-start" id="OutdoorF">
+        <a ng-href="#/card_view/ourdoorf"><img class="background-resize" ng-src="img/fashion2.jpg"></a>
     </div>
-    <div class="page-start" id="OfficeG">
-        <a ng-href="#/card_view"><img class="background-resize"src="img/fashion3.jpg"></a>
+    <div class="page-start" id="OfficeF">
+        <a ng-href="#/card_view/officef"><img class="background-resize" ng-src="img/fashion3.jpg"></a>
     </div>
-    <div class="page-start" id="FashionG">
-        <a ng-href="#/card_view"><img class="background-resize"src="img/fashion4.jpg"></a>
+    <div class="page-start" id="FashionF">
+        <a ng-href="#/card_view/fashionf"><img class="background-resize" ng-src="img/fashion4.jpg"></a>
     </div>

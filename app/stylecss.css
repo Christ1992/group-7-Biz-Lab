@@ -187,7 +187,7 @@ body{
 
     .subline{height: 10px;}
     .supDot{font-size: 50px;vertical-align: super;}
-    .forcastBtn{height: 115px;}
+    .forcastBtn{height: 114px;}
     .humPadding{padding-top: 25px;}
     .precMargin{margin-top: 10px;}
 
@@ -467,6 +467,10 @@ body{
         border: 1px white solid;
         border-radius: 3px;
     }
+    .location form{
+        display: inline-block;
+        width: 80%;
+    }
     .location input{
         color: white;
         height: 25px;
@@ -490,7 +494,7 @@ body{
         margin-bottom: 30px;
     }
     .location_btn{
-        width: 80%;
+        width: 100%;
         background: none;
         border:none;
         padding-left: 4px;
@@ -501,6 +505,7 @@ body{
         width: 12.5%;
         text-align: center; 
     }
+
     .locationResize{
         height: 16px;
         text-align: center; 
@@ -508,6 +513,7 @@ body{
     .location_btn input:focus {
     color: white;
     }
+
     .blank{
         
         height: 500px;                   
@@ -749,7 +755,9 @@ body{
 
 
 
-
+.dottedLine{
+    border-right: dotted white 1px;
+}
 
 
 

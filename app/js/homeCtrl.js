@@ -4,35 +4,14 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
 
     $scope.location = Weather.getLocation();
 
-    Weather.getCurrent.get(function(data){
-
-
-
-        $scope.currentWeather = data;
-        console.log(data);
-       // $scope.CurrentWeather.wind = data.wind.speed;
-        //  $scope.humidity = data.main.humidity;
-        //  $scope.precipitation = data.rain;
-        
-        //一句话描述
-        $scope.description= data.weather[0].main;
-        
-
-        //当前温度
-        $scope.temperature= Math.round(data.main.temp-273);
-
-        //图片
-        $scope.imgUrl = Weather.getWeatherImg(data.weather[0].main);
-
-       });
-    
-
-
-
-     Weather.getForecast.get(function(data){
-
+  
+ $scope.dataGet=function(){
+  console.info("1");
+  Weather.getForecast.get({city:Weather.getLocation()},function(data){
+      
       var result = data['HeWeather data service 3.0']
       console.log(data['HeWeather data service 3.0']);
+
       
 //今天
       var todayWeather= result[0].daily_forecast[0];
@@ -57,6 +36,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       $scope.humToday = todayWeather.hum;
       //风力
       $scope.windToday = todayWeather.wind.sc; 
+
       //概率
       $scope.precToday = todayWeather.pop;
       //能见度
@@ -108,8 +88,31 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //能见度
       $scope.visAft =  aftWeather.vis;
        
+  });
 
-       });
+
+
+  Weather.getCurrent.get({q:Weather.getLocation()},function(data){
+
+        $scope.currentWeather = data;
+        console.log(data);
+       // $scope.CurrentWeather.wind = data.wind.speed;
+        //  $scope.humidity = data.main.humidity;
+        //  $scope.precipitation = data.rain;
+        
+        //一句话描述
+        $scope.description= data.weather[0].main;
+        
+
+        //当前温度
+        $scope.temperature= Math.round(data.main.temp-273);
+
+        //图片
+        $scope.imgUrl = Weather.getWeatherImg(data.weather[0].main);
+
+  });
+}
+$scope.dataGet();
     $scope.weatherDetail=function(){
         $('#generW').hide();
         $('#detailW').show();
@@ -118,7 +121,6 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
         $('#generW').show();
         $('#detailW').hide();
     }
-
 
 
 
@@ -204,14 +206,13 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
     
     $scope.setLocation = function(location){
         Weather.setLocation(location);
-    }
-    
-    $scope.getLocation = function(){
-        return Weather.getLocation();
+        console.log("@22");
+        $scope.dataGet();
     }
     
     $scope.setGender = function(gender){
         Weather.setGender(gender);
     }
 
+    
 });
