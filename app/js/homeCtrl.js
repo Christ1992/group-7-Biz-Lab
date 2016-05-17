@@ -161,20 +161,22 @@ $scope.dataGet();
   
 
   
-    $scope.gender_f = true;
-    $scope.gender_m = false;
-    $scope.genre_c=true; 
-    $scope.genre_office=false; 
-    $scope.genre_outdoor=false; 
-    $scope.genre_f=false;
     
     $scope.sidebar=false;
-   
+    
     $scope.goto = function (id) {
+        console.log(id);
+        if($scope.gender_f){
+          id="F"+id;
+
+        }else{
+          id="M"+id;
+        }
         console.log(id);
             $location.hash(id);
             $anchorScroll();
     }
+
     $scope.setLocation = function(location){
         Weather.setLocation(location);
         $scope.dataGet();
@@ -183,7 +185,19 @@ $scope.dataGet();
     $scope.setGender = function(gender){
         Weather.setGender(gender);
     }
-    console.log("$scope.genre_c"+$scope.genre_c);
+    $scope.getGender = function(){
+       var gender=Weather.getGender();
+       if(gender=="female"){
+          $scope.gender_f = true;
+          $scope.gender_m = false;
+       }else{
+          $scope.gender_f = false;
+          $scope.gender_m = true;
+       }
+       console.log("1");
+       console.log($scope.gender_f);
+    }
+   $scope.getGender();
    
 }).directive("scroll", function ($window) {
     return function(scope, element, attrs) {

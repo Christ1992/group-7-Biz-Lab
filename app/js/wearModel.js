@@ -26,8 +26,11 @@ $anchorScroll.yOffset = 44;
         return location;
     }
     
-    this.setGender = function(gender){
-        gender = gender;
+    this.setGender = function(gd){
+        gender = gd;
+    }
+    this.getGender = function(){
+        return gender;
     }
     
     this.setLike_amt = function(){
