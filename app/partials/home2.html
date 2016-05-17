@@ -43,14 +43,16 @@
                             <div class="col-xs-6">
                                 <div align="center">
                                     <a ng-click="gender_f=true; gender_m=false; setGender(gender)" style="text-decoration:none">
-                                    <img ng-hide="gender_m" ng-show="gender_f" class="gender_btn F-right" src="img/femaleAc.png"/>
-                                    <img ng-show="gender_m" ng-hide="gender_f" class="gender_btn F-right" src="img/femaleUn.png"/></a>
+                                    <img ng-show="gender_f" class="gender_btn F-right" src="img/femaleAc.png"/>
+                                    <img ng-hide="gender_f" class="gender_btn F-right" src="img/femaleUn.png"/></a>
                                 </div>
                             </div>  
                             <div class="col-xs-6">
                                 <div align="center"><a ng-click="gender_m=true; gender_f=false; setGender(male)" style="text-decoration:none">
-                                    <img ng-hide="gender_m" ng-show="gender_f" class="gender_btn F-left" src="img/maleUn.png"/>
-                                    <img ng-show="gender_m" ng-hide="gender_f" class="gender_btn F-left" src="img/maleAc.png"/></a>
+                                    <img ng-show="gender_m" class="gender_btn F-left" src="img/maleAc.png"/>
+                                    <img ng-hide="gender_m" class="gender_btn F-left" src="img/maleUn.png"/>
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -63,25 +65,25 @@
     	                <div class="optionBody row">
                             <div class="col-xs-6">
         		                <div align="center">
-                                    <a ng-click="genre_c=true; genre_office=false; genre_outdoor=false; genre_f=false;goto('Casual')" style="text-decoration:none">
-                                    <img ng-hide="genre_c == false" ng-show="genre_c" class="genre_btn F-right" src="img/casualAc.png"/>
-                                    <img ng-hide="genre_c" ng-show="!genre_c" class="genre_btn F-right" src="img/casualUn.png"/></a>
+                                    <a ng-click="goto('genre1')" style="text-decoration:none">
+                                    <img ng-show="showCasual" class="genre_btn F-right" src="img/casualAc.png"/>
+                                    <img ng-hide="showCasual" class="genre_btn F-right" src="img/casualUn.png"/></a>
                                 </div>
                         		<br/>
                         		<div align="center">
-                                    <a ng-click="genre_c=false; genre_office=true; genre_outdoor=false; genre_f=false;goto('Office')" style="text-decoration:none">
-                                    <img ng-hide="genre_office == false" ng-show="genre_office" class="genre_btn F-right" src="img/officeAc.png"/>
-                                    <img ng-hide="genre_office" ng-show="!genre_office" class="genre_btn F-right" src="img/officeUn.png"/></a>
+                                    <a ng-click="goto('genre3')" style="text-decoration:none">
+                                    <img ng-show="showOffice" class="genre_btn F-right" src="img/officeAc.png"/>
+                                    <img ng-hide="showOffice" class="genre_btn F-right" src="img/officeUn.png"/></a>
                                 </div>
             	            </div>
         	                <div class="col-xs-6">
         		                <div align="center">
-                                    <a ng-click="genre_c=false; genre_office=false; genre_outdoor=true; genre_f=false;goto('Outdoor');" style="text-decoration:none">
-                                    <img ng-hide="genre_outdoor == false" ng-show="genre_outdoor" class="genre_btn F-left" src="img/outdoorAc.png"/>
-                                    <img ng-hide="genre_outdoor" ng-show="!genre_outdoor" class="genre_btn F-left" src="img/outdoorUn.png"/></a>
+                                    <a ng-click="goto('genre2');" style="text-decoration:none">
+                                    <img ng-show="showOutdoor" class="genre_btn F-left" src="img/outdoorAc.png"/>
+                                    <img ng-hide="showOutdoor" class="genre_btn F-left" src="img/outdoorUn.png"/></a>
                                 </div>
                         		<br/>
-                        		<div align="center"><a ng-click="genre_c=false; genre_office=false; genre_outdoor=false; genre_f=true;goto('Fashion');" style="text-decoration:none"><img ng-hide="genre_f == false" ng-show="genre_f" class="genre_btn F-left" src="img/fashionAc.png"/><img ng-hide="genre_f" ng-show="!genre_f" class="genre_btn F-left" src="img/fashionUn.png"/></a></div>
+                        		<div align="center"><a ng-click="goto('genre4');" style="text-decoration:none"><img ng-show="showFashion" class="genre_btn F-left" src="img/fashionAc.png"/><img ng-hide="showFashion" class="genre_btn F-left" src="img/fashionUn.png"/></a></div>
         	               </div>
                         </div>
                     </div>
@@ -238,29 +240,34 @@
 
         </div>
     </nav>
+
+
+    
     <nav class="navbar-fixed-bottom T-right">
         <div class="hover-left">
-            <div>Casual<img src="img/selected.png"></div>
+            <div ng-click="goto('genre1')">Casual<img ng-hide="showCasual" src="img/ring.png"><img ng-show="showCasual" src="img/selected.png"></div>
             <div ><img class="T-right" src="img/line.png"></div>
-            <div>Outdoor<img src="img/ring.png"></div>
+            <div ng-click="goto('genre2')" id="outdoor">Outdoor<img ng-hide="showOutdoor" src="img/ring.png"><img ng-show="showOutdoor" src="img/selected.png"></div>
             <div ><img class="T-right" src="img/line.png"></div>
-            <div>Office<img src="img/ring.png"></div>
+            <div ng-click="goto('genre3')" id="office">Office<img ng-hide="showOffice" src="img/ring.png"><img ng-show="showOffice" src="img/selected.png"></div>
             <div ><img class="T-right" src="img/line.png"></div>
-            <div>Fashion<img src="img/ring.png"></div>
+            <div ng-click="goto('genre4')" id="fashion">Fashion<img ng-hide="showFashion" src="img/ring.png"><img ng-show="showFashion" src="img/selected.png"></div>
 
         </div>
     </nav>
+        
+
+
     <div class="empty"><img src="img/empty.png"></div>
-    
-    <div class="page-start" id="Casual">
-        <a ng-href="#/card_view/casualf"><img class="background-resize" ng-src="img/fashion1.jpg"></a>
+
+    <div ng-show="gender_f" scroll>
+        <div class="page-start" id="genre{{x}}" ng-repeat="x in [1,2,3,4]">
+            <a ng-href="#/card_view/genre{{x}}/female"><img class="background-resize" ng-src="img/female{{x}}.jpg"></a>
+        </div>
     </div>
-    <div class="page-start" id="Outdoor">
-        <a ng-href="#/card_view/ourdoorf"><img class="background-resize" ng-src="img/fashion2.jpg"></a>
-    </div>
-    <div class="page-start" id="Office">
-        <a ng-href="#/card_view/officef"><img class="background-resize" ng-src="img/fashion3.jpg"></a>
-    </div>
-    <div class="page-start" id="Fashion">
-        <a ng-href="#/card_view/fashionf"><img class="background-resize" ng-src="img/fashion4.jpg"></a>
+
+    <div ng-show="gender_m">
+        <div class="page-start" id="genre{{x}}" ng-repeat="x in [1,2,3,4]">
+            <a ng-href="#/card_view/genre{{x}}/male"><img class="background-resize" ng-src="img/male{{x}}.jpg"></a>
+        </div>
     </div>

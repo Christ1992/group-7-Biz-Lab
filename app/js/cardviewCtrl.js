@@ -1,9 +1,7 @@
 weatherDressApp.controller('cardviewCtrl', function ($scope,$routeParams,$sce,Weather) {
-	var style= $routeParams;
-	
-
-
-
+	$scope.genre = $routeParams.OutfitNum;
+	$scope.gender = $routeParams.Gender;
+  
 
 
  });

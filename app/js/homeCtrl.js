@@ -28,10 +28,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
       //图标相关
       var iconIDToday = todayWeather.cond.code_d;
       $scope.iconToday = Weather.getForeImg(iconIDToday);
-      //$scope.condToday = todayWeather.cond.text_d;
-
-      //$scope.description=todayWeather.cond.text_d;
-
+     
       //日期
       $scope.dateToday = todayWeather.date.slice(5);
       //湿度
@@ -98,10 +95,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
 
         $scope.currentWeather = data;
         console.log(data);
-       // $scope.CurrentWeather.wind = data.wind.speed;
-        //  $scope.humidity = data.main.humidity;
-        //  $scope.precipitation = data.rain;
-        
+       
         //一句话描述
         $scope.description= data.weather[0].main;
         
@@ -159,37 +153,6 @@ $scope.dataGet();
     
 
 
-    $scope.toSidebar= function(){
-      //出现侧边栏
-    }
-    $scope.toSearch= function(){
-      //搜索框
-    }
-    
-
-
-
-    $scope.toCardview= function(style) {
-      //  进入选中详情页
-    }
-    
-
-
-
-    $scope.toCasual= function() {
-      // scroll
-    }
-    $scope.toOutdoor= function(){
-      //scroll
-    }
-    $scope.toOffice= function(){
-      //scroll
-    }
-    $scope.toFashion= function(){
-      //scroll
-    }
-
-
 
 
   // TODO in Lab 5: you need to get the dish according to the routing parameter
@@ -220,6 +183,37 @@ $scope.dataGet();
     $scope.setGender = function(gender){
         Weather.setGender(gender);
     }
+    console.log("$scope.genre_c"+$scope.genre_c);
+   
+}).directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+      
+        angular.element($window).bind("scroll", function() {
+            if (this.pageYOffset < window.innerWidth*1.61-40) {
+                 scope.showCasual = true;
+                 scope.showOutdoor = false;
+                 scope.showOffice = false;
+                 scope.showFashion = false;
 
-    
+             } else if (this.pageYOffset < window.innerWidth*1.61*2-40){
+                 scope.showCasual = false;
+                 scope.showOutdoor= true;
+                 scope.showOffice = false;
+                 scope.showFashion = false;
+                
+             }else if (this.pageYOffset < window.innerWidth*1.61*3-40){
+                 scope.showCasual = false;
+                 scope.showOutdoor= false;
+                 scope.showOffice = true;
+                 scope.showFashion = false;
+             }else{
+                 scope.showCasual = false;
+                 scope.showOutdoor= false;
+                 scope.showOffice = false;
+                 scope.showFashion = true;
+
+             }
+            scope.$apply();
+        });
+    };
 });
