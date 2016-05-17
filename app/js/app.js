@@ -54,7 +54,7 @@ weatherDressApp.config(['$routeProvider',
         controller: 'homeCtrl'
       }).
        when('/card_view', {
-        templateUrl: 'partials/card_view2.html',
+        templateUrl: 'partials/card_view.html',
         controller: 'cardviewCtrl'
       }).
        
