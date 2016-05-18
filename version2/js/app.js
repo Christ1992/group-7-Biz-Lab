@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ngCookies','ngSanitize','firebase']);
+var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ngCookies','ngSanitize','firebase','auth0', 'angular-storage', 'angular-jwt']);
 
 
 // Here we configure our application module and more specifically our $routeProvider. 
@@ -34,13 +34,8 @@ var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ng
 // the path we use the ":" sign. For instance, our '/dish/:dishId' will be triggered when we access 
 // 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
 // then access through $routeParams service. More information on this in the dishCtrl.js 
-weatherDressApp.config(['$routeProvider',
-  function($routeProvider) {
+weatherDressApp.config(function weatherDressAppConfig($routeProvider,authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider){
     $routeProvider.
-    //   when('/home', {
-    //     templateUrl: 'partials/home.html',
-    //     controller: 'homeCtrl'
-    //   }).
       when('/search', {
         templateUrl: 'partials/search.html',
         controller: 'searchCtrl'
@@ -60,12 +55,72 @@ weatherDressApp.config(['$routeProvider',
         when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'loginCtrl'
-      }).
-      //  when('/sidebar', {
-      //   templateUrl: 'partials/sidebar.html',
-      //   controller: 'sidebarCtrl'
-      // }).
+      }).     
       otherwise({
         redirectTo: '/home'
       });
-  }]);
+      
+      
+       authProvider.init({
+        domain: 'rona.auth0.com',
+        clientID: 'MA98QpSJYVgn4Jvkop2jZ3k357Q7XmQL',
+        loginUrl: '/login'
+      });
+    
+     
+      authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
+        console.log("Login Success");
+        profilePromise.then(function(profile) {
+          store.set('profile', profile);
+          store.set('token', idToken);
+        });
+        $location.path('/');
+      });
+
+      //Called when login fails
+      authProvider.on('loginFailure', function() {
+        console.log("Error logging in");
+        $location.path('/login');
+      });
+ 
+  
+  
+      jwtInterceptorProvider.tokenGetter = function(store) {
+        return store.get('token');
+      }
+ 
+  
+//Push interceptor function to $httpProvider's interceptors
+
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+}).run(function($rootScope, auth, store, jwtHelper, $location) {
+  $rootScope.$on('$locationChangeStart', function() {
+
+    var token = store.get('token');
+    if (token) {
+      if (!jwtHelper.isTokenExpired(token)) {
+        if (!auth.isAuthenticated) {
+          auth.authenticate(store.get('profile'), token);
+        }
+      } else {
+        // Either show the login page or use the refresh token to get a new idToken
+        $location.path('/');
+      }
+    }
+
+  });
+})
+.controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+  $scope.$on('$routeChangeSuccess', function(e, nextRoute){
+    if ( nextRoute.$$route && angular.isDefined( nextRoute.$$route.pageTitle ) ) {
+      $scope.pageTitle = nextRoute.$$route.pageTitle + ' | Auth0 Sample' ;
+    }
+  });
+});
+  
+ 
+     
+
+  
+  

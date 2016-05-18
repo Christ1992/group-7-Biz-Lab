@@ -4,48 +4,20 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 
-weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieStore){
+weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieStore,$anchorScroll){
     var location = "Stockholm";
-    var country="Sweden";
+    var country="Sweden"
     var gender="female";
-    var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378";
+    var OpenWeatherAPI="aaf8a194828942ebcc29a98835489378,c3b7bba4b5ac511ec04d73ac4065ea83"
+    var shopstyleAPU="uid1600-33362460-67";
+    var hefengAPI="939ca234771f43f29168f5e5d68257a5";
+    var arrayFWeather=[];
+    var arrayCWeather=[];
     
-    var genre = "casual";
-    var genre_c = true; 
-    var genre_office = false; 
-    var genre_outdoor = false; 
-    var genre_f = false;
-        
     var like_amt = 0;
-    
-    var _this = this;
-    
-    this.setGenre = function(genre){
-        var genre_c = false; 
-        var genre_office = false; 
-        var genre_outdoor = false; 
-        var genre_f = false;
-        switch(genre){
-            case("casual"):genre_c=true;
-            case("office"):genre_office=true;
-            case("outdoor"):genre_outdoor=true;
-            case("fashion"):genre_f=true;
-        }
-    }
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-   
+
+    $anchorScroll.yOffset = 44;
+
    this.setLocation = function(loc){
        location = loc;
    }
@@ -54,8 +26,11 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieSto
         return location;
     }
     
-    this.setGender = function(gender){
-        gender = gender;
+    this.setGender = function(gd){
+        gender = gd;
+    }
+    this.getGender = function(){
+        return gender;
     }
     
     this.setLike_amt = function(){
@@ -66,12 +41,12 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieSto
         return like_amt;
     }
     
-    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid1600-33362460-67',offset:0,limit:10});
-    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid1600-33362460-67'});
+    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
+    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
     
-    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid1600-33362460-67'});
-    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid1600-33362460-67'});
-    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid1600-33362460-67'});
+    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
+    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid2964-33820658-6'});
+    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid2964-33820658-6'});
     // this.getCurrentWeather = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     
     // this.getWeatherImg = function(condition){
@@ -88,10 +63,28 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieSto
     //     return url;
     // }
     
-    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
+    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
-    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{city:location, cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
+    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
     
+    // this.setWeatherData=function(loc){
+    //     this.getForecast.get({city:loc},function(data){
+    //         arrayFWeather = data['HeWeather data service 3.0']
+    //     });
+    //     this.getCurrent.get({q:loc},function(data){
+    //         arrayCWeather = data;
+    //     });
+    // }
+    // this.getFWeather=function(){
+    //     return arrayFWeather;
+    // }
+    // this.getCWeather=function(){
+    //     return arrayCWeather;
+    // }
+
+
+
+
     this.getWeatherImg = function(condition){
          var url;
          if(condition == "clear"){
@@ -113,60 +106,63 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieSto
                 return iconSet[key].url;
             }
         }
-    }          
+    }
+    
+    
+    
     
     var iconSet = [
-{"id":"100","cond":"Sunny/Clear","url":"http://files.heweather.com/cond_icon/100.png"},
-{"id":"101","cond":"Cloudy","url":"http://files.heweather.com/cond_icon/101.png"},
-{"id":"102","cond":"Few Clouds","url":"http://files.heweather.com/cond_icon/102.png"},
-{"id":"103","cond":"Partly Cloudy","url":"http://files.heweather.com/cond_icon/103.png"},
-{"id":"104","cond":"Overcast","url":"http://files.heweather.com/cond_icon/104.png"},
-{"id":"200","cond":"Windy","url":"http://files.heweather.com/cond_icon/200.png"},
-{"id":"201","cond":"Calm","url":"http://files.heweather.com/cond_icon/201.png"},
-{"id":"202","cond":"Light Breeze","url":"http://files.heweather.com/cond_icon/202.png"},
-{"id":"203","cond":"Moderate/Gentle Breeze","url":"http://files.heweather.com/cond_icon/203.png"},
-{"id":"204","cond":"Fresh Breeze","url":"http://files.heweather.com/cond_icon/204.png"},
-{"id":"205","cond":"Strong Breeze","url":"http://files.heweather.com/cond_icon/205.png"},
-{"id":"206","cond":"High Wind","url":" Near Gale","undefined":"http://files.heweather.com/cond_icon/206.png"},
-{"id":"207","cond":"Gale","url":"http://files.heweather.com/cond_icon/207.png"},
-{"id":"208","cond":"Strong Gale","url":"http://files.heweather.com/cond_icon/208.png"},
-{"id":"209","cond":"Storm","url":"http://files.heweather.com/cond_icon/209.png"},
-{"id":"210","cond":"Violent Storm","url":"http://files.heweather.com/cond_icon/210.png"},
-{"id":"211","cond":"Hurricane","url":"http://files.heweather.com/cond_icon/211.png"},
-{"id":"212","cond":"Tornado","url":"http://files.heweather.com/cond_icon/212.png"},
-{"id":"213","cond":"Tropical Storm","url":"http://files.heweather.com/cond_icon/213.png"},
-{"id":"300","cond":"Shower Rain","url":"http://files.heweather.com/cond_icon/300.png"},
-{"id":"301","cond":"Heavy Shower Rain","url":"http://files.heweather.com/cond_icon/301.png"},
-{"id":"302","cond":"Thundershower","url":"http://files.heweather.com/cond_icon/302.png"},
-{"id":"303","cond":"Heavy Thunderstorm","url":"http://files.heweather.com/cond_icon/303.png"},
-{"id":"304","cond":"Hail","url":"http://files.heweather.com/cond_icon/304.png"},
-{"id":"305","cond":"Light Rain","url":"http://files.heweather.com/cond_icon/305.png"},
-{"id":"306","cond":"Moderate Rain","url":"http://files.heweather.com/cond_icon/306.png"},
-{"id":"307","cond":"Heavy Rain","url":"http://files.heweather.com/cond_icon/307.png"},
-{"id":"308","cond":"Extreme Rain","url":"http://files.heweather.com/cond_icon/308.png"},
-{"id":"309","cond":"Drizzle Rain","url":"http://files.heweather.com/cond_icon/309.png"},
-{"id":"310","cond":"Storm","url":"http://files.heweather.com/cond_icon/310.png"},
-{"id":"311","cond":"Heavy Storm","url":"http://files.heweather.com/cond_icon/311.png"},
-{"id":"312","cond":"Severe Storm","url":"http://files.heweather.com/cond_icon/312.png"},
-{"id":"313","cond":"Freezing Rain","url":"http://files.heweather.com/cond_icon/313.png"},
-{"id":"400","cond":"Light Snow","url":"http://files.heweather.com/cond_icon/400.png"},
-{"id":"401","cond":"Moderate Snow","url":"http://files.heweather.com/cond_icon/401.png"},
-{"id":"402","cond":"Heavy Snow","url":"http://files.heweather.com/cond_icon/402.png"},
-{"id":"403","cond":"Snowstorm","url":"http://files.heweather.com/cond_icon/403.png"},
-{"id":"404","cond":"Sleet","url":"http://files.heweather.com/cond_icon/404.png"},
-{"id":"405","cond":"Rain And Snow","url":"http://files.heweather.com/cond_icon/405.png"},
-{"id":"406","cond":"Shower Snow","url":"http://files.heweather.com/cond_icon/406.png"},
-{"id":"407","cond":"Snow Flurry","url":"http://files.heweather.com/cond_icon/407.png"},
-{"id":"500 ","cond":"Mist","url":"http://files.heweather.com/cond_icon/500.png"},
-{"id":"501","cond":"Foggy","url":"http://files.heweather.com/cond_icon/501.png"},
-{"id":"502","cond":"Haze","url":"http://files.heweather.com/cond_icon/502.png"},
-{"id":"503","cond":"Sand","url":"http://files.heweather.com/cond_icon/503.png"},
-{"id":"504","cond":"Dust","url":"http://files.heweather.com/cond_icon/504.png"},
-{"id":"507","cond":"Duststorm","url":"http://files.heweather.com/cond_icon/507.png"},
-{"id":"508","cond":"Sandstorm","url":"http://files.heweather.com/cond_icon/508.png"},
-{"id":"900","cond":"Hot","url":"http://files.heweather.com/cond_icon/900.png"},
-{"id":"901","cond":"Cold","url":"http://files.heweather.com/cond_icon/901.png"},
-{"id":"999","cond":"Unknown","url":"http://files.heweather.com/cond_icon/999.png"}
+{"id":"100","cond":"Sunny/Clear","url":"img/icon/100.png"},
+{"id":"101","cond":"Cloudy","url":"img/icon/101.png"},
+{"id":"102","cond":"Few Clouds","url":"img/icon/102.png"},
+{"id":"103","cond":"Partly Cloudy","url":"img/icon/103.png"},
+{"id":"104","cond":"Overcast","url":"img/icon/104.png"},
+{"id":"200","cond":"Windy","url":"img/icon/200.png"},
+{"id":"201","cond":"Calm","url":"img/icon/201.png"},
+{"id":"202","cond":"Light Breeze","url":"img/icon/202.png"},
+{"id":"203","cond":"Moderate/Gentle Breeze","url":"img/icon/203.png"},
+{"id":"204","cond":"Fresh Breeze","url":"img/icon/204.png"},
+{"id":"205","cond":"Strong Breeze","url":"img/icon/205.png"},
+{"id":"206","cond":"High Wind","url":"img/icon/206.png"},
+{"id":"207","cond":"Gale","url":"img/icon/207.png"},
+{"id":"208","cond":"Strong Gale","url":"img/icon/208.png"},
+{"id":"209","cond":"Storm","url":"img/icon/209.png"},
+{"id":"210","cond":"Violent Storm","url":"img/icon/210.png"},
+{"id":"211","cond":"Hurricane","url":"img/icon/211.png"},
+{"id":"212","cond":"Tornado","url":"img/icon/212.png"},
+{"id":"213","cond":"Tropical Storm","url":"img/icon/213.png"},
+{"id":"300","cond":"Shower Rain","url":"img/icon/300.png"},
+{"id":"301","cond":"Heavy Shower Rain","url":"img/icon/301.png"},
+{"id":"302","cond":"Thundershower","url":"img/icon/302.png"},
+{"id":"303","cond":"Heavy Thunderstorm","url":"img/icon/303.png"},
+{"id":"304","cond":"Hail","url":"img/icon/304.png"},
+{"id":"305","cond":"Light Rain","url":"img/icon/305.png"},
+{"id":"306","cond":"Moderate Rain","url":"img/icon/306.png"},
+{"id":"307","cond":"Heavy Rain","url":"img/icon/307.png"},
+{"id":"308","cond":"Extreme Rain","url":"img/icon/308.png"},
+{"id":"309","cond":"Drizzle Rain","url":"img/icon/309.png"},
+{"id":"310","cond":"Storm","url":"img/icon/310.png"},
+{"id":"311","cond":"Heavy Storm","url":"img/icon/311.png"},
+{"id":"312","cond":"Severe Storm","url":"img/icon/312.png"},
+{"id":"313","cond":"Freezing Rain","url":"img/icon/313.png"},
+{"id":"400","cond":"Light Snow","url":"img/icon/400.png"},
+{"id":"401","cond":"Moderate Snow","url":"img/icon/401.png"},
+{"id":"402","cond":"Heavy Snow","url":"img/icon/402.png"},
+{"id":"403","cond":"Snowstorm","url":"img/icon/403.png"},
+{"id":"404","cond":"Sleet","url":"img/icon/404.png"},
+{"id":"405","cond":"Rain And Snow","url":"img/icon/405.png"},
+{"id":"406","cond":"Shower Snow","url":"img/icon/406.png"},
+{"id":"407","cond":"Snow Flurry","url":"img/icon/407.png"},
+{"id":"500 ","cond":"Mist","url":"img/icon/500.png"},
+{"id":"501","cond":"Foggy","url":"img/icon/501.png"},
+{"id":"502","cond":"Haze","url":"img/icon/502.png"},
+{"id":"503","cond":"Sand","url":"img/icon/503.png"},
+{"id":"504","cond":"Dust","url":"img/icon/504.png"},
+{"id":"507","cond":"Duststorm","url":"img/icon/507.png"},
+{"id":"508","cond":"Sandstorm","url":"img/icon/508.png"},
+{"id":"900","cond":"Hot","url":"img/icon/900.png"},
+{"id":"901","cond":"Cold","url":"img/icon/901.png"},
+{"id":"999","cond":"Unknown","url":"img/icon/999.png"}
 ] 
 
 
@@ -174,9 +170,10 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieSto
 
 //  var Firebase = require("firebase");
 var FirebaseRef = new Firebase("https://blazing-heat-24.firebaseio.com/");
+var userbase = FirebaseRef.child("userbase");
 
 this.checkAccount = function(username,password, succuss, fail){
-    return FirebaseRef.child(username).on("value", function(snapshot) {
+    return userbase.child(username).on("value", function(snapshot) {
         if(snapshot.val() != null){
             var entity = snapshot.val();
             if (entity.userID.password == password)
@@ -211,15 +208,15 @@ this.setAccount = function(username,password){
     //     return;
     // }
     
-    FirebaseRef.child(username).on("value", function(snapshot){
+     return userbase.child(username).on("value", function(snapshot){
         if(snapshot.val() != null){
             alert("The user name has already exist, please change another one!");
             return;
         }
         
-        else{
-            var newuser= FirebaseRef.child(username);
-            newuser.child("userID").set ({
+        else{            
+//            var newuser= userbase.child(username);
+             userbase.child(username).child("userID").set ({
                 name: username,
                 password: password
             });  
@@ -235,7 +232,15 @@ this.setAccount = function(username,password){
        
 }
 
+// cloth library
 
+var clothLib = FirebaseRef.child("clothbase");
+var count=0;
+var imgUrl="http://7-themes.com/6795945-girl-fashion.html";
+clothLib.child("outfit1").set({
+    id:count,
+    uri:imgUrl
+})
 
 
 

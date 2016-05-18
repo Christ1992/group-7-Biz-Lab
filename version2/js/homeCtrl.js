@@ -1,38 +1,46 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
+weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,Weather, auth, $http, store, $rootScope) {
 
     $scope.location = Weather.getLocation();
 
-    Weather.getCurrent.get(function(data){
+    // Weather.setWeatherData(Weather.getLocation());
+
+    $scope.auth = auth;
+    console.log($rootScope.profile);
+    $scope.callApi = function() {
+        // Just call the API as you'd do using $http
+        $http({
+        url: 'http://localhost:8000/secured/ping',
+        method: 'GET'
+        }).then(function() {
+        alert("We got the secured data successfully");
+        }, function(response) {
+        if (response.status == -1) {
+            alert("Please download the API seed so that you can call it.");
+        }
+        else {
+            alert(response.data);
+        }
+        });
+    }
+
+  $scope.logout = function() {
+    auth.signout();
+    store.remove('profile');
+    store.remove('token');
+    $location.path('/login');
+  }
 
 
 
-        $scope.currentWeather = data;
-        console.log(data);
-       // $scope.CurrentWeather.wind = data.wind.speed;
-        //  $scope.humidity = data.main.humidity;
-        //  $scope.precipitation = data.rain;
-        
-        //一句话描述
-        $scope.description= data.weather[0].main;
-        
-
-        //当前温度
-        $scope.temperature= Math.round(data.main.temp-273);
-
-        //图片
-        $scope.imgUrl = Weather.getWeatherImg(data.weather[0].main);
-
-       });
-    
-
-
-
-     Weather.getForecast.get(function(data){
-
+  
+ $scope.dataGet=function(){
+  Weather.getForecast.get({city:Weather.getLocation()},function(data){
+      
       var result = data['HeWeather data service 3.0']
       console.log(data['HeWeather data service 3.0']);
+
       
 //今天
       var todayWeather= result[0].daily_forecast[0];
@@ -47,16 +55,14 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //图标相关
       var iconIDToday = todayWeather.cond.code_d;
       $scope.iconToday = Weather.getForeImg(iconIDToday);
-      //$scope.condToday = todayWeather.cond.text_d;
-
-      //$scope.description=todayWeather.cond.text_d;
-
+     
       //日期
-      $scope.dateToday = todayWeather.date;
+      $scope.dateToday = todayWeather.date.slice(5);
       //湿度
       $scope.humToday = todayWeather.hum;
       //风力
       $scope.windToday = todayWeather.wind.sc; 
+
       //概率
       $scope.precToday = todayWeather.pop;
       //能见度
@@ -76,7 +82,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //$scope.condToday = todayWeather.cond.text_d;
 
       //日期
-      $scope.dateTmr = tmrWeather.date;
+      $scope.dateTmr = tmrWeather.date.slice(5);
       //湿度
       $scope.humTmr = tmrWeather.hum;
       //风力
@@ -98,7 +104,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //$scope.condToday = todayWeather.cond.text_d;
 
       //日期
-      $scope.dateAft = aftWeather.date;
+      $scope.dateAft = aftWeather.date.slice(5);
       //湿度
       $scope.humAft = aftWeather.hum;
       //风力
@@ -108,8 +114,31 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       //能见度
       $scope.visAft =  aftWeather.vis;
        
+  });
 
-       });
+
+
+  Weather.getCurrent.get({q:Weather.getLocation()},function(data){
+
+        $scope.currentWeather = data;
+        console.log(data);
+       
+        //一句话描述
+        $scope.description= data.weather[0].main;
+        
+
+        //当前温度
+        $scope.temperature= Math.round(data.main.temp-273);
+
+        //图片
+        $scope.imgUrl = Weather.getWeatherImg(data.weather[0].main);
+
+  });
+}
+
+$scope.dataGet();
+
+
     $scope.weatherDetail=function(){
         $('#generW').hide();
         $('#detailW').show();
@@ -121,13 +150,11 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
 
 
 
-
     $scope.toToday= function () {
       $('#generW').show();
       $('#detailW').hide();
       $('#toTmr').hide();
       $('#toAft').hide();
-
       $('#todaySelected').show();
       $('#tmrSelected').hide();
       $('#aftSelected').hide();
@@ -137,7 +164,6 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       $('#detailW').hide();
       $('#toTmr').show();
       $('#toAft').hide();
-
       $('#todaySelected').hide();
       $('#tmrSelected').show();
       $('#aftSelected').hide();
@@ -147,43 +173,11 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
       $('#detailW').hide();
       $('#toTmr').hide();
       $('#toAft').show();
-
       $('#todaySelected').hide();
       $('#tmrSelected').hide();
       $('#aftSelected').show();
     }
     
-
-
-    $scope.toSidebar= function(){
-      //出现侧边栏
-    }
-    $scope.toSearch= function(){
-      //搜索框
-    }
-    
-
-
-
-    $scope.toCardview= function(style) {
-      //  进入选中详情页
-    }
-    
-
-
-
-    $scope.toCasual= function() {
-      // scroll
-    }
-    $scope.toOutdoor= function(){
-      //scroll
-    }
-    $scope.toOffice= function(){
-      //scroll
-    }
-    $scope.toFashion= function(){
-      //scroll
-    }
 
 
 
@@ -192,39 +186,75 @@ weatherDressApp.controller('homeCtrl', function ($scope,Weather) {
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
   
+
   
-  
-  
-    $scope.gender_f = true;
-    $scope.gender_m = false;
-    
-    // $scope.genre_c=Weather.genre_c;
-    // $scope.genre_office= Weather.genre_office;
-    // $scope.genre_outdoor=Weather.genre_outdoor; 
-    // $scope.genre_f=Weather.genre_f;
-    
-    $scope.genre_c=true; 
-    $scope.genre_office=false; 
-    $scope.genre_outdoor=false; 
-    $scope.genre_f=false;
-    
-    // $scope.setGenre = function(genre){
-    //   Weather.setGenre(genre);
-    // }
     
     $scope.sidebar=false;
-   
     
+    $scope.goto = function (id) {
+        console.log(id);
+        if($scope.gender_f){
+          id="F"+id;
+
+        }else{
+          id="M"+id;
+        }
+        console.log(id);
+            $location.hash(id);
+            $anchorScroll();
+    }
+
     $scope.setLocation = function(location){
         Weather.setLocation(location);
-    }
-    
-    $scope.getLocation = function(){
-        return Weather.getLocation();
+        $scope.dataGet();
     }
     
     $scope.setGender = function(gender){
         Weather.setGender(gender);
     }
+    $scope.getGender = function(){
+       var gender=Weather.getGender();
+       if(gender=="female"){
+          $scope.gender_f = true;
+          $scope.gender_m = false;
+       }else{
+          $scope.gender_f = false;
+          $scope.gender_m = true;
+       }
+       console.log("1");
+       console.log($scope.gender_f);
+    }
+   $scope.getGender();
+   
+}).directive("scroll", function ($window) {
+    return function(scope, element, attrs) {
+      
+        angular.element($window).bind("scroll", function() {
+            if (this.pageYOffset < window.innerWidth*1.61-40) {
+                 scope.showCasual = true;
+                 scope.showOutdoor = false;
+                 scope.showOffice = false;
+                 scope.showFashion = false;
 
+             } else if (this.pageYOffset < window.innerWidth*1.61*2-40){
+                 scope.showCasual = false;
+                 scope.showOutdoor= true;
+                 scope.showOffice = false;
+                 scope.showFashion = false;
+                
+             }else if (this.pageYOffset < window.innerWidth*1.61*3-40){
+                 scope.showCasual = false;
+                 scope.showOutdoor= false;
+                 scope.showOffice = true;
+                 scope.showFashion = false;
+             }else{
+                 scope.showCasual = false;
+                 scope.showOutdoor= false;
+                 scope.showOffice = false;
+                 scope.showFashion = true;
+
+             }
+            scope.$apply();
+        });
+    };
 });
