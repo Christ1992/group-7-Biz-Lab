@@ -760,6 +760,10 @@ body{
 }
 
 
-
+#buyButton{
+    padding: 3px 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
 
 
