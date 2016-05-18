@@ -8,7 +8,7 @@
 // also see that we included separate JavaScript files for these modules. Angular
 // has other core modules that you might want to use and explore when you go deeper
 // into developing Angular applications. For this lab, these two will suffice.
-var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ngCookies','ngSanitize']);
+var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ngCookies','ngSanitize','angulartics','angulartics.google.analytics']);
 
 
 // Here we configure our application module and more specifically our $routeProvider. 
@@ -35,7 +35,7 @@ var weatherDressApp = angular.module('weatherDress', ['ngRoute','ngResource','ng
 // 'http://localhost:8000/#/dish/12345'. The 12345 value will be stored in a dishId parameter, which we can
 // then access through $routeParams service. More information on this in the dishCtrl.js 
 weatherDressApp.config(['$routeProvider',
-  function($routeProvider) {
+  function($routeProvider,$analyticsProvider) {
     $routeProvider.
     //   when('/home', {
     //     templateUrl: 'partials/home.html',

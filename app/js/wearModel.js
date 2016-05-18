@@ -41,12 +41,12 @@ $anchorScroll.yOffset = 44;
         return like_amt;
     }
     
-    this.getAllClothes = $resource('http://api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
-    this.getCloth = $resource('http://api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
+    this.getAllClothes = $resource('//api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
+    this.getCloth = $resource('//api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
     
-    this.getClothing = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
-    this.getAccessories = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid2964-33820658-6'});
-    this.getShoes = $resource('http://api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid2964-33820658-6'});
+    this.getClothing = $resource('//api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
+    this.getAccessories = $resource('//api.shopstyle.com/api/v2/products?',{fts:"accessories",pid:'uid2964-33820658-6'});
+    this.getShoes = $resource('//api.shopstyle.com/api/v2/products?',{fts:"shoes",pid:'uid2964-33820658-6'});
     // this.getCurrentWeather = $resource('http://api.openweathermap.org/data/2.5/weather?',{q:location, APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
     
     // this.getWeatherImg = function(condition){
