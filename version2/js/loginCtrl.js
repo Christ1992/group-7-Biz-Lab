@@ -22,7 +22,12 @@
 
 
 //Auth0
-weatherDressApp.controller( 'loginCtrl', function ( $scope, auth) {
+weatherDressApp.controller( 'loginCtrl', function ( $scope, auth, $firebaseArray, Weather) {
 
   $scope.auth = auth;
+  $scope.getCloth = function(){
+    
+    var t=Weather.getWeatherCloth(8,"Female",1);
+    $scope.data=t;
+  }
 });

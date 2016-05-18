@@ -4,7 +4,7 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 
-weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieStore,$anchorScroll){
+weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$firebaseArray,$cookieStore,$anchorScroll){
     var location = "Stockholm";
     var country="Sweden"
     var gender="female";
@@ -13,6 +13,7 @@ weatherDressApp.factory('Weather',function ($resource,$firebaseObject,$cookieSto
     var hefengAPI="939ca234771f43f29168f5e5d68257a5";
     var arrayFWeather=[];
     var arrayCWeather=[];
+    var count=0;
     
     var like_amt = 0;
 
@@ -173,7 +174,7 @@ var FirebaseRef = new Firebase("https://blazing-heat-24.firebaseio.com/");
 var userbase = FirebaseRef.child("userbase");
 
 this.checkAccount = function(username,password, succuss, fail){
-    return userbase.child(username).on("value", function(snapshot) {
+    return userbase.child(username).once("value", function(snapshot) {
         if(snapshot.val() != null){
             var entity = snapshot.val();
             if (entity.userID.password == password)
@@ -208,7 +209,7 @@ this.setAccount = function(username,password){
     //     return;
     // }
     
-     return userbase.child(username).on("value", function(snapshot){
+     return userbase.child(username).once("value", function(snapshot){
         if(snapshot.val() != null){
             alert("The user name has already exist, please change another one!");
             return;
@@ -234,16 +235,31 @@ this.setAccount = function(username,password){
 
 // cloth library
 
-var clothLib = FirebaseRef.child("clothbase");
-var count=0;
-var imgUrl="http://7-themes.com/6795945-girl-fashion.html";
-clothLib.child("outfit1").set({
-    id:count,
-    uri:imgUrl
-})
-
-
-
+    this.getWeatherCloth = function(temp,gender,num){      
+        var i;
+        //var j;
+        i =  5 + (temp / 10);
+        var ref = new Firebase("https://blazing-heat-24.firebaseio.com/weatherDress/A"+i+"/"+gender+"/Array"+num);
+        //var array = ref.child(gender);
+        // var lib = FirebaseRef.child("clothbase").child(count);
+        
+        
+    //     var list = $firebaseArray(ref);
+    //         list.$add({ foo: "bar" }).then(function(ref) {
+    //         var id = ref.key();
+    //         console.log("added record with id " + id);
+    //         list.$indexFor(id); // returns location in the array
+    //        });
+    //    // lib = $firebaseObject(ref);
+    //     lib.$add($firebaseObject(ref)).then(function(ref) {
+    //         ref.key() === lib.$id; // true
+    //         }, function(error) {
+    //         console.log("Error:", error);
+    //     });
+    //     count++;
+        return $firebaseObject(ref);       
+    }
+    
     
     
     return this;
