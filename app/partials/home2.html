@@ -13,11 +13,12 @@
                     </div>
                     <div class="T-center profileName">Kate Jones</div>
                     <div class="liked">
-                        <div class="Half borderRight">
+
+                        <div class="Half borderRight" ng-click="auth.signin()" >
                             <div class="T-center likedNum">19</div>
                             <div class="T-center likedTitle">Liked Items</div>
                         </div>
-                        <div class="Half">
+                        <div class="Half" ng-click="auth.signin()" >
                             <div class="T-center likedNum">23</div>
                             <div class="T-center likedTitle">Liked Outfits</div>
                         </div>
@@ -93,8 +94,8 @@
             </div>
     <!-- Setting & logout -->
 	           <div class="set_bottom"> 
-                            <div class="set"><img class="Bottonsize"src="img/setting.png"></div>
-                            <div class="finder"><img class="Bottonsize"src="img/logout.png"></div>
+                            <div class="set"><img class="Bottonsize" src="img/setting.png"></div>
+                            <div class="finder"><img class="Bottonsize" src="img/logout.png" ng-click="logout()"></div>
                 </div>
         </div>
     </div>

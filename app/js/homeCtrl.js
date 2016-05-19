@@ -1,12 +1,19 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,Weather) {
+weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,Weather,auth, $http, store, $rootScope) {
 
     $scope.location = Weather.getLocation();
 
     // Weather.setWeatherData(Weather.getLocation());
 
-
+$scope.auth = auth;
+$scope.logout = function() {
+    auth.signout();
+    store.remove('profile');
+    store.remove('token');
+    $location.path('/home');
+  }
+  
   
 $scope.dataGet=function(){
   Weather.getForecast.get({city:Weather.getLocation()},function(data){
