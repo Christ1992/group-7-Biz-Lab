@@ -58,6 +58,7 @@ body{
     }
     .page-start{
         width: 100%;
+        position: relative;
         /*height: window.height;
         需要用js来赋值,或者设置合适的照片大小*/
     }

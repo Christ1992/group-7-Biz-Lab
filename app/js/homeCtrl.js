@@ -8,13 +8,12 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
 
 
   
- $scope.dataGet=function(){
+$scope.dataGet=function(){
   Weather.getForecast.get({city:Weather.getLocation()},function(data){
       
       var result = data['HeWeather data service 3.0']
       console.log(data['HeWeather data service 3.0']);
-
-      
+     
 //今天
       var todayWeather= result[0].daily_forecast[0];
       
@@ -40,8 +39,6 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
       $scope.precToday = todayWeather.pop;
       //能见度
       $scope.visToday =  todayWeather.vis;
-       
-
 
 //明天
       var tmrWeather= result[0].daily_forecast[1];
@@ -87,7 +84,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
       //能见度
       $scope.visAft =  aftWeather.vis;
        
-  });
+});
 
 
 
@@ -112,6 +109,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
 $scope.dataGet();
 
 
+//切换
     $scope.weatherDetail=function(){
         $('#generW').hide();
         $('#detailW').show();
@@ -120,7 +118,6 @@ $scope.dataGet();
         $('#generW').show();
         $('#detailW').hide();
     }
-
 
 
     $scope.toToday= function () {
@@ -150,8 +147,25 @@ $scope.dataGet();
       $('#tmrSelected').hide();
       $('#aftSelected').show();
     }
-    
 
+$scope.setLiked=[false,false,false,false,false,false,false,false]
+
+$scope.setLike_amt=function(id,gender){
+  if(gender=='M'){
+    id=id+4;
+  }
+  $scope.setLiked[id-1]=true;
+  console.log($scope.setLiked);
+}
+
+$scope.removeLike_amt=function(id,gender){
+  if(gender=='M'){
+    id=id+4;
+  }
+  $scope.setLiked[id-1]=false;
+  
+  console.log($scope.setLiked);
+}
 
 
 
@@ -162,8 +176,8 @@ $scope.dataGet();
 
   
     
-    $scope.sidebar=false;
-    
+   
+//anchor    
     $scope.goto = function (id) {
         console.log(id);
         if($scope.gender_f){
@@ -177,6 +191,8 @@ $scope.dataGet();
             $anchorScroll();
     }
 
+//sidebar Setting
+ $scope.sidebar=false;
     $scope.setLocation = function(location){
         Weather.setLocation(location);
         $scope.dataGet();

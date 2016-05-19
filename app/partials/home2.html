@@ -262,12 +262,21 @@
 
     <div ng-show="gender_f" scroll>
         <div class="page-start" id="Fgenre{{x}}" ng-repeat="x in [1,2,3,4]">
+            <div class="likedHeart">
+                <img class="resizeHeartImg" ng-click="setLike_amt(x,'F')" ng-hide="setLiked[x-1]" src="img/unlikeHeart.png">
+                <img class="resizeHeartImg" ng-click="removeLike_amt(x,'F')" ng-show="setLiked[x-1]" src="img/heart.png">
+            </div>
             <a ng-href="#/card_view/genre{{x}}/female"><img class="background-resize" ng-src="img/female{{x}}.jpg"></a>
+            
         </div>
     </div>
 
     <div ng-show="gender_m" scroll>
         <div class="page-start" id="Mgenre{{x}}" ng-repeat="x in [1,2,3,4]">
+            <div class="likedHeart">
+                <img class="resizeHeartImg" ng-click="setLike_amt(x,'M')" ng-hide="setLiked[x+3]" src="img/unlikeHeart.png">
+                <img class="resizeHeartImg" ng-click="removeLike_amt(x,'M')" ng-show="setLiked[x+3]" src="img/heart.png">
+            </div>
             <a ng-href="#/card_view/genre{{x}}/male"><img class="background-resize" ng-src="img/male{{x}}.jpg"></a>
         </div>
     </div>
