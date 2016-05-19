@@ -70,9 +70,11 @@ weatherDressApp.config(
      
       authProvider.on('loginSuccess', function($location, profilePromise, idToken, store,Weather) {
         console.log("Login Success");
+        console.log(profilePromise);
         profilePromise.then(function(profile) {
           store.set('profile', profile);
           store.set('token', idToken);
+          Weather.setProfile(profile);
         });
         
         

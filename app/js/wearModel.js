@@ -13,10 +13,16 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll
     var hefengAPI="939ca234771f43f29168f5e5d68257a5";
     var arrayFWeather=[];
     var arrayCWeather=[];
-    
+    var profile=[];
     var like_amt = 0;
 
 $anchorScroll.yOffset = 44;
+    this.setProfile=function(pro){
+        profile=pro;
+    }
+    this.getProfile=function(){
+        return profile
+    }
 
    this.setLocation = function(loc){
        location = loc;
