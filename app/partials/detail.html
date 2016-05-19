@@ -39,9 +39,41 @@
             <td>
                 
                 <span>
-                <a href="#" style="text-decoration:none"><img class="sign_img2" src="img/facebook.png"></img></a>
-                <a href="#" style="text-decoration:none"><img class="sign_img2" src="img/Pinterest.jpg"></img></a></span>
-                <a id="buyButton" class="F-right" ng-click="buyContrl=!buyContrl" analytics-on="click" analytics-event="Buy"><span class="but_it_btn ">BUT IT Now !! at {{cloth.priceLabel}}</span></a>
+                <a 
+                socialshare
+                socialshare-provider="facebook"
+                socialshare-text="Wear weather with style. Come and join me in WearCast"
+                socialshare-description="WearCast, WeatherWithStyle"
+                socialshare-hashtags="WearCast, WeatherWithStyle"
+                
+                socialshare-display="dhsslljls"
+                socialshare-url="http://wearcast.coolsite360.com/index.html"
+                >
+                <img class="sign_img2" src="img/facebook.png">
+                </a>
+<!-- twitter fixed -->
+                <a 
+                socialshare
+                socialshare-provider="twitter"
+                socialshare-text="Come and join me in WearCast. Be beautiful and cozy everyday."
+                socialshare-hashtags="WearCast, Weather-With-Style"
+                socialshare-url="http://wearcast.coolsite360.com/index.html"
+                >
+                <img class="sign_img2" src="img/twitter.png">
+                </a>
+<!--  Pinterest fixed -->
+                <a 
+                socialshare
+                socialshare-provider="pinterest"
+                socialshare-text="Weather with style. Come and join me in  WearCast . http://wearCast.coolsite360.com/index.html"
+                socialshare-media="//people.kth.se/~ziying/img/finalProduct.jpg"
+                socialshare-url="http://wearcast.coolsite360.com/index.html"
+                >
+                <img class="sign_img2" src="img/pinterest.jpg">
+                </a>
+
+                </span>
+                <a id="buyButton" class="F-right" ng-click="buyContrl=!buyContrl" analytics-on="click" analytics-event="Buy"><span class="but_it_btn ">BUY IT Now !! at {{cloth.priceLabel}}</span></a>
                 <!--<a href="https://www.pinterest.com/pin/create/button/">
                     <img class="sign_img2" src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
                 </a>-->
