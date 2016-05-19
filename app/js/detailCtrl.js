@@ -16,6 +16,7 @@ weatherDressApp.controller('detailCtrl', function ($scope,$routeParams,$sce,Weat
     $scope.setLike_amt = function(){
         Weather.setLike_amt();
     }
+    $scope.likedInfo=false;
    // $scope.like_amt = Weather.getLike_amt();
    
 });
