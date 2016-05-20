@@ -113,7 +113,7 @@ body{
     }
     .Third{
         display: inline-block;
-        width: 32%;
+        width: 31%;
         text-align: center;
     }
     .Third img{
@@ -447,9 +447,11 @@ body{
         margin-bottom: 5px;
     }
     .likedNum{
+        color: white;
         font-size: 24px;
     }
     .likedTitle{
+        color: white;
         font-size: 10px;
     }
     .location_edge{
@@ -557,10 +559,14 @@ body{
     background: #f0eff5;
     padding: 7px 7px;
 }
-.searchArea input{
+.searchArea form{
+    display: inline-block;
+    width: 63%;
+}
+.searchArea form input{
     padding: 5px 5px;
     height: 20px;
-    width: 63%;
+    width: 100%;
 }
 
 .likedHeart{

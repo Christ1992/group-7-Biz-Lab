@@ -22,6 +22,9 @@ $anchorScroll.yOffset = 44;
     this.setProfile=function(pro){
         profile=pro;
         userID=profile.clientID;
+        console.log(profile);
+        $cookieStore.put("userID", userID);
+        
     }
     this.getProfile=function(){
         return profile
@@ -200,7 +203,14 @@ var FirebaseRef = new Firebase("https://blazing-heat-24.firebaseio.com/");
 var userbase = FirebaseRef.child("userbase");
 
 this.getUserID=function(){
-    return userID;
+    if ($cookieStore.get("userID")==undefined) {
+        return userID;
+    }else{
+        userID=$cookieStore.get("userID");
+        return userID;
+    }
+    
+    
 }
 // this.checkAccount = function(username){
 //     return userbase.child(username).once("value", function(snapshot) {
@@ -220,16 +230,18 @@ this.getUserID=function(){
 //     });
 // }
 
-this.checkAccount = function(userid){
+this.checkAccount = function(userid,success,fail){
     var ref = userbase.child(userid);
 
     return ref.once("value",function(snapshot){
         if(snapshot.val() == null){
             console.log("11111111111");
-            return false;
+            //return false;
+            fail(false);
         }
         else{
-            return true;
+            //return true;
+            success(true);
         }
     })
 }
@@ -272,7 +284,7 @@ this.checkAccount = function(userid){
 
 // cloth library
 
-    this.getWeatherCloth = function(temp,code,gender,num){      
+    this.getWeatherCloth = function(temp,code,gender,num,success){      
         var i;
         var j;
         i =  5 + parseInt(temp / 10) * 10;
@@ -281,9 +293,10 @@ this.checkAccount = function(userid){
         //var ref = new Firebase("https://blazing-heat-24.firebaseio.com/weatherDress/A5C1/Female/Array1");
         
         var ref = FirebaseRef.child("weatherDress").child("A"+i+"C"+j).child(gender).child("Array"+num);
-        ref.once("value", function(snapshot) {
+        return ref.once("value", function(snapshot) {
             var obj=snapshot.val();
-            return obj;    
+            //return obj;    
+            success(obj);
         });
         //var array = ref.child(gender);
         // var lib = FirebaseRef.child("clothbase").child(count);
@@ -307,7 +320,8 @@ this.checkAccount = function(userid){
     
     
     this.setLike_outfit = function(id,url){
-        var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(id);
+        var userid=_this.getUserID();
+        var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
         obj.set({
             url: url
             //url: url
@@ -315,19 +329,20 @@ this.checkAccount = function(userid){
      }
      
      this.del_outfit = function(id){
-         var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(id);
+         var userid=_this.getUserID();
+         var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
          obj.set({
              url: null
          })   
      }
     
      this.getLike_outfit = function(success){
-        console.log(userID);
-        if(userID==""){
+        var userid=_this.getUserID();
+        if(userid==""){
             return;
         }else{
-            var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-          ref.on("value",function(snapshot){
+            var ref = FirebaseRef.child("userbase").child(userid).child("outfit");
+          return ref.on("value",function(snapshot){
              var obj = snapshot.val();
              console.log("objjjjjjjjjjjjjjjjj");
              console.log(obj);
@@ -338,49 +353,58 @@ this.checkAccount = function(userid){
          
      }
      
-     this.checkLike_outfit = function(id){
-         var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-            ref.child(id).once("value", function(snapshot){
+     this.checkLike_outfit = function(id,success,fail){
+        var userid=_this.getUserID();
+         var ref = FirebaseRef.child("userbase").child(userid).child("outfit");
+            return ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
-                    return true;
+                    success(true);
+                    //return true;
                 }
                 else{
-                    return false;
+                    fail(false);
+                    //return false;
                 }
             });
      }
      
      this.setLike_item = function(id,url){
-        var obj = FirebaseRef.child("userbase").child(userID).child("item").child(id);
+        var userid=_this.getUserID();
+        var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);
         obj.set({
             url: url
         })                  
      }
      
      this.del_item = function(id){
-         var obj = FirebaseRef.child("userbase").child(userID).child("item").child(id);
+         var userid=_this.getUserID();
+         var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);
          obj.set({
              url: null
          })   
      }
     
      this.getLike_item = function(success){
-         var ref = FirebaseRef.child("userbase").child(userID).child("item");
-         ref.on("value",function(snapshot){
+         var userid=_this.getUserID();
+         var ref = FirebaseRef.child("userbase").child(userid).child("item");
+         return ref.on("value",function(snapshot){
              var obj = snapshot.val();
              success(obj);
              //return obj;
          })
      }
      
-     this.checkLike_item = function(id){
-         var ref = FirebaseRef.child("userbase").child(userID).child("item");
-            ref.child(id).once("value", function(snapshot){
+     this.checkLike_item = function(id,success,fail){
+         var userid=_this.getUserID();
+         var ref = FirebaseRef.child("userbase").child(userid).child("item");
+            return ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
-                    return true;
+                    success(true);
+                    //return true;
                 }
                 else{
-                    return false;
+                    fail(false);
+                    //return false;
                 }
             });
      }  

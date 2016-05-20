@@ -38,7 +38,7 @@ weatherDressApp.config(
   // ['$routeProvider',
   function($routeProvider,$analyticsProvider,authProvider, $httpProvider, $locationProvider, jwtInterceptorProvider) {
     $routeProvider.
-      when('/search', {
+      when('/search/:Query', {
         templateUrl: 'partials/search.html',
         controller: 'searchCtrl'
       }).
@@ -61,12 +61,12 @@ weatherDressApp.config(
       when('/likedOutfit', {
         templateUrl: 'partials/outfit.html',
         controller: 'likedCtrl',
-        requiresLogin: true
+
 
       }).when('/likedItem', {
         templateUrl: 'partials/item.html',
         controller: 'likedCtrl',
-        requiresLogin: true
+
       }).
       
       otherwise({

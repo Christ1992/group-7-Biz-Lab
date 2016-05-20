@@ -1,9 +1,11 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
-weatherDressApp.controller('searchCtrl', function ($scope,Weather) {
-    
+weatherDressApp.controller('searchCtrl', function ($scope,Weather,$routeParams) {
+    $scope.query=$routeParams.Query;
+    console.log($scope.query);
     $scope.search = function(keywords) {
   	//var any_kw = type + " " + keywords;
+    $scope.query=keywords;
     $scope.status = "Searching...";
     Weather.getAllClothes.get({fts:keywords},function(data){
         $scope.clothes=data.products;
@@ -31,7 +33,7 @@ weatherDressApp.controller('searchCtrl', function ($scope,Weather) {
          });
      }
     
-    $scope.search("dressing");
+    $scope.search($scope.query);
 
     /* When the user clicks on the button, 
     toggle between hiding and showing the dropdown content */

@@ -1,6 +1,6 @@
 // Dinner controller that we use whenever we want to display detailed
 // information for one dish
-weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,Weather,auth, $http, store, $rootScope) {
+weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,Weather,auth, $http, store, $rootScope,$cookies) {
 
     $scope.location = Weather.getLocation();
 
@@ -9,7 +9,7 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
 $scope.auth = auth;
 $scope.logout = function() {
     auth.signout();
-    store.remove('userID');
+    $cookies.remove('userID');
     $location.path('/home');
   }
   
