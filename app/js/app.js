@@ -57,6 +57,18 @@ weatherDressApp.config(
         templateUrl: 'partials/login.html',
         controller: 'loginCtrl'
       }).
+
+      when('/likedOutfit', {
+        templateUrl: 'partials/outfit.html',
+        controller: 'likedCtrl',
+        requiresLogin: true
+
+      }).when('/likedItem', {
+        templateUrl: 'partials/item.html',
+        controller: 'likedCtrl',
+        requiresLogin: true
+      }).
+      
       otherwise({
         redirectTo: '/home'
       });
@@ -70,15 +82,16 @@ weatherDressApp.config(
      
       authProvider.on('loginSuccess', function($location, profilePromise, idToken, store,Weather) {
         console.log("Login Success");
-        console.log(profilePromise);
         profilePromise.then(function(profile) {
-          store.set('profile', profile);
-          store.set('token', idToken);
+           store.set('userID', profile.clientID);
+          // store.set('token', idToken);
+          console.log(profile);
           Weather.setProfile(profile);
+          $location.path('/');
         });
         
         
-        $location.path('/');
+        
       });
 
       //Called when login fails
@@ -89,15 +102,15 @@ weatherDressApp.config(
  
   
   
-      jwtInterceptorProvider.tokenGetter = function(store) {
-        return store.get('token');
-      }
+//       jwtInterceptorProvider.tokenGetter = function(store) {
+//         return store.get('token');
+//       }
  
   
-//Push interceptor function to $httpProvider's interceptors
+// //Push interceptor function to $httpProvider's interceptors
 
 
-    $httpProvider.interceptors.push('jwtInterceptor');
+//     $httpProvider.interceptors.push('jwtInterceptor');
 
   }
   //]

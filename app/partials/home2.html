@@ -14,14 +14,14 @@
                     <div class="T-center profileName">Kate Jones</div>
                     <div class="liked">
 
-                        <div class="Half borderRight" ng-click="auth.signin()" >
+                        <a class="Half borderRight" ng-href="#/likedItem" >
                             <div class="T-center likedNum">19</div>
                             <div class="T-center likedTitle">Liked Items</div>
-                        </div>
-                        <div class="Half" ng-click="auth.signin()" >
+                        </a>
+                        <a class="Half" ng-href="#/likedOutfit" >
                             <div class="T-center likedNum">23</div>
                             <div class="T-center likedTitle">Liked Outfits</div>
-                        </div>
+                        </a>
                     </div>
     <!-- Location -->
 
@@ -118,7 +118,7 @@
             <div id="headingTop">
                 <span class="F-left"><a id="sidebarButton" ng-click="sidebar=true"><img class="icon-resize" src="img/list.png"></a></span>
                 <span class="F-center" >WearCast</span>
-                <span class="F-right"><a ng-href="#/search"><img class="icon-resize" src="img/search.png" ></a></span>
+                <span class="F-right"><a ng-href="#/search/dress"><img class="icon-resize" src="img/search.png" ></a></span>
             </div>
              
         </div>
@@ -264,8 +264,8 @@
     <div ng-show="gender_f" scroll>
         <div class="page-start" id="Fgenre{{x}}" ng-repeat="x in [1,2,3,4]">
             <div class="likedHeart">
-                <img class="resizeHeartImg" ng-click="setLike_amt(x,'F')" ng-hide="setLiked[x-1]" src="img/unlikeHeart.png">
-                <img class="resizeHeartImg" ng-click="removeLike_amt(x,'F')" ng-show="setLiked[x-1]" src="img/heart.png">
+                <img class="resizeHeartImg" ng-click="setLike_outfit(x,'img/male5.jpg',x)" ng-hide="setLiked[x-1]" src="img/unlikeHeart.png">
+                <img class="resizeHeartImg" ng-click="del_outfit(x,x)" ng-show="setLiked[x-1]" src="img/heart.png">
             </div>
             <a ng-href="#/card_view/genre{{x}}/female"><img class="background-resize" ng-src="img/female{{x}}.jpg"></a>
             
@@ -273,10 +273,10 @@
     </div>
 
     <div ng-show="gender_m" scroll>
-        <div class="page-start" id="Mgenre{{x}}" ng-repeat="x in [1,2,3,4]">
+        <div class="page-start" id="Mgenre{{x}}" ng-repeat="x in [5,6,7,8]">
             <div class="likedHeart">
-                <img class="resizeHeartImg" ng-click="setLike_amt(x,'M')" ng-hide="setLiked[x+3]" src="img/unlikeHeart.png">
-                <img class="resizeHeartImg" ng-click="removeLike_amt(x,'M')" ng-show="setLiked[x+3]" src="img/heart.png">
+                <img class="resizeHeartImg" ng-click="setLike_outfit(x,'img/male5.jpg',x)" ng-hide="setLiked[x-1]" src="img/unlikeHeart.png">
+                <img class="resizeHeartImg" ng-click="del_outfit(x,x)" ng-show="setLiked[x-1]" src="img/heart.png">
             </div>
             <a ng-href="#/card_view/genre{{x}}/male"><img class="background-resize" ng-src="img/male{{x}}.jpg"></a>
         </div>

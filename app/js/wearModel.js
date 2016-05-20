@@ -4,7 +4,7 @@
 // service is created first time it is needed and then just reuse it
 // the next time.
 
-weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll,$firebaseObject,$firebaseArray){
+weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll,$firebaseObject,$firebaseArray,$http,auth){
     var location = "Stockholm";
     var country="Sweden"
     var gender="female";
@@ -15,10 +15,13 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll
     var arrayCWeather=[];
     var profile=[];
     var like_amt = 0;
+    var userID="";
+    var _this=this;
 
 $anchorScroll.yOffset = 44;
     this.setProfile=function(pro){
         profile=pro;
+        userID=profile.clientID;
     }
     this.getProfile=function(){
         return profile
@@ -68,10 +71,29 @@ $anchorScroll.yOffset = 44;
     //     }
     //     return url;
     // }
-    
-    this.getCurrent = $resource('http://api.openweathermap.org/data/2.5/weather?',{APIKEY:'c3b7bba4b5ac511ec04d73ac4065ea83'});    
+    this.getCurrent = function(city){
+        return $http({
+        url:'http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=c3b7bba4b5ac511ec04d73ac4065ea83',
+        crossDomain: true,
+        dataType: 'json'
+    }).then(function SuccessCallback(response){
+        var data = response.data;
+        return data;
+    });
+}
+       
     //this.getForecast = $resource('http://api.openweathermap.org/data/2.5//forecast?',{q:location, cnt:3,appid:'c3b7bba4b5ac511ec04d73ac4065ea83'});
-    this.getForecast = $resource('https://api.heweather.com/x3/weather?',{cnty:country,key:'939ca234771f43f29168f5e5d68257a5'});
+    this.getForecast = function(city){
+        return $http({
+        url:'https://api.heweather.com/x3/weather?city='+city+'&key=939ca234771f43f29168f5e5d68257a5',
+        crossDomain: true,
+        dataType: 'json'
+    }).then(function SuccessCallback(response){
+        var data = response.data;
+        return data;
+    });
+}
+
     
     // this.setWeatherData=function(loc){
     //     this.getForecast.get({city:loc},function(data){
@@ -177,65 +199,76 @@ $anchorScroll.yOffset = 44;
 var FirebaseRef = new Firebase("https://blazing-heat-24.firebaseio.com/");
 var userbase = FirebaseRef.child("userbase");
 
-this.checkAccount = function(username,password, succuss, fail){
-    return userbase.child(username).once("value", function(snapshot) {
-        if(snapshot.val() != null){
-            var entity = snapshot.val();
-            if (entity.userID.password == password)
-            {
-                succuss(entity.userID);
-            } else
-            {
-                fail("password not match");
-            }
+this.getUserID=function(){
+    return userID;
+}
+// this.checkAccount = function(username){
+//     return userbase.child(username).once("value", function(snapshot) {
+//         if(snapshot.val() != null){
+//             var entity = snapshot.val();
+//             if (entity.userID.password == password)
+//             {
+//                 succuss(entity.userID);
+//             } else
+//             {
+//                 fail("password not match");
+//             }
+//         }
+//         else{
+//             fail("user doesnot exist");
+//         }
+//     });
+// }
+
+this.checkAccount = function(userid){
+    var ref = userbase.child(userid);
+
+    return ref.once("value",function(snapshot){
+        if(snapshot.val() == null){
+            console.log("11111111111");
+            return false;
         }
         else{
-            fail("user doesnot exist");
+            return true;
         }
-    });
+    })
 }
 
-// this.checkName = function(username){
 
-//     FirebaseRef.child(username).on("value", function(snapshot){
-//         if(snapshot.val() == null){
-//             return true;
-//         }
-//         else 
-//             return false;
-//         });
-// };
 
-this.setAccount = function(username,password){
-    // var boo = _this.checkName(username);
-    // if(boo == false){
-    //     alert("The user name has already exist, please change another one!");
-    //     return;
-    // }
+
+
+//设置数据库
+// this.setAccount = function(username){
+//     // var boo = _this.checkName(username);
+//     // if(boo == false){
+//     //     alert("The user name has already exist, please change another one!");
+//     //     return;
+//     // }
     
-     return userbase.child(username).once("value", function(snapshot){
-        if(snapshot.val() != null){
-            alert("The user name has already exist, please change another one!");
-            return;
-        }
+//      return userbase.child(username).once("value", function(snapshot){
+//         if(snapshot.val() != null){
+//             alert("The user name has already exist, please change another one!");
+//             return;
+//         }
         
-        else{            
-//            var newuser= userbase.child(username);
-             userbase.child(username).child("userID").set ({
-                name: username,
-                password: password
-            });  
-            alert("Your account has been created, please log in."); 
-        }
+//         else{            
+// //            var newuser= userbase.child(username);
+//              userbase.child(username).child("userID").set ({
+//                 name: username,
+//                 password: password
+//             });  
+//             alert("Your account has been created, please log in."); 
+//         }
         
-    });
+//     });
 
-    // if(username==null || password == null){
-    //     alert("input error!");
-    //     return;
-    // }
+//     // if(username==null || password == null){
+//     //     alert("input error!");
+//     //     return;
+//     // }
        
-}
+// }
 
 // cloth library
 
@@ -273,27 +306,36 @@ this.setAccount = function(username,password){
     }
     
     
-    this.setLike_outfit = function(outfit){
-        var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(outfit.id);
+    this.setLike_outfit = function(id,url){
+        var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(id);
         obj.set({
-            url: outfit.url
+            url: url
             //url: url
         })                  
      }
      
-     this.del_outfit = function(outfit){
-         var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(outfit.id);
+     this.del_outfit = function(id){
+         var obj = FirebaseRef.child("userbase").child(userID).child("outfit").child(id);
          obj.set({
              url: null
          })   
      }
     
-     this.getLike_outfit = function(outfit){
-         var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
-         ref.on("value",function(snapshot){
+     this.getLike_outfit = function(success){
+        console.log(userID);
+        if(userID==""){
+            return;
+        }else{
+            var ref = FirebaseRef.child("userbase").child(userID).child("outfit");
+          ref.on("value",function(snapshot){
              var obj = snapshot.val();
-             return obj;
+             console.log("objjjjjjjjjjjjjjjjj");
+             console.log(obj);
+             success(obj);
          })
+        }
+
+         
      }
      
      this.checkLike_outfit = function(id){
@@ -308,25 +350,26 @@ this.setAccount = function(username,password){
             });
      }
      
-     this.setLike_iem = function(item){
-        var obj = FirebaseRef.child("userbase").child(userID).child("item").child(item.id);
+     this.setLike_item = function(id,url){
+        var obj = FirebaseRef.child("userbase").child(userID).child("item").child(id);
         obj.set({
-            url: item.url
+            url: url
         })                  
      }
      
-     this.del_item = function(item){
-         var obj = FirebaseRef.child("userbase").child(userID).child("item").child(item.id);
+     this.del_item = function(id){
+         var obj = FirebaseRef.child("userbase").child(userID).child("item").child(id);
          obj.set({
              url: null
          })   
      }
     
-     this.getLike_item = function(item){
+     this.getLike_item = function(success){
          var ref = FirebaseRef.child("userbase").child(userID).child("item");
          ref.on("value",function(snapshot){
              var obj = snapshot.val();
-             return obj;
+             success(obj);
+             //return obj;
          })
      }
      

@@ -9,17 +9,17 @@ weatherDressApp.controller('homeCtrl', function ($scope,$anchorScroll,$location,
 $scope.auth = auth;
 $scope.logout = function() {
     auth.signout();
-    store.remove('profile');
-    store.remove('token');
+    store.remove('userID');
     $location.path('/home');
   }
   
   
 $scope.dataGet=function(){
-  Weather.getForecast.get({city:Weather.getLocation()},function(data){
+  var city=Weather.getLocation();
+  Weather.getForecast(city).then(function(data){
+      
       
       var result = data['HeWeather data service 3.0']
-      console.log(data['HeWeather data service 3.0']);
      
 //今天
       var todayWeather= result[0].daily_forecast[0];
@@ -94,11 +94,9 @@ $scope.dataGet=function(){
 });
 
 
-
-  Weather.getCurrent.get({q:Weather.getLocation()},function(data){
+  Weather.getCurrent(city).then(function(data){
 
         $scope.currentWeather = data;
-        console.log(data);
        
         //一句话描述
         $scope.description= data.weather[0].main;
@@ -155,45 +153,15 @@ $scope.dataGet();
       $('#aftSelected').show();
     }
 
-$scope.setLiked=[false,false,false,false,false,false,false,false]
-
-$scope.setLike_amt=function(id,gender){
-  if(gender=='M'){
-    id=id+4;
-  }
-  $scope.setLiked[id-1]=true;
-  console.log($scope.setLiked);
-}
-
-$scope.removeLike_amt=function(id,gender){
-  if(gender=='M'){
-    id=id+4;
-  }
-  $scope.setLiked[id-1]=false;
-  
-  console.log($scope.setLiked);
-}
-
-
-
-  // TODO in Lab 5: you need to get the dish according to the routing parameter
-  // $routingParams.paramName
-  // Check the app.js to figure out what is the paramName in this case
-  
-
-  
-    
-   
 //anchor    
     $scope.goto = function (id) {
-        console.log(id);
+        
         if($scope.gender_f){
           id="F"+id;
 
         }else{
           id="M"+id;
         }
-        console.log(id);
             $location.hash(id);
             $anchorScroll();
     }
@@ -217,10 +185,44 @@ $scope.removeLike_amt=function(id,gender){
           $scope.gender_f = false;
           $scope.gender_m = true;
        }
-       console.log("1");
-       console.log($scope.gender_f);
     }
    $scope.getGender();
+
+
+
+$scope.setLiked=[false,false,false,false,false,false,false,false]
+
+$scope.setLike_outfit=function(id,url,index){
+  var userid=Weather.getUserID();
+  console.error(userid);
+  if (userid=="") {
+    auth.signin();
+  }else{
+      $scope.setLiked[index-1]=true;
+     Weather.setLike_outfit(id,url);
+     Weather.getLike_outfit(function(data){
+      $scope.allLikedOut=data;
+      console.log($scope.allLikedOut);
+     })
+  }
+}
+
+$scope.del_outfit=function(id,index){
+  Weather.del_outfit(id);
+  $scope.setLiked[index-1]=false;
+}
+
+
+
+  // TODO in Lab 5: you need to get the dish according to the routing parameter
+  // $routingParams.paramName
+  // Check the app.js to figure out what is the paramName in this case
+  
+
+  
+    
+   
+
    
 }).directive("scroll", function ($window) {
     return function(scope, element, attrs) {
