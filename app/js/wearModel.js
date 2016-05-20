@@ -22,12 +22,19 @@ $anchorScroll.yOffset = 44;
     this.setProfile=function(pro){
         profile=pro;
         userID=profile.clientID;
+
         console.log(profile);
         $cookieStore.put("userID", userID);
         
     }
     this.getProfile=function(){
         return profile
+    }
+
+    this.getUserID=function(){
+            userID=$cookieStore.get("userID");
+            return userID;
+        
     }
 
    this.setLocation = function(loc){
@@ -53,7 +60,7 @@ $anchorScroll.yOffset = 44;
         return like_amt;
     }
     
-    this.getAllClothes = $resource('//api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6',offset:0,limit:10});
+    this.getAllClothes = $resource('//api.shopstyle.com/api/v2/products?',{pid:'uid2964-33820658-6'});
     this.getCloth = $resource('//api.shopstyle.com/api/v2/products/:id',{pid:'uid2964-33820658-6'});
     
     this.getClothing = $resource('//api.shopstyle.com/api/v2/products?',{fts:"dresses",pid:'uid2964-33820658-6'});
@@ -202,16 +209,6 @@ $anchorScroll.yOffset = 44;
 var FirebaseRef = new Firebase("https://blazing-heat-24.firebaseio.com/");
 var userbase = FirebaseRef.child("userbase");
 
-this.getUserID=function(){
-    if ($cookieStore.get("userID")==undefined) {
-        return userID;
-    }else{
-        userID=$cookieStore.get("userID");
-        return userID;
-    }
-    
-    
-}
 // this.checkAccount = function(username){
 //     return userbase.child(username).once("value", function(snapshot) {
 //         if(snapshot.val() != null){
@@ -319,26 +316,26 @@ this.checkAccount = function(userid,success,fail){
     }
     
     
-    this.setLike_outfit = function(id,url){
-        var userid=_this.getUserID();
-        var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
+    this.setLike_outfit = function(id,url,userid){
+        
+            var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
         obj.set({
             url: url
             //url: url
-        })                  
+        })    
+        
+                      
      }
      
-     this.del_outfit = function(id){
-         var userid=_this.getUserID();
+     this.del_outfit = function(id,userid){
          var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
          obj.set({
              url: null
          })   
      }
     
-     this.getLike_outfit = function(success){
-        var userid=_this.getUserID();
-        if(userid==""){
+     this.getLike_outfit = function(success,userid){
+        if(userid==""||userid==undefined){
             return;
         }else{
             var ref = FirebaseRef.child("userbase").child(userid).child("outfit");
@@ -353,8 +350,7 @@ this.checkAccount = function(userid,success,fail){
          
      }
      
-     this.checkLike_outfit = function(id,success,fail){
-        var userid=_this.getUserID();
+     this.checkLike_outfit = function(id,success,fail,userid){
          var ref = FirebaseRef.child("userbase").child(userid).child("outfit");
             return ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){
@@ -368,24 +364,23 @@ this.checkAccount = function(userid,success,fail){
             });
      }
      
-     this.setLike_item = function(id,url){
-        var userid=_this.getUserID();
+     this.setLike_item = function(id,url,userid){
         var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);
         obj.set({
             url: url
         })                  
      }
      
-     this.del_item = function(id){
-         var userid=_this.getUserID();
+     this.del_item = function(id,userid){
+ 
          var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);
          obj.set({
              url: null
          })   
      }
     
-     this.getLike_item = function(success){
-         var userid=_this.getUserID();
+     this.getLike_item = function(success,userid){
+    
          var ref = FirebaseRef.child("userbase").child(userid).child("item");
          return ref.on("value",function(snapshot){
              var obj = snapshot.val();
@@ -394,8 +389,7 @@ this.checkAccount = function(userid,success,fail){
          })
      }
      
-     this.checkLike_item = function(id,success,fail){
-         var userid=_this.getUserID();
+     this.checkLike_item = function(id,success,fail,userid){
          var ref = FirebaseRef.child("userbase").child(userid).child("item");
             return ref.child(id).once("value", function(snapshot){
                 if(snapshot.val() != null){

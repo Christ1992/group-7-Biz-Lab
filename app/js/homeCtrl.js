@@ -10,6 +10,7 @@ $scope.auth = auth;
 $scope.logout = function() {
     auth.signout();
     $cookies.remove('userID');
+    alert("You have successfully log out");
     $location.path('/home');
   }
   
@@ -195,20 +196,23 @@ $scope.setLiked=[false,false,false,false,false,false,false,false]
 $scope.setLike_outfit=function(id,url,index){
   var userid=Weather.getUserID();
   console.error(userid);
-  if (userid=="") {
+  if (userid==undefined) {
     auth.signin();
   }else{
+    console.log("userid");
+    console.log(userid);
       $scope.setLiked[index-1]=true;
-     Weather.setLike_outfit(id,url);
+     Weather.setLike_outfit(id,url,userid);
      Weather.getLike_outfit(function(data){
       $scope.allLikedOut=data;
       console.log($scope.allLikedOut);
-     })
+     },userid)
   }
 }
 
 $scope.del_outfit=function(id,index){
-  Weather.del_outfit(id);
+  var userid=Weather.getUserID();
+  Weather.del_outfit(id,userid);
   $scope.setLiked[index-1]=false;
 }
 

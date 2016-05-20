@@ -12,6 +12,7 @@
 </nav>
 <div class="empty"><img src="img/empty.png"></div>
 <div id="clothesListView" class="list-view" >
+    <h4 class="T-center statusBar">{{status}}</h4>
     <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in likedItem">
         <a class="thumbnail cloth-preview" ng-href="#/detail/{{cloth.id}}">
             <div class="cover">

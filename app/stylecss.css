@@ -772,5 +772,16 @@ body{
     border: 1px solid black;
     border-radius: 4px;
 }
-
+.statusBar{
+    height: 100px;
+    line-height: 1.4;
+}
+.loadmoreBtn{
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 2.0;
+    vertical-align: bottom;
+    font-size: 20px;
+}
 
