@@ -547,8 +547,10 @@ body{
         font-size: 8px;
     }
      .card_item img{
-        max-height: 80px;
-        max-width: auto;
+        width: 100%;
+        max-height: 90px;
+        max-width: 100%;
+        margin: auto;
     }
 
 
@@ -767,7 +769,7 @@ body{
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown mencard_itemu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}      
 
 
