@@ -60,6 +60,7 @@ weatherDressApp.controller('searchCtrl', function ($scope,Weather,$routeParams) 
          Weather.getAllClothes.get({fts:$scope.query,offset:20*num,limit:20*num+20},function(data){
             num++;
             $scope.clothes=$scope.clothes.concat(data.products);
+            console.log("ddd");
         //$scope.status = "Showing " + data.Results.length + " results";
     //     },function(data){
     //         $scope.status = "There was an error";

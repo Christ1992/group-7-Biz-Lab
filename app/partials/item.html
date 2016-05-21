@@ -13,12 +13,12 @@
 <div class="empty"><img src="img/empty.png"></div>
 <div id="clothesListView" class="list-view" >
     <h4 class="T-center statusBar">{{status}}</h4>
-    <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="cloth in likedItem">
-        <a class="thumbnail cloth-preview" ng-href="#/detail/{{cloth.id}}">
+    <div class="col-xs-6 col-md-3 list-view-item" ng-repeat="value in likedItem">{{item}}
+        <a class="thumbnail cloth-preview" ng-href="#/detail/{{value.id}}">
             <div class="cover">
                 <div class="table">
                 <div class="table-cell">
-                    <img class="resizeItemImg"  ng-src="{{cloth.image.sizes.Original.url}}"/>
+                    <img class="resizeItemImg"  ng-src="{{value.url}}"/>
                     <div class="likedHeart">
                         <img class="resizeHeartImg" ng-hide="likedInfo" src="img/unlikeHeart.png">
                         
@@ -26,10 +26,10 @@
                 </div>
                 </div>
             </div>
-            <div class="caption">
+            <!-- <div class="caption">
                 <span class="panel-title NameHalf">{{cloth.name}}</span>    
                 <span class="panel-title PriceHalf">{{cloth.priceLabel}}</span>                                 
-            </div>
+            </div> -->
 
         </a>                                        
     </div>                   

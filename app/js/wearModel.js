@@ -317,6 +317,13 @@ this.checkAccount = function(userid,success,fail){
     
     
     this.setLike_outfit = function(id,url,userid){
+        var string=$cookieStore.get("likedOutfit");
+        if(string!=undefined){
+            string=string+","+id;
+            $cookieStore.put("likedOutfit",string);
+        }else{
+            $cookieStore.put("likedOutfit",id)
+        }
         
             var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
         obj.set({
@@ -328,6 +335,12 @@ this.checkAccount = function(userid,success,fail){
      }
      
      this.del_outfit = function(id,userid){
+         var string=$cookieStore.get("likedOutfit");
+         for(key in string){
+            if(string[key]==id){
+                string.splice(key,1);
+            }
+         }
          var obj = FirebaseRef.child("userbase").child(userid).child("outfit").child(id);
          obj.set({
              url: null
@@ -335,6 +348,9 @@ this.checkAccount = function(userid,success,fail){
      }
     
      this.getLike_outfit = function(success,userid){
+        // var string=$cookies.get("likedOutfit");
+        // string.push("likedOutfit":id);
+        // $cookies.push("string");
         if(userid==""||userid==undefined){
             return;
         }else{
@@ -365,6 +381,14 @@ this.checkAccount = function(userid,success,fail){
      }
      
      this.setLike_item = function(id,url,userid){
+        var string=$cookieStore.get("likedItem");
+        if(string!=undefined){
+            string=string+","+id;
+            $cookieStore.put("likedItem",string);
+        }else{
+            $cookieStore.put("likedItem",id)
+        }
+        
         var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);
         obj.set({
             url: url
@@ -372,7 +396,12 @@ this.checkAccount = function(userid,success,fail){
      }
      
      this.del_item = function(id,userid){
- 
+         var string=$cookieStore.get("likedItem");
+         for(key in string){
+            if(string[key]==id){
+                string.splice(key,1);
+            }
+         }
          var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);
          obj.set({
              url: null
@@ -380,13 +409,13 @@ this.checkAccount = function(userid,success,fail){
      }
     
      this.getLike_item = function(success,userid){
-    
-         var ref = FirebaseRef.child("userbase").child(userid).child("item");
-         return ref.on("value",function(snapshot){
+        
+            var ref = FirebaseRef.child("userbase").child(userid).child("item");
+            return ref.on("value",function(snapshot){
              var obj = snapshot.val();
              success(obj);
-             //return obj;
-         })
+            })
+         
      }
      
      this.checkLike_item = function(id,success,fail,userid){
@@ -402,6 +431,13 @@ this.checkAccount = function(userid,success,fail){
                 }
             });
      }  
+     // var itemArray='';
+     // this.setItemLib=function(result){
+     //    itemArray=result;
+     // }
+     // this.getItemLib=function(){
+     //    return itemArray;
+     // }
     
     return this;
 

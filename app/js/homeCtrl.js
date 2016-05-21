@@ -203,10 +203,10 @@ $scope.setLike_outfit=function(id,url,index){
     console.log(userid);
       $scope.setLiked[index-1]=true;
      Weather.setLike_outfit(id,url,userid);
-     Weather.getLike_outfit(function(data){
-      $scope.allLikedOut=data;
-      console.log($scope.allLikedOut);
-     },userid)
+     // Weather.getLike_outfit(function(data){
+     //  $scope.allLikedOut=data;
+     //  console.log($scope.allLikedOut);
+     // },userid)
   }
 }
 
