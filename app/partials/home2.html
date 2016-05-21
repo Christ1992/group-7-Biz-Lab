@@ -273,7 +273,7 @@
     </div>
 
     <div ng-show="gender_m" scroll>
-        <div class="page-start" id="Mgenre{{x}}" ng-repeat="x in [5,6,7,8]">
+        <div class="page-start" id="Mgenre{{x-4}}" ng-repeat="x in [5,6,7,8]">
             <div class="likedHeart">
                 <img class="resizeHeartImg" ng-click="setLike_outfit(x,'img/male5.jpg',x)" ng-hide="setLiked[x-1]" src="img/unlikeHeart.png">
                 <img class="resizeHeartImg" ng-click="del_outfit(x,x)" ng-show="setLiked[x-1]" src="img/heart.png">

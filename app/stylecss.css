@@ -211,8 +211,10 @@ body{
 }
 
 .sign_img2{
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
+    margin-right: 2px;
+    margin-left: 1px;
     /*width: 10%;*/
     overflow: hidden;
 }
@@ -584,6 +586,11 @@ body{
         margin-right: 3px;
         margin-top: -2px;
     }
+    .resizeHeartImg2{
+        width: 30px;
+        float: center;
+       
+    }
 
 
 
@@ -775,7 +782,10 @@ body{
 #buyButton{
     padding: 3px 10px;
     border: 1px solid black;
-    border-radius: 4px;
+    /*border-radius: 4px;*/
+    background: #333333;
+    color: white;
+    font-weight: 300;
 }
 .statusBar{
     height: 100px;
