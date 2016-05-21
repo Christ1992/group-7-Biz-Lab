@@ -9,17 +9,17 @@
                 <div class="T-center">
     <!-- profolio -->
                     <div id="main_image">
-                        <img class="profile_img" src="http://d1i6tehnj672py.cloudfront.net/fashion/wp-content/uploads/2013/01/KateUpton-ellefrance06-95x95.jpg"/>
+                        <img class="profile_img" ng-src="{{userUrl}}"/>
                     </div>
-                    <div class="T-center profileName">Kate Jones</div>
+                    <div class="T-center profileName">{{userName}}</div>
                     <div class="liked">
 
                         <a class="Half borderRight" ng-href="#/likedItem" >
-                            <div class="T-center likedNum">19</div>
+                            <div class="T-center likedNum">{{itemNum}}</div>
                             <div class="T-center likedTitle">Liked Items</div>
                         </a>
                         <a class="Half" ng-href="#/likedOutfit" >
-                            <div class="T-center likedNum">23</div>
+                            <div class="T-center likedNum">{{outfitNum}}</div>
                             <div class="T-center likedTitle">Liked Outfits</div>
                         </a>
                     </div>

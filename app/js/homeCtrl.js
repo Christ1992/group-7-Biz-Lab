@@ -10,11 +10,13 @@ $scope.auth = auth;
 $scope.logout = function() {
     auth.signout();
     $cookies.remove('userID');
+    $cookies.remove('username');
+    $cookies.remove('usergender');
+    $cookies.remove('userurl');
     alert("You have successfully log out");
-    $location.path('/home');
+    $location.path('/');
   }
-  
-  
+
 $scope.dataGet=function(){
   var city=Weather.getLocation();
   Weather.getForecast(city).then(function(data){
@@ -177,6 +179,30 @@ $scope.dataGet();
     $scope.setGender = function(gender){
         Weather.setGender(gender);
     }
+
+
+
+   var userID=Weather.getUserID();
+    if(userID!=undefined){
+      $scope.userName=Weather.getUserName();
+      $scope.userUrl=Weather.getUserPic();
+      var gender=Weather.getUserGender();
+      if(gender!='female'||gender!='male'){
+        $scope.setGender('female');
+      }else{
+        $scope.setGender(gender);
+      }
+      $scope.itemNum=0;
+      $scope.outfitNum=0;
+    }else{
+      $scope.userName='Click to log in';
+      $scope.userUrl='img/logo.jpg';
+      $scope.setGender('female');
+      $scope.itemNum=0;
+      $scope.outfitNum=0;
+    }
+   
+
     $scope.getGender = function(){
        var gender=Weather.getGender();
        if(gender=="female"){
@@ -189,6 +215,10 @@ $scope.dataGet();
     }
    $scope.getGender();
 
+// userUrl
+//   userName
+//   itemNum
+//   outfitNum
 
 
 $scope.setLiked=[false,false,false,false,false,false,false,false]
@@ -203,10 +233,6 @@ $scope.setLike_outfit=function(id,url,index){
     console.log(userid);
       $scope.setLiked[index-1]=true;
      Weather.setLike_outfit(id,url,userid);
-     // Weather.getLike_outfit(function(data){
-     //  $scope.allLikedOut=data;
-     //  console.log($scope.allLikedOut);
-     // },userid)
   }
 }
 

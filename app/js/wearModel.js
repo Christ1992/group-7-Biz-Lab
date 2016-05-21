@@ -22,10 +22,15 @@ $anchorScroll.yOffset = 44;
     this.setProfile=function(pro){
         profile=pro;
         userID=profile.clientID;
-
+        var username=profile.name;
+        var userurl=profile.picture;
+        var usergender=profile.gender;
         console.log(profile);
         $cookieStore.put("userID", userID);
-        
+        $cookieStore.put("username", username);
+        $cookieStore.put("usergender", username);
+        $cookieStore.put("userurl", userurl);
+
     }
     this.getProfile=function(){
         return profile
@@ -34,6 +39,21 @@ $anchorScroll.yOffset = 44;
     this.getUserID=function(){
             userID=$cookieStore.get("userID");
             return userID;
+        
+    }
+    this.getUserName=function(){
+            var username=$cookieStore.get("username");
+            return username;
+        
+    }
+    this.getUserGender=function(){
+            var usergender=$cookieStore.get("usergender");
+            return usergender;
+        
+    }
+    this.getUserPic=function(){
+            var userurl=$cookieStore.get("userurl");
+            return userurl;
         
     }
 
