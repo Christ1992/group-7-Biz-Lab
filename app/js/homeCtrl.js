@@ -196,12 +196,18 @@ $scope.dataGet();
       $scope.outfitNum=0;
     }else{
       $scope.userName='Click to log in';
-      $scope.userUrl='img/logo.jpg';
+      $scope.userUrl='img/user-icon-placeholder.png';
       $scope.setGender('female');
       $scope.itemNum=0;
       $scope.outfitNum=0;
     }
    
+$scope.login=function(){
+   var userid=Weather.getUserID();
+   if (userid==undefined) {
+    auth.signin();
+  }
+}
 
     $scope.getGender = function(){
        var gender=Weather.getGender();
