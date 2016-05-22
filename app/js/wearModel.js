@@ -28,7 +28,7 @@ $anchorScroll.yOffset = 44;
         console.log(profile);
         $cookieStore.put("userID", userID);
         $cookieStore.put("username", username);
-        $cookieStore.put("usergender", username);
+        $cookieStore.put("usergender", usergender);
         $cookieStore.put("userurl", userurl);
 
     }

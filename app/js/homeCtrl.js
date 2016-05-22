@@ -17,6 +17,8 @@ $scope.logout = function() {
     $location.path('/');
   }
 
+
+
 $scope.dataGet=function(){
   var city=Weather.getLocation();
   Weather.getForecast(city).then(function(data){
@@ -220,12 +222,7 @@ $scope.login=function(){
        }
     }
    $scope.getGender();
-
-// userUrl
-//   userName
-//   itemNum
-//   outfitNum
-
+   
 
 $scope.setLiked=[false,false,false,false,false,false,false,false]
 
