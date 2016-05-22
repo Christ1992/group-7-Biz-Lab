@@ -58,17 +58,24 @@ $anchorScroll.yOffset = 44;
     }
 
    this.setLocation = function(loc){
-       location = loc;
+       $cookieStore.put("location",loc);
    }
    
     this.getLocation = function(){
+        location=$cookieStore.get("location");
+        if (location==undefined) {
+            location="Stockholm";
+        }
         return location;
     }
     
     this.setGender = function(gd){
         gender = gd;
+        console.log(gender);
+        $cookieStore.put("usergender", gender);
     }
     this.getGender = function(){
+        gender=$cookieStore.get("usergender");
         return gender;
     }
     

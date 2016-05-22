@@ -43,13 +43,13 @@
     	                <div class="optionBody row">
                             <div class="col-xs-6">
                                 <div align="center">
-                                    <a ng-click="gender_f=true; gender_m=false; setGender('female')" style="text-decoration:none">
+                                    <a ng-click="setGender('female');" style="text-decoration:none">
                                     <img ng-show="gender_f" class="gender_btn F-right" src="img/femaleAc.png"/>
                                     <img ng-hide="gender_f" class="gender_btn F-right" src="img/femaleUn.png"/></a>
                                 </div>
                             </div>  
                             <div class="col-xs-6">
-                                <div align="center"><a ng-click="gender_m=true; gender_f=false; setGender('male')" style="text-decoration:none">
+                                <div align="center"><a ng-click="setGender('male');" style="text-decoration:none">
                                     <img ng-show="gender_m" class="gender_btn F-left" src="img/maleAc.png"/>
                                     <img ng-hide="gender_m" class="gender_btn F-left" src="img/maleUn.png"/>
                                     </a>

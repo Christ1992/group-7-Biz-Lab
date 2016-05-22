@@ -178,9 +178,30 @@ $scope.dataGet();
         $scope.dataGet();
     }
     
+    
     $scope.setGender = function(gender){
         Weather.setGender(gender);
+
+        console.log("hihi");
+        if(gender=='male'){
+          $scope.gender_m=true; $scope.gender_f=false; 
+        }else{
+          $scope.gender_f=true; $scope.gender_m=false;
+        }
     }
+    $scope.getGender = function(){
+       var gender=Weather.getGender();
+       if(gender=="female"||undefined){
+          $scope.gender_f = true;
+          $scope.gender_m = false;
+          $scope.setGender("female");
+       }else{
+          $scope.gender_f = false;
+          $scope.gender_m = true;
+          $scope.setGender("male");
+       }
+    }
+   $scope.getGender();
 
 
 
@@ -188,18 +209,18 @@ $scope.dataGet();
     if(userID!=undefined){
       $scope.userName=Weather.getUserName();
       $scope.userUrl=Weather.getUserPic();
-      var gender=Weather.getUserGender();
-      if(gender!='female'||gender!='male'){
+      var ged=Weather.getUserGender();
+      if(ged!='female'||ged!='male'){
         $scope.setGender('female');
       }else{
-        $scope.setGender(gender);
+        $scope.setGender(ged);
       }
       $scope.itemNum=0;
       $scope.outfitNum=0;
     }else{
       $scope.userName='Click to log in';
       $scope.userUrl='img/user-icon-placeholder.png';
-      $scope.setGender('female');
+      //$scope.setGender('female');
       $scope.itemNum=0;
       $scope.outfitNum=0;
     }
@@ -211,18 +232,8 @@ $scope.login=function(){
   }
 }
 
-    $scope.getGender = function(){
-       var gender=Weather.getGender();
-       if(gender=="female"){
-          $scope.gender_f = true;
-          $scope.gender_m = false;
-       }else{
-          $scope.gender_f = false;
-          $scope.gender_m = true;
-       }
-    }
-   $scope.getGender();
-   
+
+
 
 $scope.setLiked=[false,false,false,false,false,false,false,false]
 
