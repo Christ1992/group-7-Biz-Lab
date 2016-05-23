@@ -18,6 +18,16 @@ $scope.logout = function() {
     alert("You have successfully log out");
     $location.path('/');
   }
+$scope.goSearch=function(){
+  var searchGender=$scope.getGender();
+  console.log(searchGender);
+
+  if(searchGender=='female'){
+    $location.path('/search/dress');
+  }else{
+    $location.path('/search/shirt');
+  }
+}
 
 var AllOutfit=[{'T15':[{'id':'T15-1','url':'img/T15-1.jpg'},{'id':'T15-2','url':'img/T15-2.jpg'},{'id':'T15-3','url':'img/T15-3.jpg'},{'id':'T15-4','url':'img/T15-4.jpg'},{'id':'T15-5','url':'img/T15-5.jpg'},{'id':'T15-6','url':'img/T15-6.jpg'},{'id':'T15-7','url':'img/T15-7.jpg'},{'id':'T15-8','url':'img/T15-8.jpg'}],
 'T25':[{'id':'T25-1','url':'img/T25-1.jpg'},{'id':'T25-2','url':'img/T25-2.jpg'},{'id':'T25-3','url':'img/T25-3.jpg'},{'id':'T25-4','url':'img/T25-4.jpg'},{'id':'T25-5','url':'img/T25-5.jpg'},{'id':'T25-6','url':'img/T25-6.jpg'},{'id':'T25-7','url':'img/T25-7.jpg'},{'id':'T25-8','url':'img/T25-8.jpg'}],
@@ -223,6 +233,7 @@ $scope.dataGet();
           $scope.gender_m = true;
           $scope.setGender("male");
        }
+       return gender;
     }
    $scope.getGender();
 
