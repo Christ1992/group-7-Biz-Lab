@@ -52,8 +52,8 @@ $scope.dataGet=function(){
       
 
       var result = data['HeWeather data service 3.0']
-     console.log(result);
-     if(result[0].basic=undefined){
+     console.log(result[0].basic);
+     if(result[0].basic==null){
       $scope.location="unknown city";
      }else{
 //今天
