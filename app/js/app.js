@@ -57,7 +57,7 @@ weatherDressApp.config(
         templateUrl: 'partials/login.html',
         controller: 'loginCtrl'
       }).when('/aboutUs', {
-        templateUrl: 'partials/aboutUs.html',
+        templateUrl: 'partials/aboutus.html',
        
       }).
 

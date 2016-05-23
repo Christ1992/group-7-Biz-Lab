@@ -35,9 +35,9 @@ var AllOutfit=[{'T15':[{'id':'T15-1','url':'img/T15-1.jpg'},{'id':'T15-2','url':
 
    $scope.checkWeather=function(){
     console.log($scope.temperature);
-    if($scope.temperature<20){
+    if($scope.temperature<15){
       $scope.showOut=AllOutfit[0].T15;
-    }else if($scope.temperature<30){
+    }else if($scope.temperature<27){
       $scope.showOut=AllOutfit[0].T25;
     }else{
       $scope.showOut=AllOutfit[0].T35;
