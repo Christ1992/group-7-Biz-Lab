@@ -1,6 +1,6 @@
 // Search controller that we use whenever we have a search inputs
 // and search results
-weatherDressApp.controller('likedCtrl', function ($scope,Weather,auth,$cookieStore) {
+weatherDressApp.controller('likedItemCtrl', function ($scope,Weather,auth,$cookieStore) {
 var userID=Weather.getUserID();
 
 if(userID==undefined||userID==""){
@@ -11,31 +11,6 @@ if(userID==undefined||userID==""){
 
 
 Weather.checkAccount(userID,function(data){
-    
-//ourfit
-    //得到cookie里的id存储字符串
-    var r=$cookieStore.get("likedOutfit");
-    console.log(r);
-    var string2=[];
-    var j=1;
-    if(r!=undefined){
-      //字符串转化为数组形式
-        string2[0]=s.substr(0,9);
-         for(var i=0;i<r.length-1;i++)
-        {
-           if(r.charAt(i)== ',' ){
-            string2[k]=r.substr(i+1 , 9 );
-            j++;
-            }
-        }
-        Weather.getLike_outfit(function(data){
-          $scope.likedOutfit=data;
-        },userID);
-    }else{
-        $scope.status="You didn't add any liked item/outfit. Why don't you CLICK hearts to like something.";
-    }
-//outfit callback 结束 
-
 
 //item
     //得到cookie里的id存储
@@ -55,6 +30,8 @@ Weather.checkAccount(userID,function(data){
         }
 
       //获取数据库的数据
+     
+
       Weather.getLike_item(function(data){
 
         //用cookie里的string来获得url，在规范成数组形式，输出到页面上
@@ -72,7 +49,7 @@ Weather.checkAccount(userID,function(data){
           }
       //这种最简单的scope变量都没有输出到页面上  
       $scope.status="You liked something:";
-    
+    $scope.$apply();
       },userID);
 
     }else{
@@ -84,5 +61,6 @@ Weather.checkAccount(userID,function(data){
   });
 //check account callback 结束
 }
+
 
 });

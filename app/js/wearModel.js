@@ -18,10 +18,10 @@ weatherDressApp.factory('Weather',function ($resource,$cookieStore,$anchorScroll
     var userID="";
     var _this=this;
 
-$anchorScroll.yOffset = 44;
+$anchorScroll.yOffset = 60;
     this.setProfile=function(pro){
         profile=pro;
-        userID=profile.clientID;
+        userID=profile.global_client_id;
         var username=profile.name;
         var userurl=profile.picture;
         var usergender=profile.gender;
@@ -409,11 +409,13 @@ this.checkAccount = function(userid,success,fail){
      
      this.setLike_item = function(id,url,userid){
         var string=$cookieStore.get("likedItem");
-        if(string!=undefined){
+        if(string==undefined){
+            $cookieStore.put("likedItem",id);
+            console.log(id);
+        }else{
             string=string+","+id;
             $cookieStore.put("likedItem",string);
-        }else{
-            $cookieStore.put("likedItem",id)
+            
         }
         
         var obj = FirebaseRef.child("userbase").child(userid).child("item").child(id);

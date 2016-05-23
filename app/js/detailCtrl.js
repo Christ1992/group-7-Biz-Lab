@@ -17,13 +17,14 @@ weatherDressApp.controller('detailCtrl', function ($scope,$routeParams,$sce,Weat
     $scope.likedInfo=false;
    // $scope.like_amt = Weather.getLike_amt();
 
-  $scope.setLike_item=function(id,url){
+  $scope.setLike_item=function(){
   var userid=Weather.getUserID();
   if (userid==undefined||userid=="") {
     auth.signin();
   }else{
     $scope.likedInfo=!$scope.likedInfo;
-    
+    id=$routeParams.clothID;
+    url=$scope.clickUrl;
     Weather.setLike_item(id,url,userid);
   }
 }

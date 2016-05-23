@@ -24,8 +24,8 @@
                     <div class="likedHeart">
                         
                         <span class="like F-right">{{like_amt}} like&nbsp;</span>
-                        <img class="resizeHeartImg" ng-click="likedInfo=!likedInfo" ng-hide="likedInfo" src="img/unlikeHeart.png">
-                        <img class="resizeHeartImg" ng-click="likedInfo=!likedInfo" ng-show="likedInfo" src="img/heart.png">
+                        <img class="resizeHeartImg" ng-click="setLike_item()" ng-hide="likedInfo" src="img/unlikeHeart.png">
+                        <img class="resizeHeartImg" ng-click="del_item()" ng-show="likedInfo" src="img/heart.png">
                     </div>
                 </div>
             </div>

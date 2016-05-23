@@ -60,12 +60,12 @@ weatherDressApp.config(
 
       when('/likedOutfit', {
         templateUrl: 'partials/outfit.html',
-        controller: 'likedCtrl',
+        controller: 'likedOutfitCtrl',
 
 
       }).when('/likedItem', {
         templateUrl: 'partials/item.html',
-        controller: 'likedCtrl',
+        controller: 'likedItemCtrl',
 
       }).
       

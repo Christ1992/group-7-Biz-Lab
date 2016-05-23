@@ -13,22 +13,42 @@ $scope.logout = function() {
     $cookies.remove('username');
     $cookies.remove('usergender');
     $cookies.remove('userurl');
+    $cookies.remove('likedOutfit');
+    $cookies.remove('likedItem');
     alert("You have successfully log out");
     $location.path('/');
   }
 
+var AllOutfit=[{'T15':[{'id':'T15-1','url':'img/T15-1.jpg'},{'id':'T15-2','url':'img/T15-2.jpg'},{'id':'T15-3','url':'img/T15-3.jpg'},{'id':'T15-4','url':'img/T15-4.jpg'},{'id':'T15-5','url':'img/T15-5.jpg'},{'id':'T15-6','url':'img/T15-6.jpg'},{'id':'T15-7','url':'img/T15-7.jpg'},{'id':'T15-8','url':'img/T15-8.jpg'}],
+'T25':[{'id':'T25-1','url':'img/T25-1.jpg'},{'id':'T25-2','url':'img/T25-2.jpg'},{'id':'T25-3','url':'img/T25-3.jpg'},{'id':'T25-4','url':'img/T25-4.jpg'},{'id':'T25-5','url':'img/T25-5.jpg'},{'id':'T25-6','url':'img/T25-6.jpg'},{'id':'T25-7','url':'img/T25-7.jpg'},{'id':'T25-8','url':'img/T25-8.jpg'}],
+'T35':[{'id':'T35-1','url':'img/T35-1.jpg'},{'id':'T35-2','url':'img/T35-2.jpg'},{'id':'T35-3','url':'img/T35-3.jpg'},{'id':'T35-4','url':'img/T35-4.jpg'},{'id':'T35-5','url':'img/T35-5.jpg'},{'id':'T35-6','url':'img/T35-6.jpg'},{'id':'T35-7','url':'img/T35-7.jpg'},{'id':'T35-8','url':'img/T35-8.jpg'}]}];
 
+   $scope.checkWeather=function(){
+    console.log($scope.temperature);
+    if($scope.temperature<20){
+      $scope.showOut=AllOutfit[0].T15;
+    }else if($scope.temperature<30){
+      $scope.showOut=AllOutfit[0].T25;
+    }else{
+      $scope.showOut=AllOutfit[0].T35;
+    }
+    console.log($scope.showOut);
+   }
+   
 
 $scope.dataGet=function(){
   var city=Weather.getLocation();
   Weather.getForecast(city).then(function(data){
       
-      
+
       var result = data['HeWeather data service 3.0']
-     
+     console.log(result);
+     if(result[0].basic=undefined){
+      $scope.location="unknown city";
+     }else{
 //今天
       var todayWeather= result[0].daily_forecast[0];
-      
+      console.log("hdhhdhhdhhd");
       //气温
       $scope.maxTempToday = todayWeather.tmp.max;
       $scope.minTempToday = todayWeather.tmp.min;
@@ -95,7 +115,7 @@ $scope.dataGet=function(){
       $scope.precAft = aftWeather.pop;
       //能见度
       $scope.visAft =  aftWeather.vis;
-       
+       }
 });
 
 
@@ -112,6 +132,8 @@ $scope.dataGet=function(){
 
         //图片
         $scope.imgUrl = Weather.getWeatherImg(data.weather[0].main);
+
+         $scope.checkWeather();
 
   });
 }
@@ -176,6 +198,7 @@ $scope.dataGet();
     $scope.setLocation = function(location){
         Weather.setLocation(location);
         $scope.dataGet();
+       
     }
     
     
@@ -246,6 +269,7 @@ $scope.setLike_outfit=function(id,url,index){
     console.log("userid");
     console.log(userid);
       $scope.setLiked[index-1]=true;
+       id=$scope.showOut[index-1].id;
      Weather.setLike_outfit(id,url,userid);
   }
 }
