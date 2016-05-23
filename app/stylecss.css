@@ -801,4 +801,7 @@ body{
     vertical-align: bottom;
     font-size: 20px;
 }
-
+.peopleImg{
+    margin-bottom: 10px; 
+    width: 80%;
+}
