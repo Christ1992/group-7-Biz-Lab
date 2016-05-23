@@ -24,8 +24,10 @@ $scope.goSearch=function(){
 
   if(searchGender=='female'){
     $location.path('/search/dress');
+    $cookies.put("query",'dress');
   }else{
     $location.path('/search/shirt');
+    $cookies.put("query",'shirt');
   }
 }
 
