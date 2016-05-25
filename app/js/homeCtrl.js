@@ -193,18 +193,20 @@ $scope.dataGet();
     }
 
 //anchor    
-    $scope.goto = function (id) {
-        
+
+$scope.goto = function(id) {
+        var old = $location.hash();
         if($scope.gender_f){
           id="F"+id;
 
         }else{
           id="M"+id;
         }
-            $location.hash(id);
-            $anchorScroll();
-    }
-
+        $location.hash(id);
+        $anchorScroll();
+        $location.hash(old);
+    } 
+   
 //sidebar Setting
  $scope.sidebar=false;
     $scope.setLocation = function(location){
@@ -299,6 +301,7 @@ $scope.del_outfit=function(id,index){
   // $routingParams.paramName
   // Check the app.js to figure out what is the paramName in this case
   
+ // $scope.aaaaa=$cookies.get('genre');
 
   
     
